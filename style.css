@@ -4,22 +4,13 @@ body {
   background: black;
 }
 
-#bg {
-  top: 30px;
-  left: 30px;
-  position: fixed;
-  width: calc(100vw - 40px);
-  height: calc(100vh - 40px);
-  background: rgb(40,40,40);
-}
-
-p {
+h1 {
   color: white;
   font-family: 'Lilita One', sans-serif;
-  font-size: 25px;
+  font-size: 35px;
   top: 50%;
   left: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
-  text-shadow: 0 10px rgb(180,180,180), 0 20px 30px rgb(80,80,80);
+  text-shadow: 0 6px rgb(160,160,160), 0 20px 30px rgb(100,100,100);
 }
