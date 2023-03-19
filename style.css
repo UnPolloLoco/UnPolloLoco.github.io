@@ -12,5 +12,5 @@ h1 {
   left: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
-  text-shadow: 0 6px rgb(160,160,160), 0 20px 30px rgb(100,100,100);
+  text-shadow: 0 6px rgb(160,160,160), 0 20px 50px rgb(110,110,110);
 }
