@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
 body {
-  background: rgb(50,50,50);
+  background: rgb(45,45,45);
+  background: radial-gradient(circle, rgb(50,50,50) 0%, rgb(35,35,35) 85%);
 }
 
 h1 {
