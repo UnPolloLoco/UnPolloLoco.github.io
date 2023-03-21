@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
 body {
-  background: rgb(40,40,40);
+  background: rgb(60,60,60);
 }
 
 h1 {
@@ -12,5 +12,5 @@ h1 {
   left: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
-  text-shadow: 0 6px rgb(160,160,160), 0 4px rgb(160,160,160), 0 2px rgb(160,160,160), 0 25px 50px black;
+  text-shadow: 0 6px rgb(160,160,160), 0 4px rgb(160,160,160), 0 2px rgb(160,160,160), 0 20px 40px black;
 }
