@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+* {
+  font-family: sans-serif;
+}
+
 #introImg {
   position: absolute;
   height: 100vh;
@@ -28,6 +34,7 @@
 #introStuff h1 {
   color: white;
   font-size: 50px;
+  font-family: 'Kanit', sans-serif;
 }
 
 #introStuff button {
