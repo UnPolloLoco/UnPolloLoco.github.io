@@ -1,1 +1,36 @@
+#introImg {
+  position: absolute;
+  height: 100vh;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+#introStuff {
+  background: rgba(0,0,0, 0.8);
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+#introStuff div {
+  top: 50vh;
+  left: 50vw;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+#introStuff h1 {
+  color: white;
+  font-size: 40px;
+}
+
+#introStuff button {
+  display: block;
+  background: rgb(160,200,0);
+  padding: 15px 30px;
+  color: black;
+}
