@@ -41,9 +41,11 @@
 #introStuff button {
   display: block;
   background: rgb(80,100,0);
-  padding: 15px 45px;
+  padding: 20px 55px;
   color: white;
   border: none;
   border-radius: 10px;
   margin: auto;
+  box-shadow: 0 0 10px black;
+  font-size: 18px;
 }
