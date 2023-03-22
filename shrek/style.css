@@ -4,6 +4,14 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
+#introDiv {
+  top: 0;
+  left: 0;
+  position: absolute;
+  max-height: 100vw;
+  overflow-y: hidden;
+}
+  
 #introImg {
   position: absolute;
   height: 100vh;
