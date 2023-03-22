@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
 
 * {
   font-family: sans-serif;
@@ -34,7 +34,7 @@
 #introStuff h1 {
   color: white;
   font-size: 65px;
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Patua One', sans-serif;
 }
 
 #introStuff button {
