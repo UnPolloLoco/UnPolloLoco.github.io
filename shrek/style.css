@@ -67,3 +67,7 @@
   width: 100vw;
   min-height: 100px;
 }
+
+img {
+  background: rgb(130,130,130);
+}
