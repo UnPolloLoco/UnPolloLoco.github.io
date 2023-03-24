@@ -10,7 +10,7 @@
 
 <body>
   <div id="introDiv">
-    <img src="convexShrek.png" id="introImg">
+    <img src="img/convexShrek.png" id="introImg">
   </div>
   <div id="introStuff">
     <div>
@@ -25,24 +25,7 @@
    
   </div>
   
-  <script>
-    const introImg = document.getElementById('introImg');
-    
-    function changeIntroImg() {
-      if (window.innerWidth > window.innerHeight *1.832) {
-        introImg.style.width = '100vw';
-        introImg.style.height = 'auto';
-      } else {
-        introImg.style.width = 'auto';
-        introImg.style.height = '100vh';
-      };
-    };
-    
-    changeIntroImg();
-    addEventListener('resize', (event) => {
-      changeIntroImg();
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
