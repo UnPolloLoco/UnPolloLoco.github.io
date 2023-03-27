@@ -75,21 +75,21 @@ img {
 .contentLeft, .contentRight {
   height: 300px;
   border: 1px solid red;
-  width: calc(100vw - 40px);
-  margin: 20px;
+  width: calc(100vw - 80px);
+  margin: 40px;
   position: relative;
 }
 
 .contentLeft img {
   top: 0;
-  right: calc((100vw - 40px) / 2 + 30px);
+  left: 0;
   position: absolute;
   height: 300px;
 }
 
 .contentLeft p {
   top: 0;
-  left: calc((100vw - 40px) / 2 + 30px);
+  right: 0;
   position: absolute;
   font-size: 24px;
 }
