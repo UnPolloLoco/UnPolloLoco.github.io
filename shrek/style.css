@@ -72,7 +72,7 @@ img {
   background: rgb(130,130,130);
 }
 
-.contentleft, .contentRight {
+.contentLeft, .contentRight {
   height: 300px;
   border: 1px solid red;
   width: calc(100vw - 40px);
