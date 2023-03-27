@@ -75,8 +75,8 @@ img {
 .contentLeft, .contentRight {
   height: 300px;
   border: 1px solid red;
-  width: calc(100vw - 80px);
-  margin: 40px;
+  width: calc(100vw - 120px);
+  margin: 60px;
   position: relative;
 }
 
