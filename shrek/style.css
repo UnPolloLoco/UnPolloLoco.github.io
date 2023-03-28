@@ -70,7 +70,6 @@
   position: absolute;
   width: 100vw;
   min-height: 100px;
-  text-align: center;
 }
 
 img {
@@ -80,7 +79,6 @@ img {
 .contentLeft, .contentRight {
   height: 300px;
   width: 1000px;
-  /*width: calc(100vw - 120px);*/
   position: relative;
 }
 
