@@ -78,7 +78,6 @@ img {
 
 .contentLeft, .contentRight {
   height: 300px;
-  border: 1px solid red;
   width: calc(100vw - 120px);
   margin: 60px;
   position: relative;
@@ -122,13 +121,20 @@ img {
   margin-bottom: 20px;
 }
 
-.contentLeft a.button {
+a.button {
   bottom: 0;
-  left: 560px;
   position: absolute;
   text-decoration: none;
   color: white;
   background: var(--swampy);
   padding: 15px 40px;
   border-radius: 10px;
+}
+
+.contentLeft a.button {
+  left: 560px;
+}
+
+.contentRight a.button {
+  right: 560px;
 }
