@@ -83,6 +83,10 @@ img {
   position: relative;
 }
 
+.contentLeft:not(:first-child), .contentRight:not(:first-child) {
+  margin-bottom: 70px;
+}
+
 .contentLeft img {
   left: 0;
 }
