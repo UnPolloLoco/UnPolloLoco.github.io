@@ -84,6 +84,10 @@ img {
   position: relative;
 }
 
+.contentLeft h1, .contentRight h1 {
+  font-size: 35px;
+}
+
 .contentLeft img {
   top: 0;
   left: 0;
