@@ -102,10 +102,11 @@ img {
 }
 
 a.button {
-  display: block;
+  display: inline-block;
   text-decoration: none;
   color: white;
   background: var(--swampy);
   padding: 15px 30px;
+  margin-top: 50px;
   border-radius: 10px;
 }
