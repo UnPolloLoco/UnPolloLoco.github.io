@@ -74,7 +74,7 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 60px 0;
-  padding-left: calc((100vw - 1000px) / 2);
+  margin-left: calc((100vw - 1000px) / 2);
 }
 
 img {
