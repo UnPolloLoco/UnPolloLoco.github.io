@@ -107,12 +107,12 @@ img {
   margin-bottom: 20px;
 }
 
-a.button {
-  display: inline-block;
+.contentLeft a.button {
+  bottom: 0;
+  left: 680px;
   text-decoration: none;
   color: white;
   background: var(--swampy);
   padding: 15px 30px;
-  margin-top: 50px;
   border-radius: 10px;
 }
