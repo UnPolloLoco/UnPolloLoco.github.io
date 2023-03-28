@@ -74,7 +74,6 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 60px 0;
-  border: 1px dashed lime;
 }
 
 img {
@@ -86,7 +85,6 @@ img {
   width: 1000px;
   /*width: calc(100vw - 120px);*/
   position: relative;
-  border: 1px dashed green;
   /*margin-left: calc((100vw - 1000px) / 2);*/
 }
 
@@ -126,7 +124,6 @@ img {
   font-size: 24px;
   margin: 0;
   width: 435px;
-  border: 1px dashed red;
 }
 
 .contentHeader {
