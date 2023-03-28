@@ -4,6 +4,10 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
+:root {
+  --swampy: rgb(80,100,0);
+}
+
 #introDiv {
   top: 0;
   left: 0;
@@ -50,7 +54,7 @@
 
 #introStuff button {
   display: block;
-  background: rgb(80,100,0);
+  background: var(--swampy);
   padding: 15px 60px;
   color: white;
   border: none;
@@ -95,4 +99,13 @@ img {
   font-size: 24px;
   margin: 0;
   width: calc(100vw - 680px);
+}
+
+a.button {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background: var(--swampy);
+  padding: 15px 30px;
+  border-radius: 10px;
 }
