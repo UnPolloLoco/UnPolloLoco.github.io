@@ -84,10 +84,6 @@ img {
   position: relative;
 }
 
-.contentLeft h1, .contentRight h1 {
-  font-size: 35px;
-}
-
 .contentLeft img {
   top: 0;
   left: 0;
@@ -103,6 +99,12 @@ img {
   font-size: 24px;
   margin: 0;
   width: calc(100vw - 680px);
+}
+
+.contentHeader {
+  font-size: 40px;
+  display: block;
+  marign-bottom: 20px;
 }
 
 a.button {
