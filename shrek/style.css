@@ -70,6 +70,8 @@
   position: absolute;
   width: 100vw;
   min-height: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 img {
@@ -105,10 +107,12 @@ img {
 
 .contentLeft p {
   right: 0;
+  text-align: left;
 }
 
 .contentRight p {
   left: 0;
+  text-align: right;
 }
 
 .contentLeft p, .contentRight p {
