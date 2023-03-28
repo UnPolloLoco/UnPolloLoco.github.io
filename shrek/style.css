@@ -79,6 +79,7 @@ img {
 .contentLeft, .contentRight {
   height: 300px;
   width: 1000px;
+  width: calc(100vw - 120px);
   position: relative;
 }
 
