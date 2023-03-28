@@ -85,16 +85,31 @@ img {
 }
 
 .contentLeft img {
-  top: 0;
   left: 0;
-  position: absolute;
+}
+
+.contentRight img {
+  right: 0;
+}
+
+.contentLeft img, .contentRight img {
+  border-radius: 15px;
   height: 300px;
   width: 500px;
+  top: 0;
+  position: absolute;
 }
 
 .contentLeft p {
-  top: 0;
   right: 0;
+}
+
+.contentRight p {
+  left: 0;
+}
+
+.contentLeft p, .contentRight p {
+  top: 0;
   position: absolute;
   font-size: 24px;
   margin: 0;
