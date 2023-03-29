@@ -14,3 +14,8 @@ changeIntroImg();
 addEventListener('resize', (event) => {
   changeIntroImg();
 });
+
+function agreedBtn() {
+  alert('wahoo')
+  window.scrollTo(0, window.innerHeight);
+};
