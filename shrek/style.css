@@ -86,6 +86,7 @@ img {
   height: 300px;
   width: 1000px;
   position: relative;
+  margin-right: 0;
 }
 
 #content > div:not(:last-child) {
@@ -170,10 +171,18 @@ a.button {
   
   #content > div p {
     font-size: 18px;
-    width: 435px;
+    width: 285px;
   }
   
   .contentHeader {
     font-size: 30px;
+  }
+  
+  .contentLeft a.button {
+    left: 410px;
+  }
+
+  .contentRight a.button {
+    right: 410px;
   }
 }
