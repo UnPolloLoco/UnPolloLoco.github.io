@@ -87,6 +87,7 @@ img {
   width: 1000px;
   position: relative;
   margin-right: 0;
+  display: inline-block;
 }
 
 #content > div:not(:last-child) {
