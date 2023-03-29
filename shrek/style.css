@@ -82,12 +82,10 @@ img {
   background: rgb(130,130,130);
 }
 
-.contentLeft, .contentRight {
+#content > div {
   height: 300px;
   width: 1000px;
-  /*width: calc(100vw - 120px);*/
   position: relative;
-  /*margin-left: calc((100vw - 1000px) / 2);*/
 }
 
 #content > div:not(:last-child) {
@@ -102,7 +100,7 @@ img {
   right: 0;
 }
 
-.contentLeft img, .contentRight img {
+#content > div img {
   border-radius: 15px;
   height: 300px;
   width: 500px;
@@ -120,7 +118,7 @@ img {
   text-align: right;
 }
 
-.contentLeft p, .contentRight p {
+#content > div p {
   top: 0;
   position: absolute;
   font-size: 24px;
@@ -151,4 +149,31 @@ a.button {
 
 .contentRight a.button {
   right: 560px;
+}
+
+@media only screen and (max-width: 1125px) {
+  #content {
+    margin-left: calc((100vw - 700px) / 2);
+    padding: 60px 0;
+  }
+  
+  #content > div {
+    height: 210px;
+    width: 700px;
+    position: relative;
+  }
+  
+  #content > div img {
+    height: 210px;
+    width: 350px;
+  }
+  
+  #content > div p {
+    font-size: 18px;
+    width: 435px;
+  }
+  
+  .contentHeader {
+    font-size: 30px;
+  }
 }
