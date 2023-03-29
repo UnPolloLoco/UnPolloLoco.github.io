@@ -74,9 +74,7 @@ html {
   position: absolute;
   width: 100vw;
   min-height: 100px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin-left: calc((100vw - 1000px) / 2);
   padding: 60px 0;
 }
 
