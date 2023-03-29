@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Ubuntu&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: 'Ubuntu', sans-serif;
 }
