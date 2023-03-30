@@ -189,4 +189,8 @@ a.button {
   }
 }
 
+@media only screen and (max-width: 500px) {
+
+}
+
 /* next step is 825 width */
