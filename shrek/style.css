@@ -153,41 +153,6 @@ a.button {
   right: 38.88vw;
 }
 
-@media only screen and (max-width: 1125px) {
-  #content {
-    margin-left: calc((100vw - 700px) / 2);
-    padding: 60px 0;
-    width: calc(100vw - (100vw - 700px));
-  }
-  #content > div {
-    height: 210px;
-    width: 700px;
-    position: relative;
-  }
-  #content > div:not(:last-child) {
-    margin-bottom: 120px;
-  }
-  #content > div img {
-    height: 210px;
-    width: 350px;
-  }
-  #content > div p {
-    font-size: 18px;
-    width: 285px;
-  }
-  .contentHeader {
-    font-size: 30px;
-  }
-  .contentLeft a.button {
-    left: 410px;
-  }
-  .contentRight a.button {
-    right: 410px;
-  }
-}
-
 @media only screen and (max-width: 500px) {
 
 }
-
-/* next step is 825 width */
