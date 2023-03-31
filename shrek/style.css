@@ -72,10 +72,10 @@ html {
   top: 100vh;
   left: 0;
   position: absolute;
-  width: calc(100vw - (100vw - 1000px));
+  width: calc(100vw - (100vw - 69.44vw));
   min-height: 100px;
-  padding: 60px 0;
-  padding-left: calc((100vw - 1000px) / 2);
+  padding: 4.16vw 0;
+  padding-left: calc((100vw - 69.44vw) / 2);
 }
 
 img {
@@ -83,15 +83,15 @@ img {
 }
 
 #content > div {
-  height: 300px;
-  width: 1000px;
+  height: 20.83vw;
+  width: 69.44vw;
   position: relative;
   margin-right: 0;
   display: inline-block;
 }
 
 #content > div:not(:last-child) {
-  margin-bottom: 170px;
+  margin-bottom: 11.8vw;
 }
 
 .contentLeft img {
@@ -103,9 +103,9 @@ img {
 }
 
 #content > div img {
-  border-radius: 15px;
-  height: 300px;
-  width: 500px;
+  border-radius: 1.05vw;
+  height: 20.83vw;
+  width: 34.72vw;
   top: 0;
   position: absolute;
 }
@@ -123,15 +123,15 @@ img {
 #content > div p {
   top: 0;
   position: absolute;
-  font-size: 24px;
+  font-size: 1.66vw;
   margin: 0;
-  width: 435px;
+  width: 30.21vw;
 }
 
 .contentHeader {
-  font-size: 40px;
+  font-size: 2.77vw;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 1.38vw;
   font-family: 'Patua One', serif;
 }
 
@@ -141,16 +141,16 @@ a.button {
   text-decoration: none;
   color: white;
   background: var(--swampy);
-  padding: 15px 60px;
-  border-radius: 10px;
+  padding: 1.05vw 4.16vw;
+  border-radius: 0.69vw;
 }
 
 .contentLeft a.button {
-  left: 560px;
+  left: 38.88vw;
 }
 
 .contentRight a.button {
-  right: 560px;
+  right: 38.88vw;
 }
 
 @media only screen and (max-width: 1125px) {
