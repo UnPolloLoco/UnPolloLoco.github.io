@@ -91,7 +91,7 @@ img {
 }
 
 #content > div:not(:last-child) {
-  margin-bottom: 120px;
+  margin-bottom: 170px;
 }
 
 .contentLeft img {
@@ -159,31 +159,28 @@ a.button {
     padding: 60px 0;
     width: calc(100vw - (100vw - 700px));
   }
-  
   #content > div {
     height: 210px;
     width: 700px;
     position: relative;
   }
-  
+  #content > div:not(:last-child) {
+    margin-bottom: 120px;
+  }
   #content > div img {
     height: 210px;
     width: 350px;
   }
-  
   #content > div p {
     font-size: 18px;
     width: 285px;
   }
-  
   .contentHeader {
     font-size: 30px;
   }
-  
   .contentLeft a.button {
     left: 410px;
   }
-
   .contentRight a.button {
     right: 410px;
   }
