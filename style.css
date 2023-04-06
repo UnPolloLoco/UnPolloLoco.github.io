@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=DM+Sans:wght@700&display=swap');
 
 body {
   background: rgb(45,45,45);
@@ -7,11 +7,31 @@ body {
 
 h1 {
   color: white;
-  font-family: 'Lilita One', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 3vw;
-  top: 50%;
+  top: 20%;
   left: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
   text-shadow: 0 6px rgb(160,160,160), 0 4px rgb(160,160,160), 0 2px rgb(160,160,160), 0 20px 20px rgb(20,20,20);
+}
+
+div {
+  top: calc(20% + 5vw);
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  width: 33%;
+}
+
+a {
+  color: rgb(200,200,200);
+  display: block;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover {
+  color: white;
+  text-decoration: underline;
 }
