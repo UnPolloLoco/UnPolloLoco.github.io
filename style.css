@@ -29,6 +29,7 @@ a {
   display: block;
   text-decoration: none;
   font-size: 20px;
+  font-family: 'Courier Prime', monospace;
 }
 
 a:hover {
