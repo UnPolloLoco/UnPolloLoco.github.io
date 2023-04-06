@@ -9,11 +9,8 @@ h1 {
   color: white;
   font-family: 'DM Sans', sans-serif;
   font-size: 35px;
-  top: 20%;
-  left: 50%;
-  position: fixed;
-  transform: translate(-50%, -50%);
   text-shadow: 0 6px rgb(160,160,160), 0 4px rgb(160,160,160), 0 2px rgb(160,160,160), 0 20px 20px rgb(20,20,20);
+  margin-bottom: 25px;
 }
 
 div {
@@ -21,7 +18,7 @@ div {
   left: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
-  width: 33%;
+  width: 40%;
 }
 
 a {
