@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=DM+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Merriweather+Sans:wght@800&display=swap');
 
 body {
   background: rgb(45,45,45);
@@ -7,7 +7,7 @@ body {
 
 h1 {
   color: white;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Merriweather Sans', sans-serif;
   font-size: 35px;
   text-shadow: 0 6px rgb(160,160,160), 0 4px rgb(160,160,160), 0 2px rgb(160,160,160), 0 20px 20px rgb(20,20,20);
   margin-bottom: 40px;
