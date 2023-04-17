@@ -18,7 +18,7 @@ div {
   top: 45%;
   position: fixed;
   transform: translate(-50%, -50%);
-  width: 40%;
+  width: 45%;
 }
 
 a {
@@ -27,12 +27,12 @@ a {
   text-decoration: none;
   margin-bottom: 0.6944vw;
   position: relative;
-  left: 1vw;
+  left: 0.9vw;
 }
 
 a:hover {
   color: white;
-  left: 1.5vw;
+  left: 1.3vw;
   text-decoration: underline;
   transition-duration: 0.35s;
   transition-property: left;
@@ -46,7 +46,7 @@ a, p {
 p:not(#award) {
   color: white;
   margin: 2.7vw 0 1.1vw 0;
-  text-shadow: 0.05vw 0 white;
+  text-shadow: 0.03vw 0 white;
 }
 
 #award {
