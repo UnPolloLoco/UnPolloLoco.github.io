@@ -35,17 +35,18 @@ a:hover {
   text-decoration: underline;
 }
 
-p {
+p:not(#award) {
   color: white;
   margin: 2.5vw 0 1.1vw 0;
-  text-shadow: 0.25vw 0 white;
+  text-shadow: 0.05vw 0 white;
 }
 
 #award {
+  position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
   bottom: 1.388vw;
-  font-size: 0.625vw;
+  font-size: 0.75vw;
   color: rgb(160,160,160);
   text-align: center;
   width: 90vw;
