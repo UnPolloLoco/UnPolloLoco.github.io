@@ -8,9 +8,9 @@ body {
 h1 {
   color: white;
   font-family: 'Merriweather Sans', sans-serif;
-  font-size: 35px;
-  text-shadow: 0 6px rgb(160,160,160), 0 4px rgb(160,160,160), 0 2px rgb(160,160,160), 0 20px 20px rgb(20,20,20);
-  margin-bottom: 40px;
+  font-size: 2.43vw;
+  text-shadow: 0 0.4166vw rgb(160,160,160), 0 0.2778vw rgb(160,160,160), 0 0.1389vw rgb(160,160,160), 0 1.388vw 1.388vw rgb(20,20,20);
+  margin-bottom: 2.778vw;
 }
 
 div {
@@ -25,12 +25,28 @@ a {
   color: rgb(200,200,200);
   display: block;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.388vw;
   font-family: 'Courier Prime', monospace;
-  margin-bottom: 10px;
+  margin-bottom: 0.6944vw;
 }
 
 a:hover {
   color: white;
   text-decoration: underline;
+}
+
+p {
+  color: white;
+  margin: 2.5vw 0 1.1vw 0;
+  text-shadow: 0.25vw 0 white;
+}
+
+#award {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 1.388vw;
+  font-size: 0.625vw;
+  color: rgb(160,160,160);
+  text-align: center;
+  width: 90vw;
 }
