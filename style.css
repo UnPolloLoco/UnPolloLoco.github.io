@@ -15,7 +15,7 @@ h1 {
 
 div {
   left: 50%;
-  top: 50%;
+  top: 45%;
   position: fixed;
   transform: translate(-50%, -50%);
   width: 40%;
@@ -26,7 +26,6 @@ a {
   display: block;
   text-decoration: none;
   font-size: 1.388vw;
-  font-family: 'Courier Prime', monospace;
   margin-bottom: 0.6944vw;
 }
 
@@ -35,9 +34,13 @@ a:hover {
   text-decoration: underline;
 }
 
+a, p {
+  font-family: 'Courier Prime', monospace;
+}
+
 p:not(#award) {
   color: white;
-  margin: 2.5vw 0 1.1vw 0;
+  margin: 2.7vw 0 1.1vw 0;
   text-shadow: 0.05vw 0 white;
 }
 
