@@ -28,14 +28,14 @@ a {
   margin-bottom: 0.6944vw;
   position: relative;
   left: 0.9vw;
+  transition-duration: 0.35s;
+  transition-property: left;
 }
 
 a:hover {
   color: white;
   left: 1.3vw;
   text-decoration: underline;
-  transition-duration: 0.35s;
-  transition-property: left;
 }
 
 a, p {
