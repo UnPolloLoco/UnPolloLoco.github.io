@@ -38,6 +38,10 @@ a:hover {
   text-decoration: underline;
 }
 
+.unfinished a {
+  color: rgb(150,150,150);
+}
+
 a, p {
   font-family: 'Courier Prime', monospace;
   font-size: 1.388vw;
