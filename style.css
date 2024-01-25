@@ -13,7 +13,7 @@ h1 {
   margin-bottom: 2.778vw;
 }
 
-div {
+div:not(.unfinished) {
   left: 50%;
   top: 45%;
   position: fixed;
