@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Vim Basics</title>
+        <script src="../js/validate.js"></script>
+    </head>
+    <body>
+        <h1>Vim: The Basics</h1>
+
+        <p>
+            Vim is a text editor that is completely housed within the terminal.
+            It's usually installed by default.
+        </p>
+
+
+
+        <h2>The <code>vim</code> Command</h2>
+
+        <p>
+            To actually open the text editor, you have to type <code>vim FILE_NAME</code>.
+            <br>
+            Once the command is run, one of two things will happen:
+        </p>
+
+        <ol>
+            <li>Vim will open the file and display its contents in the terminal.</li>
+            <li>If the file doesn't exist, Vim will create an empty file with the given name and open <em>that</em> up instead.</li>
+        </ol>
+
+
+
+        <h2>Editing a File</h2>
+
+        <p>
+            When you use the <code>vim</code> command, it first opens you up in <strong>normal mode</strong> (more on this later).
+            You cannot directly edit the file yet—not until you enter <strong>insert mode</strong>.
+            To start typing, hit the <kbd>i</kbd> key. 
+            Text should appear on the bottom of the terminal window that says <samp>-- INSERT --</samp>.
+        </p>
+        <p>
+            Since Vim is a terminal based editor, you can't do much with your mouse other than scroll up and down. Instead, navigate the text using the arrow keys.
+        </p>
+
+
+
+        <h2>Closing a File</h2>
+
+        <p>
+            Just like any other text editing software, you should save and close a file when you're done with it.
+            To do this in Vim, you have to return to normal mode first—click <kbd>ESC</kbd> to do so.
+            Then, type <code>:wq</code> then <kbd>ENTER</kbd> to save and quit.
+        </p>
+        <p>
+            But, you must wonder, what does <code>:wq</code> even mean!? Well, the colon is used to indicate the beginning of a command.
+            Then, "w" means write (save) and "q" means quit.
+        </p>
+
+        <p>You have a few options with regards to saving and closing:</p>
+        <ul>
+            <li><code>:wq</code> — Write and quit.</li>
+            <li><code>:w</code> — Write, but <em>don't</em> quit.</li>
+            <li><code>:q!</code> — Quit <em>without</em> saving. The "!" lets you bypass warnings.</li>
+        </ul>
+
+
+
+        <h2>Other Commands</h2>
+
+        <p>
+            Remember how I said that commands start with a colon? That's not always true.
+            The following commands—none of which start with a colon—are also used in normal mode.
+        </p>
+        <p>
+            Do note that these run automatically. No colon means no need to click enter when you're done.
+        </p>
+        <ul>
+            <li><kbd>x</kbd> — Delete character</li>
+            <li><kbd>d</kbd><kbd>d</kbd> — Delete whole line</li>
+            <li><kbd>y</kbd><kbd>y</kbd> — Copy (yank) whole line</li>
+            <li><kbd>p</kbd> — Paste</li>
+            <li><kbd>u</kbd> — Undo</li>
+            <li><kbd>Ctrl + r</kbd> — Redo</li>
+            <li><kbd>0</kbd> — Move to start of line</li>
+            <li><kbd>$</kbd> — Move to end of line</li>
+        </ul>
+        <p>
+            Generally speaking, file related commands start with a colon, but text related commands don't.
+        </p>
+
+        <h2>Final Notes</h2>
+
+        <p>
+            There's so, so much Vim has to offer. 
+            If you want to learn more, a great place to go is Vim's very own built-in tutorial.
+            It can be accessed by typing <code>vimtutor</code> into the terminal.
+            Now, go forth and write!!
+        </p>
+
+        <br><hr>
+
+    </body>
+</html>
