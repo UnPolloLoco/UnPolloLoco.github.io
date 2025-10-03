@@ -3,23 +3,59 @@
     <head>
         <title>Key Lime Pie</title>
         <script src="../../js/validate.js"></script>
+        <style>
+            table, tr, th, td {
+                border: black 1px solid;
+                border-collapse: collapse;
+            }
+        </style>
     </head>
     <body>
         <h1>Key Lime Pie Recipe</h1>
 
         <p><a href="index.html">Return home</a></p>
-        <br>
+        <hr>
+
+        <!--
+        Required:
+         'Family' quote
+          Recipe significance
+        -->
+        
+        <img src="../../images/blueberries/bb-medium.jpg"
+             alt="PLACEHOLDER"
+             srcset="../../images/blueberries/bb-small.jpg 480w,
+                     ../../images/blueberries/bb-medium.jpg 800w,
+                     ../../images/blueberries/bb-large.jpg 1200w"
+             sizes="(max-width: 480px) 95vw,
+                    (max-width: 700px) 75vw,
+                    (max-width: 1000px) 60vw,
+                    40vw">
+        <!-- 
+            IMAGE ATTRIBUTION
+        -->
 
         <p>
-            Description...
+            Description
         </p>
 
         <h2>Ingredients</h2>
-        <ul>
-            <li>...</li>
-            <li>...</li>
-            <li>...</li>
-        </ul>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+            </tr>
+            <tr>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+        </table>
+        <p>
+            Servings: ___
+            <br>
+            Prep time: ___
+        </p>
+
 
         <h2>Instructions</h2>
         <ol>
@@ -28,6 +64,14 @@
             <li>...</li>
         </ol>
 
-        <br>
+
+        <h2>Tips & Substitutions</h1>
+        <ul>
+            <li>...</li>
+            <li>...</li>
+            <li>...</li>
+        </ul>
+
+        <br><hr>
     </body>
 </html>
