@@ -1,8 +1,18 @@
 body {
-    background-color: slategray;
+    background-color: #eeeeff;
+    color: #112233;
 }
 
 table, tr, td, th {
-    border: 1px solid black;
+    border: 2px solid black;
     border-collapse: collapse;
+    background-color: white;
+}
+
+.wavy {
+    text-decoration: wavy underline;
+}
+
+#copy {
+    color: #6699CC;
 }
