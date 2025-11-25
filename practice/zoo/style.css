@@ -1,6 +1,7 @@
 body {
     background-color: #eeeeff;
     color: #112233;
+    font-family: "Georgia", sans-serif;
 }
 
 table, tr, td, th {
@@ -9,10 +10,37 @@ table, tr, td, th {
     background-color: white;
 }
 
-.wavy {
-    text-decoration: wavy underline;
+td {
+    padding: 1px 40px 1px 5px;
+}
+
+th {
+    padding: 3px 30px;
+}
+
+h1, h2 {
+    font-family: "Verdana", sans-serif;
+}
+
+h1 {
+    padding-bottom: 4px;
+    border-bottom: 3px solid black;
+}
+
+h2 {
+    margin-top: 40px;
+    padding-bottom: 1px;
+    border-bottom: 2px solid #d0d0e0;
+}
+
+footer {
+    margin-top: 100px;
+}
+
+.underlined {
+    text-decoration: dotted underline;
 }
 
 #copy {
-    color: #6699CC;
+    color: #aaaabb;
 }
