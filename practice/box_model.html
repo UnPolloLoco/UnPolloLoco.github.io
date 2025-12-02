@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Box Model</title>
+		<script src="../js/validate.js"></script>
+		<style>
+			#one, #two, #three, #four, #five {
+				width: 100px;
+				height: 100px;
+				background-clip: content-box;
+				border: 2px solid black;
+			}
+			#one {
+				margin-left: 325px;
+				background-color: red;
+			}
+			#two {
+				padding: 100px;
+				margin-left: 429px;
+				background-color: blue;
+			}
+			#three {
+				padding-left: 20px;
+				background-color: green;
+			}
+			#four {
+				padding: 40px 20px 0 20px;
+				margin: 50px 0 0 325px;
+				background-color: yellow;
+			}
+			#five {
+				padding-bottom: 100px;
+				margin-left: 225px;
+				background-color: purple;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one"></div>
+		<div id="two"></div>
+		<div id="three"></div>
+		<div id="four"></div>
+		<div id="five"></div>
+	</body>
+</html>
