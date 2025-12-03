@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Who wants ice cream!?!?</title>
+		<script src="../js/validate.js"></script>
+	</head>
+	<body>
+		<h1>You're Invited to an Ice Cream Party!</h1>
+		<p>Please fill out this form to help us plan.</p>
+
+		<hr>
+
+		<form action="https://httpbin.org/post" method="post">
+			<!-- Email -->
+			<label for="email">What is your email address?</label>
+			<input required type="email" name="email" id="email">
+			<br>
+
+			<!-- Phone -->
+			<label for="phone">What is your phone number?</label>
+			<input required type="tel" name="phone" id="phone">
+			<br>
+
+			<!-- Guests -->
+			<label for="guests">How many people will you bring with you to the party?</label>
+			<input required type="number" min=0 name="guests" id="guests">
+			<br>
+
+			<!-- Favorite flavor -->
+			<fieldset>
+				<legend>What is your favorite flavor of ice cream?</legend>
+
+				<label for="flavorOpt1">Vanilla</label>
+				<input type="radio" id="flavorOpt1" name="flavor" value="vanilla">
+				<br>
+
+				<label for="flavorOpt2">Chocolate Chip</label>
+				<input type="radio" id="flavorOpt2" name="flavor" value="chocolate">
+				<br>
+
+				<label for="flavorOpt3">Strawberry</label>
+				<input type="radio" id="flavorOpt3" name="flavor" value="strawberry">
+				<br>
+
+				<label for="flavorOpt4">Other</label>
+				<input type="radio" id="flavorOpt4" name="flavor" value="other">
+				<br>
+			</fieldset>
+
+			<!-- Toppings -->
+			<fieldset>
+				<legend>Which toppings do you like?</legend>
+
+				<label for="toppingsOpt1">Sprinkles</label>
+				<input type="checkbox" id="toppingsOpt1" name="toppings" value="sprinkles">
+				<br>
+
+				<label for="toppingsOpt2">Magic Shell</label>
+				<input type="checkbox" id="toppingsOpt2" name="toppings" value="magicshell">
+				<br>
+
+				<label for="toppingsOpt3">Chocolate Chips</label>
+				<input type="checkbox" id="toppingsOpt3" name="toppings" value="chips">
+				<br>
+
+				<label for="toppingsOpt4">Gummy Bears</label>
+				<input type="checkbox" id="toppingsOpt4" name="toppings" value="gummybears">
+				<br>
+
+				<label for="toppingsOpt5">Other</label>
+				<input type="checkbox" id="toppingsOpt5" name="toppings" value="other">
+				<br>
+			</fieldset>
+
+			<!-- Entertainment -->
+			<label for="entertainment">What kind of entertainment should we have at the party?</label>
+			<select id="entertainment" name="entertainment">
+				<option value="balloonanimals">Balloon Animals</option>
+				<option value="bouncehouse">Bounce House</option>
+				<option value="clown">Clown</option>
+				<option value="cornhole">Cornhole</option>
+				<option value="dj">DJ</option>
+				<option value="facepainting">Face Painting</option>
+				<option value="magician">Magician</option>
+			</select>
+			<br>
+
+			<!-- Other -->
+			<label for="other">Do you have any other suggestions or comments?</label>
+			<input type="text" name="other" id="other">
+			<br>
+		
+			<!-- Buttons -->
+			<button type="Reset">Reset</button>
+			<button type="submit">Submit Form</button>
+		</form>
+	</body>
+</html>
