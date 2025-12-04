@@ -1,0 +1,13 @@
+body {
+	background: hsl(210, 60%, 85%);
+}
+
+h1 {
+	color: hsl(210, 60%, 30%);
+	font-size: 42px;
+	border-bottom: 4px solid hsl(210, 50%, 65%);
+}
+
+img {
+	border: 2px solid black;
+}
