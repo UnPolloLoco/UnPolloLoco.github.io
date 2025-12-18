@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SEASON OF THE GLOWING TREE!!</title>
+		<script src="../js/validate.js"></script>
+		<style> 
+			body {
+				height: 100vh;
+				background-color: hsl(350, 40%, 15%);
+				background-image: linear-gradient(
+					to bottom,
+					hsl(350, 40%, 18%),
+					hsl(340, 40%, 8%)
+				);
+				color: hsl(350, 20%, 85%);
+			}
+			#container {
+				position: relative;
+				width: 400px;
+				height: 500px;
+				margin-left: 15px;
+				margin-top: 60px;
+			}
+			#tree {
+				width: 0;
+				height: 0;
+				border-bottom: 450px solid #063;
+				border-left: 200px solid transparent;
+				border-right: 200px solid transparent;
+			}
+			#trunk {
+				width: 50px;
+				height: 50px;
+				background-color: #531;
+				background-image: linear-gradient(
+					to bottom,
+					#421,
+					#531
+				);
+				margin: auto;
+			}
+
+			/* Ornaments */
+
+			#square {
+				width: 40px;
+				height: 40px;
+				background-color: red;
+				background-image: linear-gradient(
+					to bottom,
+					red,
+					#702
+				);
+				position: absolute;
+				top: 120px;
+				left: 220px;
+			}
+			#star {
+  				width: 100px;  
+ 				aspect-ratio: 1;
+				background-image: linear-gradient(
+					to bottom,
+					white,
+					yellow
+				);
+  				clip-path: polygon(50% 0,79% 90%,2% 35%,98% 35%,21% 90%);
+				position: absolute;
+				top: -50px;
+				left: 150px;
+			}
+			#circle {
+				width: 40px;
+				height: 40px;
+				background-image: linear-gradient(
+					to bottom,
+					lime,
+					#052
+				);
+				position: absolute;
+				top: 190px;
+				left: 100px;
+				border-radius: 20px;
+			}
+			#sparkle {
+				height: 70px;
+				width: 50px;
+				mask: radial-gradient(
+					#0000 71%, #000 72%) 10000% 10000%/99.5% 99.5%;
+				background-color: cyan;
+				background-image: linear-gradient(
+					to bottom,
+					#9ff,
+					#069
+				);
+				position: absolute;
+				top: 270px;
+				left: 260px;
+			}
+			#triangle {
+ 				width: 50px;
+				aspect-ratio: 1;
+				clip-path: polygon(75% 93.3%,0% 50%,75% 6.7%);
+				background-image: linear-gradient(
+					to bottom,
+					#faf,
+					#a4d
+				);
+				position: absolute;
+				top: 350px;
+				left: 130px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>SEASON OF THE GLOWING TREE!!</h1>
+
+		<div id="container">
+			<div id="tree">
+				<div id="square"></div>
+				<div id="star"></div>
+				<div id="circle"></div>
+				<div id="sparkle"></div>
+				<div id="triangle"></div>
+			</div>
+			<div id="trunk"></div>
+		</div>
+	</body>
+</html>
