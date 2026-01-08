@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pirate Park</title>
+		<style>
+			body {
+				font-family: 'Georgia', serif;
+				margin: 0;
+				padding: 0;
+				background-color: rgb(232, 234, 236);
+			}
+			#pageGrid {
+				display: grid;
+				margin-top: 65px;
+				/*gap: 25px;*/
+  				grid:
+					'hero hero'  100vh
+					'info info'  1fr
+					'buy  sched' 1fr
+					'foot foot'  1fr
+					/1fr  1fr;
+			}
+			#pageGrid > div {
+				padding: 40px 5vw;
+			}
+			#pageGrid #hero { padding: 0; }
+			img { background-color: black; }
+			h2 {
+				margin-top: 0;
+				font-size: 30px;
+			}
+
+			/* Navbar */
+
+			#nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				display: grid;
+				background-color: slategray;
+				z-index: 1;
+				grid: 
+					'name about events' 1fr
+					/4fr  1fr   1fr;
+			}
+			#nav h1 { 
+				grid-area: name;
+				font-size: 40px;
+				position: relative;
+				left: 20px;
+				margin: 10px 0;
+			}
+			#navAbout { grid-area: about; }
+			#navEvents { grid-area: events; }
+			#nav a, #nav h1 {
+				color: white;
+				text-decoration: none;
+				padding: 0;
+			}
+			#nav a {
+				text-align: center;
+				padding-top: 20px;
+				font-size: 20px;
+			}
+			#nav a:hover { 
+				background-color: rgb(87, 96, 105);
+				font-weight: bold;
+			}
+
+			/* Hero */
+			#hero {
+				grid-area: hero;
+			}
+			#hero div {
+				position: absolute;
+				top: 40vh;
+				left: 15vw;
+				width: 50vw;
+				color: white;
+			}
+			#callToAction {
+				border: 4px solid #33ff33;
+				color: #33ff33;
+				font-size: 20px;
+				padding: 10px 30px;
+				background-color: black;
+				text-decoration: none;
+			}
+			#hero img {
+				width: 100vw;
+				height: 100vh;
+				object-fit: cover;
+			}
+
+			/* Info */
+			#info {
+				grid-area: info;
+				background-color: white;
+			}
+			#cardGrid {
+				display: grid;
+				grid-template: 1fr / 1fr 1fr 1fr;
+				gap: 25px;
+			}
+			#cardGrid div {
+				background-color: white;
+				border: 3px solid rgb(208, 213, 217);
+				border-radius: 10px;
+				padding: 10px 15px;
+			}
+
+			/* Buy */
+			#buy {
+				grid-area: buy;
+			}
+
+			/* Schedule */
+			#sched {
+				grid-area: sched;
+			}
+
+			/* Footer */
+			#foot {
+				grid-area: foot;
+				background-color: slategray;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="nav">
+			<h1>TITLE</h1>
+			<a id="navAbout" href="">About</a>
+			<a id="navEvents" href="">Events</a>
+		</div>
+		<div id="pageGrid">
+			<div id="hero">
+				<img src="https://placehold.co/600x400" alt="...">
+				<div>
+					<h1>Experience FUN at Virginia's top waterpark</h1>
+					<a id="callToAction" href="#buy">Get Tickets</a>
+				</div>
+			</div>
+
+			<div id="info">
+				<h2>Our Current Attractions</h2>
+				<div id="cardGrid">
+					<div>
+						<img src="..." alt="...">
+						<h3>blah blah</h3>
+						<p>blah blah blah</p>
+					</div>
+					<div>
+						<img src="..." alt="...">
+						<h3>blah blah</h3>
+						<p>blah blah blah</p>
+					</div>
+					<div>
+						<img src="..." alt="...">
+						<h3>blah blah</h3>
+						<p>blah blah blah</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="buy">
+				<h2>Buy Tickets Now!</h2>
+			</div>
+
+			<div id="sched">
+				schedule
+			</div>
+
+			<div id="foot">
+				footer
+			</div>
+		</div>
+	</body>
+</html>
