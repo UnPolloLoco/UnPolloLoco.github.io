@@ -9,22 +9,22 @@
 				padding: 0;
 				background-color: rgb(232, 234, 236);
 			}
-			#pageGrid {
-				display: grid;
+			#page {
+				/*display: grid;*/
 				margin-top: 65px;
 				/*gap: 25px;*/
-  				grid:
+  				/*grid:
 					'hero hero'  100vh
 					'info info'  1fr
 					'buy  sched' 1fr
 					'foot foot'  1fr
-					/1fr  1fr;
+					/1fr  1fr;*/
 			}
-			#pageGrid > div {
+			#page > div, #page > section, #page > footer {
 				padding: 40px 5vw;
 			}
-			#pageGrid #hero { padding: 0; }
-			img { background-color: black; }
+			#page #hero { padding: 0; }
+			img { background-color: rgb(57, 64, 71); }
 			h2 {
 				margin-top: 0;
 				font-size: 30px;
@@ -69,9 +69,6 @@
 			}
 
 			/* Hero */
-			#hero {
-				grid-area: hero;
-			}
 			#hero div {
 				position: absolute;
 				top: 40vh;
@@ -91,17 +88,17 @@
 				width: 100vw;
 				height: 100vh;
 				object-fit: cover;
+				display: block;
 			}
 
 			/* Info */
 			#info {
-				grid-area: info;
 				background-color: white;
 			}
 			#cardGrid {
 				display: grid;
 				grid-template: 1fr / 1fr 1fr 1fr;
-				gap: 25px;
+				gap: 5vw;
 			}
 			#cardGrid div {
 				background-color: white;
@@ -109,45 +106,44 @@
 				border-radius: 10px;
 				padding: 10px 15px;
 			}
+			#cardGrid img {
+				width: 100%;
+			}
 
 			/* Buy */
 			#buy {
-				grid-area: buy;
 			}
-
-			/* Schedule */
-			#sched {
-				grid-area: sched;
+			#buy td {
+				padding-right: 30px;
 			}
 
 			/* Footer */
 			#foot {
-				grid-area: foot;
 				background-color: slategray;
 				color: white;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="nav">
+		<nav id="nav">
 			<h1>TITLE</h1>
 			<a id="navAbout" href="">About</a>
 			<a id="navEvents" href="">Events</a>
-		</div>
-		<div id="pageGrid">
-			<div id="hero">
-				<img src="https://placehold.co/600x400" alt="...">
+		</nav>
+		<section id="page">
+			<section id="hero">
+				<img src="https://placehold.co/10x10" alt="...">
 				<div>
 					<h1>Experience FUN at Virginia's top waterpark</h1>
 					<a id="callToAction" href="#buy">Get Tickets</a>
 				</div>
-			</div>
+			</section>
 
-			<div id="info">
+			<section id="info">
 				<h2>Our Current Attractions</h2>
 				<div id="cardGrid">
 					<div>
-						<img src="..." alt="...">
+						<img src="https://placehold.co/10x10" alt="...">
 						<h3>blah blah</h3>
 						<p>blah blah blah</p>
 					</div>
@@ -162,19 +158,38 @@
 						<p>blah blah blah</p>
 					</div>
 				</div>
-			</div>
+			</section>
 
-			<div id="buy">
+			<section id="buy">
 				<h2>Buy Tickets Now!</h2>
-			</div>
+				<div id="buyGrid">
+					<div>
+						...
+					</div>
+					<div>
+						<p>We are open YEAR-ROUND from 9 am to 6 pm!</p>
+						<p>Ticket prices:</p>
+						<table>
+							<tr>
+								<td><strong>Child (0–16)</strong>:</td>
+								<td>$14</td>
+							</tr>
+							<tr>
+								<td><strong>Adult</strong>:</td>
+								<td>$19</td>
+							</tr>
+							<tr>
+								<td><strong>Senior (65+)</strong>:</td>
+								<td>$14</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</section>
 
-			<div id="sched">
-				schedule
-			</div>
-
-			<div id="foot">
+			<footer id="foot">
 				footer
-			</div>
-		</div>
+			</footer>
+		</section>
 	</body>
 </html>
