@@ -39,7 +39,7 @@
 				left: 0;
 				width: 100%;
 				display: grid;
-				background-color: slategray;
+				background-color: #66727F;
 				z-index: 1;
 				grid: 
 					'logo name about events' 1fr
@@ -145,7 +145,7 @@
 
 			/* Footer */
 			#foot {
-				background-color: slategray;
+				background-color: #66727F;
 				color: white;
 			}
 			#foot div {
@@ -153,7 +153,6 @@
 				grid-template: 1fr 1fr / 110px 110px 1fr;
 			}
 			#foot a { color: white; }
-			#foot p { color: rgb(232, 234, 236); }
 			#foot address {
 				grid-row: 1 / 3;
 				grid-column: 3;
@@ -204,28 +203,28 @@
 					<div>
 						<form action="https://httpbin.org/post" method="post">
 							<!-- Email -->
-							<label for="email">Email:</label>
-							<input required type="email" name="email" id="buyEmail">
+							<label for="buyEmail">Email:</label>
+							<input required type="email" name="buyEmail" id="buyEmail">
 							<br>
 					
 							<!-- Date -->
-							<label for="email">Reservation Day:</label>
-							<input required type="date" name="date" id="buyDate">
+							<label for="buyDate">Reservation Day:</label>
+							<input required type="date" name="buyDate" id="buyDate">
 							<br>
 							<br>
 
 							<!-- Child Tickets -->
-							<label for="email">Child Tickets:</label>
+							<label for="buyChildTickets">Child Tickets:</label>
 							<input required type="number" min=0 name="buyChildTickets" id="buyChildTickets">
 							<br>
 			
 							<!-- Adult Tickets -->
-							<label for="email">Adult Tickets:</label>
+							<label for="buyAdultTickets">Adult Tickets:</label>
 							<input required type="number" min=0 name="buyAdultTickets" id="buyAdultTickets">
 							<br>
 					
 							<!-- Senior Tickets -->
-							<label for="email">Senior Tickets:</label>
+							<label for="buySeniorTickets">Senior Tickets:</label>
 							<input required type="number" min=0 name="buySeniorTickets" id="buySeniorTickets">
 							<br>
 							<br>
