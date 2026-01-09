@@ -42,14 +42,19 @@
 				background-color: slategray;
 				z-index: 1;
 				grid: 
-					'name about events' 1fr
-					/4fr  1fr   1fr;
+					'logo name about events' 1fr
+					/66px 4fr  1fr   1fr;
+			}
+			#nav img {
+				grid-area: logo;
+				height: 40px;
+				margin: 13px;
 			}
 			#nav h1 { 
 				grid-area: name;
 				font-size: 40px;
-				position: relative;
-				left: 20px;
+				/*position: relative;
+				left: 20px;*/
 				margin: 10px 0;
 			}
 			#navAbout { grid-area: about; }
@@ -84,6 +89,11 @@
 				padding: 10px 30px;
 				background-color: black;
 				text-decoration: none;
+			}
+			#callToAction:hover {
+				border: 4px solid black;
+				color: black;
+				background-color: #33ff33;
 			}
 			#hero img {
 				width: 100vw;
@@ -138,11 +148,23 @@
 				background-color: slategray;
 				color: white;
 			}
+			#foot div {
+				display: grid;
+				grid-template: 1fr 1fr / 110px 110px 1fr;
+			}
+			#foot a { color: white; }
+			#foot p { color: rgb(232, 234, 236); }
+			#foot address {
+				grid-row: 1 / 3;
+				grid-column: 3;
+				text-align: right;
+			}
 		</style>
 	</head>
 	<body>
 		<nav id="nav">
-			<h1>TITLE</h1>
+			<img src="https://placehold.co/10x10" alt="...">
+			<h1>Pirate Park</h1>
 			<a id="navAbout" href="">About</a>
 			<a id="navEvents" href="">Events</a>
 		</nav>
@@ -194,17 +216,17 @@
 
 							<!-- Child Tickets -->
 							<label for="email">Child Tickets:</label>
-							<input required type="number" name="buyChildTickets" id="buyChildTickets">
+							<input required type="number" min=0 name="buyChildTickets" id="buyChildTickets">
 							<br>
 			
 							<!-- Adult Tickets -->
 							<label for="email">Adult Tickets:</label>
-							<input required type="number" name="buyAdultTickets" id="buyAdultTickets">
+							<input required type="number" min=0 name="buyAdultTickets" id="buyAdultTickets">
 							<br>
 					
 							<!-- Senior Tickets -->
 							<label for="email">Senior Tickets:</label>
-							<input required type="number" name="buySeniorTickets" id="buySeniorTickets">
+							<input required type="number" min=0 name="buySeniorTickets" id="buySeniorTickets">
 							<br>
 							<br>
 					
@@ -237,7 +259,29 @@
 			</section>
 
 			<footer id="foot">
-				footer
+				<div>
+					<a href="">About</a>
+					<a href="">Events</a>
+					<a href="">Contact Us</a>
+					<a href="">Careers</a>
+
+					<address>
+						Pirate Park<br>
+						1234 Ocean Dr<br>
+						Pirateparkville, VA 22443
+					</address>
+				</div>
+				<br>
+				<p>
+					For legal reasons I feel compelled to say that each and
+					every image on this page is not my own, and has probably
+					been modified by me in some way.
+					<a href="https://commons.wikimedia.org/wiki/File:Lazy_River_at_The_Boca_Raton_1080x608px.jpg">Here</a>
+					and
+					<a href="https://commons.wikimedia.org/wiki/File:Steering_Wheel_Black.svg">here</a>
+					are the sources and licenses of the two non–public
+					domain images.
+				</p>
 			</footer>
 		</section>
 	</body>
