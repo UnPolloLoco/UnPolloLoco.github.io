@@ -14,10 +14,13 @@ html, body {
 /* Structure */
 
 section {
-    height: 100vh;
     min-height: 500px;
     padding: 100px 16vw;
     box-sizing: border-box;
+}
+
+.intro-section {
+    height: 100vh;
 }
 
 .two-columns {
@@ -48,6 +51,7 @@ h1 { font-size: 48px; }
 
 h2 { 
     font-size: 36px; 
+    margin-bottom: 20px;
 }
 
 main p {
@@ -74,6 +78,10 @@ img {
     width: 80vw;
     border-bottom: 4px solid var(--light-gray);
     margin: auto;
+}
+
+.experience-item {
+    margin-bottom: 30px;
 }
 
 /* Header */
