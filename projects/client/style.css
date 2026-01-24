@@ -1,14 +1,17 @@
 :root {
-    --blue: #113;
-    --light-blue: #ccd;
+    --blue: #359;
+    --light-blue: #def;
+    --dark-gray: #181818;
     --gray: #555;
-    --light-gray: #ddd;
+    --light-gray: #ccc;
 }
 
 html, body {
     margin: 0;
     padding: 0;
     font-size: 18px;
+    background-color: var(--dark-gray);
+    color: var(--light-gray);
 }
 
 /* Structure */
@@ -45,7 +48,10 @@ section {
 
 /* Main Content */
 
-h1, h2 { margin: 0; }
+h1, h2, h3 { 
+    margin: 0;
+    color: white; 
+}
 
 h1 { font-size: 48px; }
 
@@ -55,7 +61,7 @@ h2 {
 }
 
 main p {
-    color: var(--gray);
+    color: var(--light-gray);
 }
 
 img {
