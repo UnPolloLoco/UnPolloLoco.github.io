@@ -78,11 +78,16 @@ img {
     text-decoration: none;
     display: inline-block;
     margin-top: 15px;
+    border: 4px solid var(--blue);
+}
+
+.button:hover {
+    
 }
 
 .hr {
     width: 80vw;
-    border-bottom: 4px solid var(--light-gray);
+    border-bottom: 4px solid var(--gray);
     margin: auto;
 }
 
