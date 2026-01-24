@@ -1,12 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
     <head>
+        <meta charset="UTF-8">
         <title>Title</title>
         <link rel="stylesheet" href="style.css" type="text/css">
-        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Hello</h1>
+
+        <!-- Header -->
+
+        <header id="upper-header">
+            <p>Title</p>
+            <nav id="headerNav">
+                <a href="#">Contact</a>
+                <a href="#">Resume</a>
+            </nav>
+        </header>
+
+        <main>
+
+            <!-- Intro Section -->
+
+            <section class="two-columns">
+                <div>
+                    <img src="https://placehold.co/99" alt="...">
+                </div>
+                <div>
+                    <h1>Title</h1>
+                    <p>blah blah blahhh blah blah blaaaaahh blah blaaaah blah blah blah blaahhh blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blaahhh</p>
+
+                    <a class="button" href="#">
+                        My Resume
+                    </a>
+                </div>
+            </section>
+
+            <!-- Second Section -->
+
+            <section class="two-columns">
+                <div>
+                    <h2>Title</h2>
+                    <p>blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blah blaahhh blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blaahhh</p>
+                </div>
+                <div class="two-rows">
+                    <div><img src="https://placehold.co/99" alt="..."></div>
+                    <div><img src="https://placehold.co/99" alt="..."></div>
+                </div>
+            </section>
+
+            <!-- Third Section -->
+
+            <section class="two-columns">
+                <div class="two-rows">
+                    <div><img src="https://placehold.co/99" alt="..."></div>
+                    <div><img src="https://placehold.co/99" alt="..."></div>
+                </div>
+                <div>
+                    <h2>Title</h2>
+                    <p>blah blah blahhh blaaaah blaaaaahh blah blaaaah blah blah blah blah blaahhh blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blaahhh</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+
+        <footer>
+            <p>Footer</p>
+        </footer>
+
+        <script>
+            // Show and hide the header if scrolled down far enough
+            const header = document.getElementById("upper-header");
+            const scrollThreshold = 25;
+            window.onscroll = function() {
+                if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            };
+        </script>
     </body>
 </html>
