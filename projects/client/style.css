@@ -1,24 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&display=swap');
+
 :root {
-    --blue: #359;
+    --blue: rgb(26, 213, 238);
+    --dark-blue: rgb(5, 55, 106);
     --light-blue: #def;
+    --darkest: #111;
     --dark-gray: #181818;
     --gray: #555;
-    --light-gray: #ccc;
+    --light-gray: #bbb;
 }
 
 html, body {
     margin: 0;
     padding: 0;
     font-size: 18px;
-    background-color: var(--dark-gray);
+    background-color: var(--darkest);
     color: var(--light-gray);
+    font-family: 'Nunito Sans', serif;
+    font-weight: 200;
 }
 
 /* Structure */
 
 section {
     min-height: 500px;
-    padding: 100px 16vw;
+    padding: 20vh 16vw;
     box-sizing: border-box;
 }
 
@@ -50,7 +56,8 @@ section {
 
 h1, h2, h3 { 
     margin: 0;
-    color: white; 
+    color: var(--blue); 
+    font-weight: bold;
 }
 
 h1 { font-size: 48px; }
@@ -60,7 +67,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-main p {
+p {
     color: var(--light-gray);
 }
 
@@ -72,22 +79,27 @@ img {
 }
 
 .button {
-    padding: 10px 30px;
-    background-color: var(--blue);
-    color: white;
+    padding: 15px 40px;
+    background-color: var(--darkest);
+    color: var(--darkest);
     text-decoration: none;
+    font-weight: bold;
     display: inline-block;
     margin-top: 15px;
+    border-radius: 12px;
+    transition-duration: 0.1s;
     border: 4px solid var(--blue);
+    color: var(--blue);
 }
 
 .button:hover {
-    
+    color: var(--darkest);
+    background-color: var(--blue);
 }
 
 .hr {
     width: 80vw;
-    border-bottom: 4px solid var(--gray);
+    border-bottom: 4px solid var(--dark-gray);
     margin: auto;
 }
 
@@ -109,30 +121,32 @@ header {
     align-items: center;
     transition-duration: 0.2s;
     transition-timing-function: ease;
-    background-color: var(--blue);
+    background-color: var(--darkest);
+    border-bottom: 4px solid var(--dark-gray);
 }
 
     /*  .scrolled {} */
 
-header p, header nav { 
+#nav-title, header nav { 
     max-width: 50%;
     margin: 0 50px;
 }
 
-header p {
+#nav-title {
     font-weight: bold;
     font-size: 24px;
     line-height: 1;
+    color: white;
 }
 
-header nav a {
+header a {
     margin: 0;
     margin-left: 40px;
-    color: var(--light-blue);
+    color: var(--light-gray);
     text-decoration: none;
 }
 
-header nav a:hover {
+header a:hover {
     color: white;
     text-decoration: underline;
 }
@@ -141,10 +155,15 @@ header nav a:hover {
 
 footer {
     margin: 0;
-    background-color: var(--blue);
+    background-color: var(--dark-gray);
     height: 150px;
     color: white;
     padding: 45px 9vw;
+}
+
+footer h1 {
+    color: white;
+    font-size: 24px;
 }
 
 footer p {
