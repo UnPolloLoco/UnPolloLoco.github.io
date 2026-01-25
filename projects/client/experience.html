@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <!-- Header -->
+
+        <header id="upper-header">
+            <a href="index.html" id="nav-title">Lucas Aronson</a>
+            <nav id="headerNav">
+                <a href="experience.html">Experience</a>
+                <a href="resume.html">Resume</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="subpage-section">
+
+                <!-- Main Features -->
+
+                <h1 class="large-heading">Experience</h1>
+
+                <figure class="two-columns">
+                    <div><img src="https://placehold.co/100x50" alt="..."></div>
+                    <figcaption>
+                        <h3>Capstone Project</h3>
+                        <p>
+                            blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blah blaahhh blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blaahhh
+                        </p>
+                    </figcaption>
+                </figure>
+                <div class="hr-mini"></div>
+
+                <figure class="two-columns">
+                    <figcaption>
+                        <h3>Arlington Creative Arts Camp (Volunteer)</h3>
+                        <p>
+                            blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blah blaahhh blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blaahhh
+                        </p>
+                    </figcaption>
+                    <div><img src="https://placehold.co/100x50" alt="..."></div>
+                </figure>
+                <div class="hr-mini"></div>
+
+                <figure class="two-columns">
+                    <div><img src="https://placehold.co/100x50" alt="..."></div>
+                    <figcaption>
+                        <h3>Arlington Little Explorers Camp (Volunteer)</h3>
+                        <p>
+                            blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blah blaahhh blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blaahhh
+                        </p>
+                    </figcaption>
+                </figure>
+                <div class="hr-mini"></div>
+
+                <figure class="two-columns">
+                    <figcaption>
+                        <h3>Congressional Summer Camp (CIT)</h3>
+                        <p>
+                            blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blah blaahhh blah blah blahhh blah blaaaaahh blah blaaaah blah blah blah blaahhh
+                        </p>
+                    </figcaption>
+                    <div><img src="https://placehold.co/100x50" alt="..."></div>
+                </figure>
+            </section>
+            <div class="hr"></div>
+
+            
+
+            <!-- Clubs -->
+            
+            <section class="subpage-section">
+                <h2>Club Positions</h2>
+
+                <p>Coming soon...</p>
+            </section>
+        </main>
+
+        <!-- Footer -->
+
+        <footer>
+            <h1>Contact Me</h1>
+            <p>information...</p>
+            <p>information....</p>
+            <p>information.....</p>
+        </footer>
+
+        <script>
+            // Show and hide the header if scrolled down far enough
+            const header = document.getElementById("upper-header");
+            const scrollThreshold = 25;
+            window.onscroll = function() {
+                if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            };
+        </script>
+    </body>
+</html>
