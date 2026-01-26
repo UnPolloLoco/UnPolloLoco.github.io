@@ -155,8 +155,6 @@ header {
     border-bottom: 4px solid var(--dark-gray);
 }
 
-    /*  .scrolled {} */
-
 #nav-title, header nav { 
     max-width: 50%;
     margin: 0 50px;
