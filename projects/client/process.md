@@ -20,6 +20,16 @@ For this check-in, I showed a basic layout idea of what the main page may look l
 
 I decided to shelf the special effects for later on, if time permits. As for the visuals, I changed everything to a darker style and added a new font (previously, it had just been the browser's default font).
 
+
+## Second Check-In
+
+Jan. 25, over text;
+
+I showed my new and improved visuals, now with a dark theme, and the client seemed to like it. At this point, I had a somewhat detailed version of what both the main page and the Experience pages would look like.
+
+I continued to work on the Experience page, and then made a Resume page. Every planned page now has a decent skeleton.
+
+
 ## Code Transfer Plans
 
 ...
