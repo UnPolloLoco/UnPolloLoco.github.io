@@ -184,7 +184,6 @@ header a:hover {
 footer {
     margin: 0;
     background-color: var(--dark-gray);
-    height: 150px;
     color: white;
     padding: 45px 9vw;
 }
@@ -195,6 +194,11 @@ footer h1 {
     margin-bottom: 15px;
 }
 
-footer p {
-    margin: 0;
+footer address, footer address a {
+    font-style: normal;
+    text-decoration: none;
+    color: var(--light-gray);
 }
+footer address a { margin-left: 1em; }
+
+footer address a:hover { color: var(--blue); }
