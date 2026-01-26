@@ -30,15 +30,10 @@ main > section {
     box-sizing: border-box;
 }
 
-main > section.subpage-section { padding: 10vh 16vw; }
-main > section.subpage-section:first-child { 
-    padding-top: 20vh; 
-    padding-bottom: 10vh; 
-}
+.subpage-section { padding: 10vh 16vw; }
 
-.intro-section {
-    height: 100vh;
-}
+.intro-section { padding-top: 20vh; }
+.hero-section { height: 100vh; }
 
 .two-columns {
     display: flex;
@@ -59,6 +54,14 @@ figure.two-columns { margin: 30px 0; }
     overflow: hidden;
 }
 
+.grid {
+    display: grid;
+    gap: 40px 60px;
+}
+
+.achievements-grid { grid-template: 1fr 1fr / 1fr 1fr; }
+.clubs-grid { grid-template: 1fr 1fr 1fr / 1fr 1fr; }
+
 /* Main Content */
 
 h1, h2, h3 { 
@@ -68,7 +71,11 @@ h1, h2, h3 {
 }
 
 h1, h2 { color: var(--blue); }
-h3 { color: white; }
+
+h3 { 
+    color: white; 
+    font-size: 18px;
+}
 
 h1 { 
     font-size: 48px; 
@@ -76,6 +83,7 @@ h1 {
 
 h2 { 
     font-size: 36px; 
+    margin-bottom: 40px;
 }
 
 p {
