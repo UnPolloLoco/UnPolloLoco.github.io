@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <!-- Header -->
+
+        <header id="upper-header">
+            <a href="index.html" id="nav-title">Lucas Aronson</a>
+            <nav id="headerNav">
+                <a href="experience.html">Experience</a>
+                <a href="resume.html">Resume</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="subpage-section">
+
+                <!-- Main Features -->
+
+                <h1 class="large-heading">My Resume</h1>
+
+                <div class="two-columns">
+                    <div>
+                        <a class="wide-button" href="resume.html">
+                            Download as PDF
+                        </a>
+                        <br>
+                        <a class="wide-button" href="resume.html">
+                            Download as DOCX
+                        </a>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/10x14" alt="Resume thumbnail">
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- Footer -->
+
+        <footer>
+            <h1>Contact Me</h1>
+            <p>information...</p>
+            <p>information....</p>
+            <p>information.....</p>
+        </footer>
+
+        <script>
+            // Show and hide the header if scrolled down far enough
+            const header = document.getElementById("upper-header");
+            const scrollThreshold = 25;
+            window.onscroll = function() {
+                if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            };
+        </script>
+    </body>
+</html>

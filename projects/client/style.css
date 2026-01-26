@@ -87,7 +87,7 @@ img {
 	display: block;
 }
 
-.button {
+.button, .wide-button {
     padding: 15px 40px;
     background-color: var(--darkest);
     color: var(--darkest);
@@ -101,9 +101,14 @@ img {
     color: var(--blue);
 }
 
-.button:hover {
+.button:hover, .wide-button:hover {
     color: var(--darkest);
     background-color: var(--blue);
+}
+
+.wide-button { 
+    display: block;
+    margin: 0;
 }
 
 .hr {
