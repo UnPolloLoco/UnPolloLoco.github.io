@@ -6,7 +6,7 @@
     --light-blue: #def;
     --darkest: #111;
     --dark-gray: #222;
-    --gray: #555;
+    --gray: #858585;
     --light-gray: #bbb;
 
     --bold: 800;
@@ -18,7 +18,7 @@ html, body {
     font-size: 18px;
     background-color: var(--darkest);
     color: var(--light-gray);
-    font-family: 'Nunito Sans', serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: 200;
 }
 
@@ -33,7 +33,7 @@ main > section {
 .subpage-section { padding: 10vh 16vw; }
 
 .intro-section { padding-top: 20vh; }
-.hero-section { height: 100vh; }
+.hero-section { /*min-*/height: 100vh; }
 
 .two-columns {
     display: flex;
@@ -74,7 +74,17 @@ h1, h2 { color: var(--blue); }
 
 h3 { 
     color: white; 
-    font-size: 18px;
+    font-size: 20px;
+}
+
+.clubs-grid h3, figcaption header h3 {
+    margin-bottom: 0;
+}
+.clubs-grid header p, figcaption header p {
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: var(--bold);
+    color: var(--gray);
 }
 
 h1 { 
@@ -96,6 +106,11 @@ img {
     height: 100%;
     object-fit: cover;
 	display: block;
+    border-radius: 12px;
+}
+
+.portrait {
+    object-position: 48% 20%;
 }
 
 .button, .wide-button {
@@ -147,7 +162,7 @@ mark {
 
 /* Header */
 
-header {
+#upper-header {
     color: white;
     position: fixed;
     top: 0;
@@ -163,7 +178,7 @@ header {
     border-bottom: 4px solid var(--dark-gray);
 }
 
-#nav-title, header nav { 
+#nav-title, #upper-header nav { 
     max-width: 50%;
     margin: 0 50px;
 }
@@ -175,14 +190,14 @@ header {
     color: white;
 }
 
-header a {
+#upper-header a {
     margin: 0;
     margin-left: 40px;
     color: var(--light-gray);
     text-decoration: none;
 }
 
-header a:hover {
+#upper-header a:hover {
     color: white;
     text-decoration: underline;
 }
