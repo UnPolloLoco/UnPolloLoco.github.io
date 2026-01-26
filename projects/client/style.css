@@ -32,8 +32,11 @@ main > section {
 
 .subpage-section { padding: 10vh 16vw; }
 
-.intro-section { padding-top: 20vh; }
-.hero-section { /*min-*/height: 100vh; }
+.intro-section { 
+    padding-top: 20vh;
+    min-height: 100vh;
+}
+.hero-section { height: 100vh; }
 
 .two-columns {
     display: flex;
