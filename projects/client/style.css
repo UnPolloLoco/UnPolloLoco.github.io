@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&display=swap');
 
 :root {
-    --blue: rgb(26, 213, 238);
-    --dark-blue: rgb(5, 55, 106);
-    --light-blue: #def;
+    /*--accent: rgb(26, 213, 238);*/
+    /*--accent: #FFE576;*/
+    --accent: #FFF596;
     --darkest: #111;
     --dark-gray: #222;
     --gray: #858585;
@@ -64,6 +64,7 @@ figure.two-columns { margin: 30px 0; }
 
 .achievements-grid { grid-template: 1fr 1fr / 1fr 1fr; }
 .clubs-grid { grid-template: 1fr 1fr 1fr / 1fr 1fr; }
+.contact-grid { justify-content: space-between; }
 
 /* Main Content */
 
@@ -73,7 +74,7 @@ h1, h2, h3 {
     margin-bottom: 20px;
 }
 
-h1, h2 { color: var(--blue); }
+h1, h2 { color: var(--accent); }
 
 h3 { 
     color: white; 
@@ -126,13 +127,13 @@ img {
     margin-top: 15px;
     border-radius: 12px;
     transition-duration: 0.2s;
-    border: 4px solid var(--blue);
-    color: var(--blue);
+    border: 4px solid var(--accent);
+    color: var(--accent);
 }
 
 .button:hover, .wide-button:hover {
     color: var(--darkest);
-    background-color: var(--blue);
+    background-color: var(--accent);
 }
 
 .wide-button { 
@@ -227,4 +228,20 @@ footer address, footer address a {
 }
 footer address a { margin-left: 1em; }
 
-footer address a:hover { color: var(--blue); }
+footer address a:hover { color: var(--accent); }
+
+#socials {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#socials li {
+    float: left;
+    padding-left: 30px;
+}
+
+#socials img {
+    height: 50px;
+    border-radius: 0;
+}
