@@ -239,7 +239,7 @@ footer address a:hover { color: var(--accent); }
 }
 
 #socials li {
-    float: right;
+    float: left;
     padding-left: 30px;
 }
 
@@ -260,7 +260,6 @@ footer address a:hover { color: var(--accent); }
     .two-columns div, .two-columns figcaption { width: 100%; }
 
     #socials li {
-        float: left;
         padding-right: 30px;
         padding-left: 0;
     }

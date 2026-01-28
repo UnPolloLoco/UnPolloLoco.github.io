@@ -50,4 +50,5 @@ I quickly changed the photo back, and then added links (in button form) to his s
 
 ## Code Transfer Plans
 
-...
+The code will be transferred to my client's GitHub account sometime in the not-so-distant future. There, the content will be added.
+I think I'll copy the project files (excluding process.md and such) into a new repository and go from there.
