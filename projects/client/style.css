@@ -158,7 +158,7 @@ img {
     margin-bottom: 60px;
 }
 
-mark {
+strong {
     background: none;
     color: white; /*(var(--light-gray);*/
     font-weight: var(--bold);
