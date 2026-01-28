@@ -164,6 +164,8 @@ mark {
     font-weight: var(--bold);
 }
 
+.swap-order { order: -1; }
+
 /* Header */
 
 #upper-header {
@@ -268,4 +270,6 @@ footer address a:hover { color: var(--accent); }
     }
     .subpage-section { padding: 5vh 8vw; }
     .intro-section { padding-top: 20vh; }
+
+    .swap-order { order: 0; }
 }
