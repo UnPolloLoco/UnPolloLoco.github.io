@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>Canvas Practice</title>
+		<style>
+			canvas { border: 1px solid black; }
+		</style>
+	</head>
+	<body>
+		<h1>Canvas!!</h1>
+		<canvas id="canvas" width=800 height=800></canvas>
+		<script>
+			
+			// Magic!!
+			const canvas = document.getElementById('canvas');
+			const ctx = canvas.getContext('2d');
+
+			// Background
+			ctx.fillStyle = 'black';
+			ctx.fillRect(0,0, 800,800);
+
+			// Rectangle
+			ctx.fillStyle = 'red';
+			ctx.fillRect(300,50, 200,120);
+
+			// Circle
+			ctx.fillStyle = 'cyan';
+			ctx.strokeStyle = 'blue';
+			ctx.lineWidth = 10;
+
+			ctx.beginPath();
+			ctx.arc(
+				400,400,    // pos 
+				75,         // radius
+				0,2*Math.PI // angle start/stop
+			);
+			ctx.fill();
+			ctx.stroke();
+
+			// Ellipse
+			ctx.fillStyle = 'green';
+			ctx.beginPath();
+			ctx.ellipse(
+				400,600,     // pos
+				200,75,      // x/y radius
+				Math.PI/4,   // rotation
+				0,2*Math.PI  // angle start/stop
+			);
+			ctx.fill();
+
+			// Triangle
+			ctx.fillStyle = 'yellow';
+			ctx.strokeStyle = 'orange';
+			ctx.beginPath();
+
+			ctx.moveTo(700, 10);
+			ctx.lineTo(790, 100);
+			ctx.lineTo(610, 100);
+
+			ctx.fill();
+			ctx.stroke();
+				
+		</script>
+	</body>
+</html>
