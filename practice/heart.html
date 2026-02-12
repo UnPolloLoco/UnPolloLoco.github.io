@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>Valentine's Day Heart</title>
+		<style>
+			canvas { border: 1px solid black; }
+		</style>
+	</head>
+	<body>
+		<h1>Heart!!</h1>
+		<canvas id="canvas" width=800 height=800></canvas>
+		<script>
+			
+			// Magic!!
+			const canvas = document.getElementById('canvas');
+			const ctx = canvas.getContext('2d');
+
+			// Background
+			ctx.fillStyle = 'pink';
+			ctx.fillRect(0,0, 800,800);
+
+			// Left Circle
+			ctx.fillStyle = 'white';
+
+			ctx.beginPath();
+			ctx.arc(
+				300,200,    // pos 
+				100,         // radius
+				0,2*Math.PI // angle start/stop
+			);
+			ctx.fill();
+
+            // Right Circle
+            ctx.beginPath();
+			ctx.arc(
+				500,200,    // pos 
+				100,         // radius
+				0,2*Math.PI // angle start/stop
+			);
+			ctx.fill();
+
+			// Triangle
+			ctx.beginPath();
+
+			ctx.moveTo(300-71, 200+71);
+			ctx.lineTo(400, 200);
+			ctx.lineTo(500+71, 200+71);
+			ctx.lineTo(400, 270+170);
+
+			ctx.fill();
+				
+		</script>
+	</body>
+</html>
