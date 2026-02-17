@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Canvas Functions</title>
+		<style>
+			canvas { border: 2px solid black; }
+		</style>
+	</head>
+	<body>
+		<h1>Canvas Function Practice</h1>
+		<canvas id="canvas" width=600 height=600></canvas>
+		<script>
+
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+
+            function fillRectWithColor(x, y, width, height, color) {
+                ctx.fillStyle = color;
+                ctx.fillRect(x,y, width,height);
+            }
+
+            fillRectWithColor(0,0, 800,800, 'navy');
+
+            fillRectWithColor(100,100, 100,100, 'lime');
+            fillRectWithColor(200,250, 200,100, 'blue');
+            fillRectWithColor(450,50, 50,500, 'red');
+
+            function fillCircleWithColor(x, y, radius, color) {
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(
+                    x, y,
+                    radius,
+                    0, 2*Math.PI
+                );
+                ctx.fill();
+            }
+
+            fillCircleWithColor(300, 500, 50, 'orange');
+            fillCircleWithColor(150, 450, 100, 'purple');
+            fillCircleWithColor(50, 80, 30, 'magenta');
+            fillCircleWithColor(350, 100, 80, 'yellow');
+            fillCircleWithColor(500, 200, 60, 'lemonChiffon');
+
+            // The main attaction...
+
+            function drawSnowman(x, y) {
+                fillCircleWithColor(x, y-75, 75, '#ddf'); // Bottom
+                fillCircleWithColor(x, y-150, 60, '#eef'); // Middle
+                fillCircleWithColor(x, y-220, 40, 'white'); // Top
+
+                fillCircleWithColor(x-20, y-220, 5, 'black'); // Eyes
+                fillCircleWithColor(x+20, y-220, 5, 'black');
+            }
+
+            drawSnowman(200, 400);
+            drawSnowman(400, 500);
+
+        </script>
+	</body>
+</html>
