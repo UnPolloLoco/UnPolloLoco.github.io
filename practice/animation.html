@@ -14,16 +14,33 @@
 			const canvas = document.getElementById('canvas');
 			const ctx = canvas.getContext('2d');
 
-            let x = 0;
+            let x1 = 0;
+			let speed1 = 5;
 
-            ctx.fillStyle = 'red';
+            let x2 = 0;
+			let speed2 = 9;
+
+			let time = 0;
 
             function animate() {
-                x = x + 1;
+				time = time + 1;
+
+				
+				if (time < 120) {
+					x1 = x1 + speed1;
+				}
+				
+				if (time > 120) {
+					x2 = x2 + speed2;
+				}
 
                 ctx.clearRect(0,0, 600,600);
-                ctx.fillRect(x, x/2, 50, 50);
-                ctx.fillRect(x/2, x/4, 10, 10);
+
+				ctx.fillStyle = 'red';
+                ctx.fillRect(x1, 50, 10, 10);
+
+				ctx.fillStyle = 'blue';
+                ctx.fillRect(x2, 100, 15, 10);
 
                 requestAnimationFrame(animate);
             }
