@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>Better Animation</title>
+		<style>
+			canvas { border: 1px solid black; }
+		</style>
+	</head>
+	<body>
+		<h1>Parade Animation</h1>
+		<canvas id="canvas" width=600 height=600></canvas>
+		<script>
+			
+			const canvas = document.getElementById('canvas');
+			const ctx = canvas.getContext('2d');
+
+            // --- Functions ---
+
+            function fillCircle(x,y,r) {
+                ctx.beginPath();
+                ctx.arc(x,y,r, 0, 2*Math.PI)
+                ctx.fill();
+            }
+
+            function drawEyes(x,y) {
+                ctx.fillStyle = 'white';
+                fillCircle(x-16, y, 8)
+                fillCircle(x+16, y, 8)
+
+                ctx.fillStyle = 'black';
+                fillCircle(x-16+2, y, 6)
+                fillCircle(x+16+2, y, 6)
+            }
+            
+            function drawCircleCreature(x,y,r, mainColor, shadowColor) {
+                ctx.beginPath();
+                ctx.strokeStyle = mainColor;
+                ctx.lineWidth = 5;
+                ctx.arc(x, y-r, r/4, -Math.PI/2, Math.PI/2)
+                ctx.stroke();
+                
+                ctx.fillStyle = shadowColor;
+                fillCircle(x,y,r)
+                
+                ctx.fillStyle = mainColor;
+                fillCircle(x, y-5, r-5)
+
+                drawEyes(x,y)
+            }
+            
+            function drawBoxCreature(x,y, w,h, mainColor, shadowColor) {
+                ctx.beginPath();
+                ctx.strokeStyle = mainColor;
+                ctx.lineWidth = 5;
+                ctx.moveTo(x + w/2, y+5);
+                ctx.lineTo(x + w/2 + 10, y-5);
+                ctx.lineTo(x + w/2, y-10);
+                ctx.stroke();
+                
+                ctx.fillStyle = shadowColor;
+                ctx.fillRect(x,y, w,h);
+                
+                ctx.fillStyle = mainColor;
+                ctx.fillRect(x+7,y, w-14,h-7);
+
+                drawEyes(
+                    x + w/2,
+                    y + h - 10
+                );
+            }
+
+            function drawBird(x,y) {
+                let leftLegOffset = -5;
+                let rightLegOffset = 5;
+                
+                if (time % 16 < 8) {
+                    leftLegOffset = 5;
+                    rightLegOffset = -5;
+                }
+
+                // Legs
+                ctx.strokeStyle = 'pink';
+
+                ctx.beginPath();
+                ctx.moveTo(x-20, y+70);
+                ctx.lineTo(x-20, y+90+leftLegOffset);
+                ctx.lineTo(x-10, y+90+leftLegOffset);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(x+10, y+70);
+                ctx.lineTo(x+10, y+90+rightLegOffset);
+                ctx.lineTo(x+20, y+90+rightLegOffset);
+                ctx.stroke();
+                
+                // Body
+                ctx.fillStyle = '#888';
+                ctx.beginPath();
+                ctx.arc(x,y, 80, 0, Math.PI * 1.1);
+                ctx.fill();
+
+                // Head
+                ctx.beginPath();
+                ctx.arc(x+40, y-40, 40, -Math.PI, 0);
+                ctx.fill();
+
+                // Neck
+                ctx.fillRect(x, y-40, 80, 40);
+
+                // Hair
+                ctx.beginPath();
+                ctx.arc(x+40, y-80, 20, Math.PI*0.1, -Math.PI*0.75);
+                ctx.fill();
+                
+                // Eyes
+                drawEyes(x+60, y-45)
+
+                // Beak
+                ctx.fillStyle = '#555';
+                ctx.beginPath();
+                ctx.ellipse(x+65, y-32, 20,8, 0, 2*Math.PI, 0);
+                ctx.fill()
+                
+                // Wing
+                ctx.fillStyle = '#777';
+                ctx.beginPath();
+                ctx.arc(x-20, y+10, 40, 0, Math.PI * 1.1);
+                ctx.fill();
+
+            }
+
+
+            // --- Variables ---
+
+            let x1 = 0;
+			let speed1 = 3;
+            
+            let x2 = 0;
+			let speed2 = 9;
+            
+			let time = 0;
+
+            // --- Animate!! ---
+            
+            function animate() {
+                time = time + 1;
+
+                ctx.clearRect(0,0, 600,600);
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0,0,600,600);
+                
+                x1 = x1 + speed1;
+				
+				drawCircleCreature(x1, 80, 30, '#f00', '#a04')
+				drawBoxCreature(x1, 130, 60,40, '#ff0', '#ea0')
+
+				drawCircleCreature(x1, 190, 30, '#0f0', '#094')
+				drawBoxCreature(x1, 280, 80,20, '#0af', '#06b')
+
+                drawBird(x1, 400);
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+				
+		</script>
+	</body>
+</html>
