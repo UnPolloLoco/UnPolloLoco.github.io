@@ -7,7 +7,7 @@
 		</style>
 	</head>
 	<body>
-		<h1>Parade Animation</h1>
+		<h1 id="header">Parade Animation</h1>
 		<canvas id="canvas" width=600 height=600></canvas>
 		<script>
 			
@@ -45,7 +45,7 @@
                 ctx.fillStyle = mainColor;
                 fillCircle(x, y-5, r-5)
 
-                drawEyes(x,y)
+                drawEyes(x, y + r/4)
             }
             
             function drawBoxCreature(x,y, w,h, mainColor, shadowColor) {
@@ -73,9 +73,10 @@
                 let leftLegOffset = -5;
                 let rightLegOffset = 5;
                 
-                if (time % 16 < 8) {
+                if (time % 22 < 11) {
                     leftLegOffset = 5;
                     rightLegOffset = -5;
+                    y = y + 2;
                 }
 
                 // Legs
@@ -129,14 +130,55 @@
 
             }
 
+            function drawBackground() {
+                ctx.fillStyle = '#210';
+                ctx.fillRect(0,0,600,600);
+                ctx.fillStyle = '#381800';
+                ctx.fillRect(0,100, 600,400);
+
+                ctx.fillStyle = '#422';
+                fillCircle(50, 420, 8);
+                fillCircle(100, 435, 9);
+                fillCircle(60, 450, 7);
+
+                fillCircle(530, 135, 8);
+                fillCircle(560, 150, 5);
+            }
+
+            // --- Colors ---
+
+            const redM = '#f00'; // M = main, S = shadow
+            const redS = '#a04';
+
+            const yellowM = '#fa0';
+            const yellowS = '#e70';
+
+            const greenM = '#0f0';
+            const greenS = '#094';
+
+            const blueM = '#0af';
+            const blueS = '#06b';
 
             // --- Variables ---
 
-            let x1 = 0;
-			let speed1 = 3;
+			let speedVerySlow = 2;
+			let speedSlow = 3;
+			let speedMid = 4;
+			let speedFast = 5;
             
-            let x2 = 0;
-			let speed2 = 9;
+            let x1 = -100;
+            let x2 = -100;
+            let x3 = -100;
+            let x4 = -100;
+            let x5 = -100;
+            let x6 = -100;
+            let x7 = -100;
+            let x8 = -130; // that one green circle who needs more breathing space
+
+            let walkOffset1 = 0;
+            let walkOffset2 = 0;
+
+            let endRectWidth = 0.1;
             
 			let time = 0;
 
@@ -145,19 +187,90 @@
             function animate() {
                 time = time + 1;
 
+                walkOffset1 = 0;
+                walkOffset2 = 0;
+                if (time % 16 < 8)  { walkOffset1 = 3; }
+                if (time % 20 < 10) { walkOffset2 = 3; }
+
                 ctx.clearRect(0,0, 600,600);
-                ctx.fillStyle = 'black';
-                ctx.fillRect(0,0,600,600);
+                drawBackground();
                 
-                x1 = x1 + speed1;
-				
-				drawCircleCreature(x1, 80, 30, '#f00', '#a04')
-				drawBoxCreature(x1, 130, 60,40, '#ff0', '#ea0')
+                // - First wave -
+                
+				drawCircleCreature(
+                    x1, 300+walkOffset1,
+                    30, 
+                    redM, redS
+                );
+                x1 = x1 + speedSlow;
 
-				drawCircleCreature(x1, 190, 30, '#0f0', '#094')
-				drawBoxCreature(x1, 280, 80,20, '#0af', '#06b')
+                // - Second wave -
 
-                drawBird(x1, 400);
+				drawBoxCreature(
+                    x2, 200+walkOffset1, 
+                    60, 40, 
+                    yellowM, yellowS
+                );
+				drawCircleCreature(
+                    x3, 400+walkOffset2, 
+                    40, 
+                    greenM, greenS
+                );
+                if (time > 130) {
+                    x2 = x2 + speedMid;
+                    x3 = x3 + speedFast;
+                }
+                
+                // - Third wave - 
+
+				drawBoxCreature(
+                    x4, 150+walkOffset2, 
+                    50, 70, 
+                    redM, redS
+                );
+                drawCircleCreature(
+                    x8, 230+walkOffset1, 
+                    23, 
+                    greenM, greenS
+                );
+                drawCircleCreature(
+                    x5, 310+walkOffset1, 
+                    40, 
+                    blueM, blueS
+                );
+				drawBoxCreature(
+                    x6, 450+walkOffset2, 
+                    80, 20, 
+                    yellowM, yellowS
+                );
+				if (time > 190) {
+                    x4 = x4 + speedMid;
+                    x5 = x5 + speedFast;
+                    x6 = x6 + speedSlow;
+                    x8 = x8 + speedSlow;
+                }
+
+                // - THE BIRD -
+
+                drawBird(x7, 290);
+                if (time > 300) {
+                    x7 = x7 + speedVerySlow;
+                }
+
+                // - Ending -
+
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0,0, endRectWidth, 600);
+
+                if (time > 550) {
+                    if (endRectWidth < 600) {
+                        endRectWidth = endRectWidth * 1.05;
+                    } else {
+                        document.getElementById('header').innerHTML = 'Parade Animation (done!!!!!)';
+                    }
+                }
+
+                // - Draw -
 
                 requestAnimationFrame(animate);
             }
