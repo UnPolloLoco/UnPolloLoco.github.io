@@ -3,7 +3,7 @@ body {
     padding: 20px;
     background-color: #1e1e1e;
     font-family: 'Courier New', monospace;
-    color: lime;
+    color: white;
     height: 100vh;
     box-sizing: border-box;
 }
@@ -71,4 +71,8 @@ h1{
     color: lime;
     line-height: 1.2;
     font-size: 12px;
+}
+
+#input-complaint {
+    color: #a00;
 }

@@ -8,6 +8,52 @@ function print(text) {
     output.scrollTop = output.scrollHeight;
 }
 
+// RETURN a colorful span
+function color(text, colorName) {
+    return '<span style="color:' + colorName + ';">' + text + '</span>';
+}
+
+// Write out current location
+function printLocation(name) {
+    print(
+        color('Location: ', 'green') 
+        + color(name, 'lime')
+    );
+}
+
+// Bad input complaint
+let complaintElementExists = false;
+
+function printComplaint(input) {
+    if (input != '') {
+        let warning = `\nThe gremlins in your computer don't understand what "${input}" means.\nTry typing "1" (without quotes).`;
+
+        if (!complaintElementExists) {
+            // Create warning
+            print(`<span id="input-complaint"></span>`);
+            complaintElementExists = true;
+        }
+
+        document.getElementById('input-complaint').innerText = warning;
+    }
+}
+
+// Ask where you want to go
+function askToMoveWithOptions(options) {
+    print(
+        color(`Enter the <em>number</em> of a location to move to it:\n`, 'green') 
+        + options
+    );
+}
+
+// Location option numbererer
+function locationOption(number, name) {
+    let coloredNumber = color(`${number}.`, 'lime');
+    let coloredName = color(`${name}`, 'green');
+
+    return `\t${coloredNumber} ${coloredName}\n`;
+}
+
 //this formats text inside a pre tag.
 //it just makes sure that HTML doesn't mess with spacing
 //tip - ASCII art will need to escape any backslashes!
@@ -27,6 +73,7 @@ function printAscii(art) {
 //enters a new command
 function clear() {
     document.getElementById('output').innerHTML = '';
+    complaintElementExists = false;
 }
 
 // This lets the user type input. It acts a little weird.
@@ -37,7 +84,7 @@ document.getElementById('user-input').addEventListener('keypress', function(e) {
     if (e.key === 'Enter' && gameActive) {
         const input = this.value.trim();
         this.value = '';
-        print('> ' + input);
+        // print('> ' + input);
         handleInput(input);
     }
 });

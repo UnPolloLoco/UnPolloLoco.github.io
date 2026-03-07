@@ -10,17 +10,18 @@ let gameActive = true; //this variable is required.
 //Make one function for each location
 function locationA() {
     clear();
-    print("You are in location A!");
-    print("Where do you want to go next? Say one of these choices:" +
-        "\n\tlocationB");
+    printLocation('Location A');
+
+    print('something interesting happens...');
+
+    askToMoveWithOptions(
+        locationOption(1, 'locationB') + 
+        locationOption(2, 'fake location')
+    );
     
     function processInput(input){
-        if (input.toLowerCase() === "locationb") {
-            locationB();
-        } else {
-            stayHere();
-            waitThenCall(locationA);
-        }
+        if (input == 1) { locationB(); } 
+        else { printComplaint(input); }
     }
     waitForInput(processInput);
 }
@@ -61,7 +62,7 @@ function start() {
     // "banner3" font by Merlin Greywolf merlin@brahms.udel.edu August 9, 1994
 
     print('\n\n\n')
-    print("Click ENTER to start!!");
+    print("Click " + color("ENTER", 'lime') + " to start!!");
 
     function processInput(input){
         locationA();
