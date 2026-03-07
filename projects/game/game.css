@@ -3,7 +3,7 @@ body {
     padding: 20px;
     background-color: #1e1e1e;
     font-family: 'Courier New', monospace;
-    color: #00ff00;
+    color: lime;
     height: 100vh;
     box-sizing: border-box;
 }
@@ -24,7 +24,7 @@ h1{
     flex-direction: column;
     max-width: 80%;
     margin: 0 auto;
-    border: 2px solid #00ff00;
+    border: 2px solid lime;
     padding: 20px;
     background-color: #000;
     overflow: hidden;
@@ -43,12 +43,12 @@ h1{
 #input-line {
     display: flex;
     align-items: center;
-    border-top: 1px solid #00ff00;
+    border-top: 1px solid lime;
     padding-top: 10px;
 }
 
 .prompt {
-    color: #00ff00;
+    color: lime;
     margin-right: 10px;
     font-weight: bold;
 }
@@ -57,18 +57,18 @@ h1{
     flex: 1;
     background: transparent;
     border: none;
-    color: #00ff00;
+    color: lime;
     font-family: 'Courier New', monospace;
     font-size: 16px;
     outline: none;
 }
 
 #user-input::placeholder {
-    color: #008800;
+    color: green;
 }
 
 .ascii-art {
-    color: #00ff00;
+    color: lime;
     line-height: 1.2;
     font-size: 12px;
 }

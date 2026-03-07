@@ -58,6 +58,5 @@ function waitThenCall(target){
 }
 
 function stayHere(){
-    print("\nsorry, I don't understand your input. I'll assume you " +
-        "want to stay here");
+    print("I have no idea what that means.");
 }

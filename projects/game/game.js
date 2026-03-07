@@ -10,8 +10,8 @@ let gameActive = true; //this variable is required.
 //Make one function for each location
 function locationA() {
     clear();
-    print("\nYou are in location A!");
-    print("\nWhere do you want to go next? Say one of these choices:" +
+    print("You are in location A!");
+    print("Where do you want to go next? Say one of these choices:" +
         "\n\tlocationB");
     
     function processInput(input){
@@ -27,8 +27,8 @@ function locationA() {
 
 function locationB() {
     clear();
-    print("\nYou are in location B!");
-    print("\nWhere do you want to go next? Say one of these choices:" +
+    print("You are in location B!");
+    print("Where do you want to go next? Say one of these choices:" +
         "\n\tlocationA");
     
     function processInput(input){
@@ -45,11 +45,26 @@ function locationB() {
 //finally, make sure you customize this to tell it what should happen at the
 //very start. For this simple example, any input will bring you
 //to locationA
-function start(){
-    print("Welcome to my game! Press any key to start");
+function start() {
+    printAscii(`\
+                    ~~~  The Hunt For  ~~~
+
+
+ ******** **     ** ********        *******  ********  ******** 
+    **    **     ** **             **     ** **     ** **     **
+    ##    ##     ## ##             ##     ## ##     ## ##     ##
+    ##    ######### ######         ##     ## ########  ######## 
+    ##    ##     ## ##             ##     ## ##   ##   ##     ##
+    @@    @@     @@ @@             @@     @@ @@    @@  @@     @@
+    @@    @@     @@ @@@@@@@@        @@@@@@@  @@     @@ @@@@@@@@ 
+    `);
+    // "banner3" font by Merlin Greywolf merlin@brahms.udel.edu August 9, 1994
+
+    print('\n\n\n')
+    print("Click ENTER to start!!");
 
     function processInput(input){
-            locationA();
+        locationA();
     }
     waitForInput(processInput);
 }
