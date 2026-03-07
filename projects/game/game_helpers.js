@@ -1,3 +1,4 @@
+const darkGreen = '#0a0';
 
 // This function prints text out to the terminal
 function print(text) {
@@ -16,7 +17,7 @@ function color(text, colorName) {
 // Write out current location
 function printLocation(name) {
     print(
-        color('Location: ', 'green') 
+        color('Location: ', darkGreen) 
         + color(name, 'lime')
     );
 }
@@ -26,7 +27,7 @@ let complaintElementExists = false;
 
 function printComplaint(input) {
     if (input != '') {
-        let warning = `\nThe gremlins in your computer don't understand what "${input}" means.\nTry typing "1" (without quotes).`;
+        let warning = `\nThe gremlins in your computer don't understand what "${input}" means.\nStuck? Try typing "1" (without quotes).`;
 
         if (!complaintElementExists) {
             // Create warning
@@ -41,7 +42,7 @@ function printComplaint(input) {
 // Ask where you want to go
 function askToMoveWithOptions(options) {
     print(
-        color(`Enter the <em>number</em> of a location to move to it:\n`, 'green') 
+        color(`Enter the <em>number</em> of a location to move to it:\n`, darkGreen) 
         + options
     );
 }
@@ -49,7 +50,7 @@ function askToMoveWithOptions(options) {
 // Location option numbererer
 function locationOption(number, name) {
     let coloredNumber = color(`${number}.`, 'lime');
-    let coloredName = color(`${name}`, 'green');
+    let coloredName = color(`${name}`, darkGreen);
 
     return `\t${coloredNumber} ${coloredName}\n`;
 }
