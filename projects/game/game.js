@@ -13,44 +13,110 @@ let hasDiscoveredSecretPass = false;
 let hasCurseOfTheOrb = false;
 // let remainingTurnsToEscape = 3149578;
 
-// --------------------- Location A ---------------------
-function locationA() {
+// --------------------- Campsite ---------------------
+function goCampsite() {
     clear();
-    printLocation('Location A');
+    printLocation('Campsite');
 
-    print('something interesting happens...');
+    print('Today is the day!');
+    print("You should collect the map that you left in your tent, then depart for the temple. It's not like there's anything else to do in this sad little clearing.");
 
     askToMoveWithOptions(
-        locationOption(1, 'locationB') + 
-        locationOption(2, 'fake location')
+        locationOption(1, 'Enter tent') + 
+        locationOption(2, 'Board boat')
     );
     
     function processInput(input){
-        if (input == 1) { locationB(); } 
+        if (input == 1) { goTent(); } 
+        else if (input == 2) { goBoat(); } 
         else { printComplaint(input); }
     }
     waitForInput(processInput);
 }
 
-// --------------------- Location B---------------------
-function locationB() {
+// --------------------- Tent ---------------------
+function goTent() {
     clear();
-    print("You are in location B!");
-    print("Where do you want to go next? Say one of these choices:" +
-        "\n\tlocationA");
+    printLocation('Your Tent');
+
+    if (hasMap) {
+        // You already have the map
+        print('"Wait," you mumble, "why am I back here?"')
+    } else {
+        // No map yet
+        print("You look around your drab tent with excitement, knowing it's likely the last day you'll have to sleep here. You pick your map up off the ground.");
+        printItemGet('Map');
+
+        hasMap = true;
+    }
+
+    askToMoveWithOptions(
+        locationOption(1, 'Leave Tent')
+    );
     
     function processInput(input){
-        if (input.toLowerCase() === "locationa") {
-            locationA();
+        if (input == 1) { goCampsite(); } 
+        else { printComplaint(input); }
+    }
+    waitForInput(processInput);
+}
+
+// --------------------- Boat ---------------------
+function goBoat() {
+    clear();
+    printLocation('The Boat');
+
+    if (hasMap) {
+        // You already have the map
+        print('You jump in and immediately begin paddling away. ')
+
+        print(color(
+            "Click " + color("ENTER", 'lime') + " to continue!!",
+            darkGreen
+        ));
+    } else {
+        // No map yet
+        print("You KNOW you have no idea where you're going. You should get that map.");
+
+        askToMoveWithOptions(
+            locationOption(1, 'Leave Boat')
+        );
+    }
+    
+    function processInput(input){
+        if (hasMap) {
+            // Already have map
+            goRiver();
         } else {
-            stayHere();
-            waitThenCall(locationB);
+            // No map
+            if (input == 1) { goCampsite(); } 
+            else { printComplaint(input); }
         }
     }
     waitForInput(processInput);
 }
 
-// --------------------- Start Screen ---------------------
+// --------------------- River ---------------------
+function goRiver() {
+    clear();
+    printLocation('River');
+
+    print('...');
+
+    askToMoveWithOptions(
+        locationOption(1, 'Enter tent') + 
+        locationOption(2, 'Board boat')
+    );
+    
+    function processInput(input){
+        if (input == 1) { goTent(); } 
+        else if (input == 2) { goBoat(); } 
+        else { printComplaint(input); }
+    }
+    waitForInput(processInput);
+}
+
+// --------------------- Start Screens ---------------------
 function start() {
     printAscii(`\
                        ~~~  The Hunt For  ~~~
@@ -100,7 +166,7 @@ function start2() {
     ));
 
     function processInput(input){
-        locationA();
+        goCampsite();
     }
     waitForInput(processInput);
 }

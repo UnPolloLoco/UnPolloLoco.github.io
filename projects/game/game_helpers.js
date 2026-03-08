@@ -42,7 +42,7 @@ function printComplaint(input) {
 // Ask where you want to go
 function askToMoveWithOptions(options) {
     print(
-        color(`Enter the <em>number</em> of a location to move to it:\n`, darkGreen) 
+        color(`Enter the <em>number</em> of an action to preform it:\n`, darkGreen) 
         + options
     );
 }
