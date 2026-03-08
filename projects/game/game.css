@@ -26,7 +26,7 @@ h1{
 
 /* Terminal text */
 #terminal, .ascii-art {
-    line-height: 1.3;
+    line-height: 1.2;
     font-size: 14px;
     font-family: var(--font);
 }

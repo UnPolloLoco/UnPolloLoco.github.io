@@ -87,10 +87,11 @@ function start2() {
     );
     print('\n\n');
 
-    print("After years of dedicated study, your band of treasure hunters has finally tracked down " + color("THE ORB", 'lime') + ", a legendary artifact of spherical proportions that's rumored to grant its bearer a boundless foresight.")
-    print(color("THE ORB", 'lime') + " resides in a temple, hidden within the very forest that you've set up camp in. Your resident map expert has located the temple to be " + color('downriver from your campsite', 'cyan') + ", and today, that's where you're headed.")
-    print("Unfortunately, nobody else wants to take the final step with you. What could possibly hold them back after all this preparation!? Well, they fear the " + color("CURSE OF THE ORB", darkGreen) + ", which threatens the complete and total destruction of anyone who dares siphon the power of " + color("THE ORB", 'lime') + ' for themself.')
-    print("So... you'll have to do it alone. Good luck!")
+    print("After years of dedicated study, you have finally tracked down the location of " + color("THE ORB", 'lime') + ", a legendary artifact of spherical proportions that's rumored to grant its bearer a boundless foresight.")
+    print(color("THE ORB", 'lime') + " resides in a temple, hidden within the very forest that you've set up camp in. You spent the last week paddling up and down the forest's rivers in order to pinpoint the temples exact location——and that you did. Just last night, you finally saw it with your own two eyes!")
+    print("Today, you'll " + color('paddle back to the temple', 'cyan') + " using the map you made, and upon arrival, " + color("preform the great heist", 'cyan') + " at last.")
+
+    // There's one thing you've been trying to push to the back of your head: THE CURSE OF THE ORB
 
     print('\n\n\n')
     print(color(

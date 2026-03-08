@@ -13,8 +13,8 @@ This miiight have to be cut down depending on how hard it is to make this ðŸ˜³ðŸ
 ```mermaid
 graph TD;
     s(((Start))) -.- Campsite
-    Campsite --- cart[Cartographer] & sci[Researcher]
-    cart -.-|Talk to recieve| mnc(["Map"])
+    Campsite --- Tent
+    Tent -.- mnc(["Map"])
     Campsite === Boat
     Boat ==== river["River Travel"]
     river =====  Riverbank
@@ -44,7 +44,7 @@ graph TD;
 
 
     door ====|3 keys required| Sanctum
-    Sanctum --- admire["Admire the Orb"]
+    Sanctum --- admire["Ponder the Orb"]
     Sanctum ===== orb(("THE ORB!!!!!!!!!!!!!"))
 ```
 
