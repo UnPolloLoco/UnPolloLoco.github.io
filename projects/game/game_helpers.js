@@ -27,7 +27,7 @@ let complaintElementExists = false;
 
 function printComplaint(input) {
     if (input != '') {
-        let warning = `\nThe gremlins in your computer don't understand what "${input}" means.\nStuck? Try typing "1" (without quotes).`;
+        let warning = `\nThe gremlins in your computer don't understand what "${input}" means.\nStuck? Try typing "1" for example (without quotes).`;
 
         if (!complaintElementExists) {
             // Create warning
@@ -53,6 +53,12 @@ function locationOption(number, name) {
     let coloredName = color(`${name}`, darkGreen);
 
     return `\t${coloredNumber} ${coloredName}\n`;
+}
+
+// Item get announcement
+
+function printItemGet(name) {
+    print(color(name + ' acquired!', 'yellow'))
 }
 
 //this formats text inside a pre tag.
