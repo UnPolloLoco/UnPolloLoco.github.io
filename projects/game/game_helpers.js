@@ -67,10 +67,10 @@ function printItemGet(name) {
 //      so to print \, you'll need to say \\
 function printAscii(art) {
     const output = document.getElementById('output');
-    const line = document.createElement('div');
-    line.innerText = art;
-    line.innerHTML = '<p class="ascii-art">' + line.innerHTML + "</p>";
-    output.appendChild(line);
+    const pre = document.createElement('pre');
+    pre.className = 'ascii-art';
+    pre.textContent = art;
+    output.appendChild(pre);
     output.scrollTop = output.scrollHeight;
 }
 
