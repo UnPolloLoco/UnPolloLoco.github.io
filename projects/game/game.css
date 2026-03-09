@@ -30,7 +30,10 @@ h1{
     font-size: 14px;
     font-family: var(--font);
 }
-.ascii-art { color: white; }
+.ascii-art { 
+    color: white; 
+    white-space: pre;
+}
 
 p { margin: 20px 0; }
 
