@@ -13,13 +13,41 @@ let hasDiscoveredSecretPass = false;
 let hasCurseOfTheOrb = false;
 // let remainingTurnsToEscape = 3149578;
 
+// --------------------- Make the River Map Usable ---------------------
+
+let riverMapButWeird =  `\
++----------------------------------------------------------------------------------+
+|                                                                                  |
+|                                            H--.__x                                 |
+|                                                 H^^-.x     I__.._x                   |
+|                                                     H\\_xI.^      \\.__x               |
+|                 D_.---.__x                             G/x            I^--.__ Templex  |
+|                         D\\x                          G./x                            |
+|                         D/xE___.....__x           G__.-^x                              |      
+|                    L_.--^x           E^--.._xG_..--x                                   |
+|                  L./x                      F\\.x              J_..----..x               |
+|                L./x                          F\\x           J_/x                        |
+|  ACamp ___..---=xB_x                            F^.____xJ_..-^x                          |
+|                 B^\\__x                              K\\.__x                           |
+|                     B^---x                                                         |
+|                                                                                  |
++----------------------------------------------------------------------------------+`;
+
+// riverMapButWeird = riverMapButWeird.replaceAll('')
+
 // --------------------- Campsite ---------------------
 function goCampsite() {
     clear();
     printLocation('Campsite');
 
     print('Today is the day!');
-    print("You should collect the map that you left in your tent, then depart for the temple. It's not like there's anything else to do in this sad little clearing.");
+    if (hasMap) {
+        // Has map
+        print("You should depart for the temple. It's not like there's anything else to do in this sad little clearing.");
+    } else {
+        // No map
+        print("You should collect the map that you left in your tent, then depart for the temple. It's not like there's anything else to do in this sad little clearing.");
+    }
 
     askToMoveWithOptions(
         locationOption(1, 'Enter tent') + 
@@ -76,7 +104,7 @@ function goBoat() {
         ));
     } else {
         // No map yet
-        print("You KNOW you have no idea where you're going. You should get that map.");
+        print("You KNOW you don't know where you're going. You should get that map.");
 
         askToMoveWithOptions(
             locationOption(1, 'Leave Boat')
@@ -131,6 +159,8 @@ function start() {
     @@     @@     @@  @@@@@@@@         @@@@@@@   @@     @@  @@@@@@@@ 
     `);
     // "banner3" font by Merlin Greywolf merlin@brahms.udel.edu August 9, 1994
+
+
 
     print('\n\n\n')
     print(color(
