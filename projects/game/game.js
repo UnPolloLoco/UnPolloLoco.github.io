@@ -146,7 +146,7 @@ function goBoat() {
     function processInput(input){
         if (hasMap) {
             // Already have map
-            goRiver('a');
+            goRiverIntermediate('a');
         } else {
             // No map
             if (input == 1) { goCampsite(); } 
@@ -158,11 +158,25 @@ function goBoat() {
 
 // --------------------- River ---------------------
 
+function goRiverIntermediate(segment) {
+    clear();
+    printLocation('River');
+    print('Paddling along...');
+
+    setTimeout(() => { goRiver(segment); }, 800);
+}
+
 function goRiver(segment) {
     clear();
     printLocation('River');
 
-    print('Paddling along...\nYou soon reach a fork in the river. Which way do you turn? Consult your map.')
+    if (segment == 'i') {
+        // TRIP FINISHED
+        print("Through the trees, you can see it——this is the first time you've seen the temple in daylight, and it's even more impressive than you remember.")
+    } else {
+        // Normal message
+        print('You soon reach a fork in the river. Which way do you turn? Consult your map.')
+    }
 
     printRiverMap();
     
@@ -277,11 +291,16 @@ function goRiver(segment) {
         highlightRiverPart('l');
     }
 
+    // Final message
+
     if (isWrongWay) {
         // Wrong way
         print('"Hmmmmm," you ask yourself. "' + color('Did I go the right way?','magenta') + '"');
+    } else if (segment == 'i') {
+        // End of river
+        print(color('THE ORB', 'lime') + " is close. You can feel it.")
     } else {
-        // Not wrong way
+        // Everything else
         print("<em>Hint: The yellow line shows where you've travelled so far.</em>");
     }
 
@@ -293,7 +312,7 @@ function goRiver(segment) {
             locationOption(1, 'Go back') 
         );
         function processInput(input){
-            if (input == 1) { goRiver(previousSegment); } 
+            if (input == 1) { goRiverIntermediate(previousSegment); } 
             else { printComplaint(input); }
         }
 
@@ -305,11 +324,23 @@ function goRiver(segment) {
             locationOption(3, 'Go back')
         );
         function processInput(input){
-            if (input == 1) { goRiver(leftSegment); } 
-            else if (input == 2) { goRiver(rightSegment); } 
-            else if (input == 3) { goRiver(previousSegment); } 
+            if (input == 1) { goRiverIntermediate(leftSegment); } 
+            else if (input == 2) { goRiverIntermediate(rightSegment); } 
+            else if (input == 3) { goRiverIntermediate(previousSegment); } 
             else { printComplaint(input); }
         }
+
+    } else if (segment == 'i') {
+        // --- MADE IT TO THE TEMPLE!!!!!!!! ---
+        print(color(
+            "Click " + color("ENTER", 'lime') + " to continue!!",
+            darkGreen
+        ));
+
+        function processInput(input){
+            goRiverbank();
+        }
+        waitForInput(processInput);
 
     } else {
         // --- ALL WENT WELL ---
@@ -318,14 +349,23 @@ function goRiver(segment) {
             locationOption(2, 'Go right')
         );
         function processInput(input){
-            if (input == 1) { goRiver(leftSegment); } 
-            else if (input == 2) { goRiver(rightSegment); } 
+            if (input == 1) { goRiverIntermediate(leftSegment); } 
+            else if (input == 2) { goRiverIntermediate(rightSegment); } 
             else { printComplaint(input); }
         }
     }
     
     waitForInput(processInput);
 }
+
+// --------------------- Riverbank ---------------------
+
+function goRiverbank() {
+    clear();
+    printLocation('Riverbank');
+    print('...');
+}
+
 
 // --------------------- Start Screens ---------------------
 function start() {
