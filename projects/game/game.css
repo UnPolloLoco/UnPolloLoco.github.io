@@ -88,3 +88,11 @@ p { margin: 20px 0; }
 #input-complaint {
     color:red;
 }
+
+.river { color: #7272A7; }
+.river-label { color: orange; }
+
+.river-highlight { 
+    color: yellow;
+    font-weight: bold;
+}

@@ -15,25 +15,56 @@ let hasCurseOfTheOrb = false;
 
 // --------------------- Make the River Map Usable ---------------------
 
-let riverMapButWeird =  `\
+let riverMap =  `\
 +----------------------------------------------------------------------------------+
-|                                                                                  |
-|                                            H--.__x                                 |
-|                                                 H^^-.x     I__.._x                   |
+|    |                                                                             |
+|  ——O——                                     H--.__x                                 |
+|    |                                            H^^-.x     I__.._x                   |
 |                                                     H\\_xI.^      \\.__x               |
-|                 D_.---.__x                             G/x            I^--.__ Templex  |
+|                 D_.---.__x                             G/x            I^--.__x XTemplex  |
 |                         D\\x                          G./x                            |
 |                         D/xE___.....__x           G__.-^x                              |      
 |                    L_.--^x           E^--.._xG_..--x                                   |
 |                  L./x                      F\\.x              J_..----..x               |
 |                L./x                          F\\x           J_/x                        |
-|  ACamp ___..---=xB_x                            F^.____xJ_..-^x                          |
+|  XCampx A___..---=xB_x                            F^.____xJ_..-^x                          |
 |                 B^\\__x                              K\\.__x                           |
 |                     B^---x                                                         |
 |                                                                                  |
 +----------------------------------------------------------------------------------+`;
 
-// riverMapButWeird = riverMapButWeird.replaceAll('')
+riverMap = riverMap.replaceAll('A', '<span class="river river-part-a">');
+riverMap = riverMap.replaceAll('B', '<span class="river river-part-b">');
+    // skip Cs
+riverMap = riverMap.replaceAll('D', '<span class="river river-part-d">');
+riverMap = riverMap.replaceAll('E', '<span class="river river-part-e">');
+riverMap = riverMap.replaceAll('F', '<span class="river river-part-f">');
+riverMap = riverMap.replaceAll('G', '<span class="river river-part-g">');
+riverMap = riverMap.replaceAll('H', '<span class="river river-part-h">');
+riverMap = riverMap.replaceAll('I', '<span class="river river-part-i">');
+riverMap = riverMap.replaceAll('J', '<span class="river river-part-j">');
+riverMap = riverMap.replaceAll('K', '<span class="river river-part-k">');
+riverMap = riverMap.replaceAll('L', '<span class="river river-part-l">');
+
+riverMap = riverMap.replaceAll('X', '<span class="river-label">');
+riverMap = riverMap.replaceAll('x', '</span>');
+
+// Controlling the color of each segment of the map
+
+function highlightRiverPart(partName) {
+    document.querySelectorAll('.river-part-' + partName).forEach((element) => {     // Loop through every span with this class
+        element.classList.add("river-highlight");                                   // ADD highlight class
+    })
+}
+function dimRiverPart(partName) {
+    document.querySelectorAll('.river-part-' + partName).forEach((element) => {     // Loop through every span with this class
+        element.classList.remove("river-highlight");                                // REMOVE highlight class
+    })
+}
+
+// Map print function (I probably didn't need this...)
+
+function printRiverMap() { print(riverMap); }
 
 // --------------------- Campsite ---------------------
 function goCampsite() {
@@ -160,7 +191,10 @@ function start() {
     `);
     // "banner3" font by Merlin Greywolf merlin@brahms.udel.edu August 9, 1994
 
-
+    printRiverMap();
+    highlightRiverPart('a');
+    // highlightRiverPart('e');
+    
 
     print('\n\n\n')
     print(color(
