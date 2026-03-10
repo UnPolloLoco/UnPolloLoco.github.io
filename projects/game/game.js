@@ -163,7 +163,7 @@ function goRiverIntermediate(segment) {
     printLocation('River');
     print('Paddling along...');
 
-    setTimeout(() => { goRiver(segment); }, 800);
+    setTimeout(() => { goRiver(segment); }, 800); // 0.8 seconds
 }
 
 function goRiver(segment) {
@@ -172,7 +172,7 @@ function goRiver(segment) {
 
     if (segment == 'i') {
         // TRIP FINISHED
-        print("Through the trees, you can see it——this is the first time you've seen the temple in daylight, and it's even more impressive than you remember.")
+        print("You've made it to the end of your map! You stop your boat and hop off onto the small beach.")
     } else {
         // Normal message
         print('You soon reach a fork in the river. Which way do you turn? Consult your map.')
@@ -363,9 +363,105 @@ function goRiver(segment) {
 function goRiverbank() {
     clear();
     printLocation('Riverbank');
-    print('...');
+    
+    if (isEscaping) {
+        // Escaping
+        print("You dash through the last line of foliage, and arrive at your patiently waiting boat.");
+    } else {
+        // Arriving
+        print("Through the trees, you can see it——this is the first time you've seen the temple in daylight, and it's even more impressive than you remember.");
+    }
+
+    askToMoveWithOptions(
+        locationOption(1, 'Continue to temple grounds') + 
+        locationOption(2, 'Board boat')
+    );
+    
+    function processInput(input){
+        if (input == 1) { goTempleGrounds(); }
+        else if (input == 2) { goBoatReturn(); }
+        else { printComplaint(input); }
+    }
+    waitForInput(processInput);
 }
 
+// --------------------- Boat (return) ---------------------
+
+function goBoatReturn() {
+    clear();
+    printLocation('The Boat');
+
+    if (isEscaping) {
+        // Can leave
+        print('...');
+    } else {
+        // Cannot leave
+        print("You can't turn back now! The temple is RIGHT THERE! Not to mention, you know, " + color('THE ORB', 'lime') + ' is also RIGHT THERE TOO!?');
+    }
+
+    print(color(
+        "Click " + color("ENTER", 'lime') + " to continue!!",
+        darkGreen
+    ));
+
+    if (isEscaping) {
+        // Can leave
+        function processInput(input){ goRiverIntermediate('i'); }
+        waitForInput(processInput);
+    } else {
+        // Cannot leave
+        function processInput(input){ goRiverbank(); }
+        waitForInput(processInput);
+    }
+}
+
+// --------------------- Temple Grounds ---------------------
+
+function goTempleGrounds() {
+    clear();
+    printLocation('Temple Grounds');
+    
+    if (isEscaping) {
+        // Escaping
+        print("Suddenly, admiring the temple again doesn't seem so appealing.");
+    } else {
+        // Arriving
+        print("...");
+    }
+
+    askToMoveWithOptions(
+        locationOption(1, 'Enter temple') + 
+        locationOption(2, 'Return to riverbank')
+    );
+    
+    function processInput(input){
+        if (input == 1) { goGreatHall(); }
+        else if (input == 2) { goRiverbank(); }
+        else { printComplaint(input); }
+    }
+    waitForInput(processInput);
+}
+
+// --------------------- Great Hall ---------------------
+
+function goTempleGrounds() {
+    clear();
+    printLocation('Temple (Great Hall)');
+    
+    print('...')
+
+    askToMoveWithOptions(
+        locationOption(1, '...') + 
+        locationOption(2, '...')
+    );
+    
+    function processInput(input){
+        if (input == 1) { goGreatHall(); }
+        else if (input == 2) { goRiverbank(); }
+        else { printComplaint(input); }
+    }
+    waitForInput(processInput);
+}
 
 // --------------------- Start Screens ---------------------
 function start() {

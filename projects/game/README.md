@@ -18,7 +18,10 @@ graph TD;
     Campsite === Boat
     Boat ==== river["River Travel"]
     river =====  Riverbank
+
     Riverbank === grounds["Temple Grounds"]
+    river -.- b2["Boat
+                (only on return)"] --- grounds
     grounds --- lb["Left Bench"] & rb["Right Bench"]
     lb -.-|Visible from bench| large(["Large Key"])
     grounds ===== hall["Great Hall"]
