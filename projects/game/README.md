@@ -22,8 +22,8 @@ graph TD;
     Riverbank === grounds["Temple Grounds"]
     river -.- b2["Boat
                 (only on return)"] --- grounds
-    grounds --- lb["Left Bench"] & rb["Right Bench"]
-    lb -.-|Visible from bench| large(["Large Key"])
+    grounds --- Bench
+    Bench -.-|Visible from bench| large(["Large Key"])
     grounds ===== hall["Great Hall"]
 
 
@@ -61,16 +61,15 @@ See bottom for river map(s)
 
 ## Required Global Variables
 
-All are booleans except for `remainingTurnsToEscape`, a number.
-
 - `hasMap`
 - `hasSmallKey`
 - `hasMediumKey`
 - `hasLargeKey`
+- `totalKeyCount`
 - `hasLantern`
 - `hasDiscoveredSecretPass`
 - `hasCurseOfTheOrb`
-- `isEscaping` (whether or not you're allowed to go backwards on the river)
+- `isEscaping` (affects whether or not you're allowed to go backwards on the river + some area descriptions)
 - `remainingTurnsToEscape`
 
 

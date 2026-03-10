@@ -13,6 +13,7 @@ body {
     color: #bbb;
     height: 100vh;
     box-sizing: border-box;
+    font-size: 15px;
 }
 
 h1{
@@ -28,7 +29,6 @@ h1{
 /* Terminal text */
 #terminal, .ascii-art {
     line-height: 1.2;
-    font-size: 14px;
     font-family: var(--font);
 }
 .ascii-art { 
@@ -54,7 +54,6 @@ p { margin: 20px 0; }
     flex: 1;
     overflow-y: auto;
     margin-bottom: 20px;
-    font-size: 14px;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
@@ -78,7 +77,6 @@ p { margin: 20px 0; }
     border: none;
     color: lime;
     font-family: 'Courier New', monospace;
-    font-size: 16px;
     outline: none;
 }
 
@@ -100,8 +98,8 @@ p { margin: 20px 0; }
 }
 
 @keyframes pulsate {
-    0%   { color: var(--river); }
-    6%   { color: var(--river); }
-    80%  { color: yellow; }
-    100% { color: var(--river); }
+    0%   { color: yellow; }
+    40%  { color: yellow; }
+    70%  { color: var(--river); }
+    100% { color: yellow; }
   }

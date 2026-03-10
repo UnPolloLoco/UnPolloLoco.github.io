@@ -8,6 +8,7 @@ let hasMap = false;
 let hasSmallKey = false;
 let hasMediumKey = false;
 let hasLargeKey = false;
+let totalKeyCount = 0;
 let hasLantern = false;
 let hasDiscoveredSecretPass = false;
 let hasCurseOfTheOrb = false;
@@ -83,12 +84,14 @@ function goCampsite() {
 
     askToMoveWithOptions(
         locationOption(1, 'Enter tent') + 
-        locationOption(2, 'Board boat')
+        locationOption(2, 'Board boat') +
+        locationOption(3, 'SKIP AHEAD!!')
     );
     
     function processInput(input){
         if (input == 1) { goTent(); } 
         else if (input == 2) { goBoat(); } 
+        else if (input == 3) { goRiverbank(); } 
         else { printComplaint(input); }
     }
     waitForInput(processInput);
@@ -423,28 +426,67 @@ function goTempleGrounds() {
     
     if (isEscaping) {
         // Escaping
-        print("Suddenly, admiring the temple again doesn't seem so appealing.");
+        print("Suddenly, admiring the temple again doesn't seem so appealing...");
     } else {
         // Arriving
-        print("...");
+        print("Temple grounds... bench exists...");
     }
 
     askToMoveWithOptions(
         locationOption(1, 'Enter temple') + 
-        locationOption(2, 'Return to riverbank')
+        locationOption(2, 'Sit on bench') + 
+        locationOption(3, 'Return to riverbank')
     );
     
     function processInput(input){
         if (input == 1) { goGreatHall(); }
-        else if (input == 2) { goRiverbank(); }
+        else if (input == 2) { goTempleBench(); }
+        else if (input == 3) { goRiverbank(); }
         else { printComplaint(input); }
     }
     waitForInput(processInput);
 }
 
+// --------------------- Bench outside Temple ---------------------
+
+function goTempleBench() {
+    clear();
+    printLocation('Temple Grounds (Bench)');
+    
+    print("generic...");
+
+    if (hasLargeKey == false) {
+        // No key yet
+        print("key...");
+        printItemGet('Large Key')
+        hasLargeKey = true;
+        totalKeyCount = totalKeyCount + 1;
+    }
+
+    askToMoveWithOptions(
+        locationOption(1, 'Leave bench') +
+        locationOption(2, 'Sit for a little while longer')
+    );
+    
+    function processInput(input){
+        if (input == 1) { goTempleGrounds(); }
+        else if (input == 2) { goTempleBenchIntermediate(); }
+        else { printComplaint(input); }
+    }
+    waitForInput(processInput);
+}
+
+function goTempleBenchIntermediate() {
+    clear();
+    printLocation('Temple Grounds (Bench)');
+    print('This bench is rather comfortable, actually...');
+
+    setTimeout(() => { goTempleBench(); }, 2000); // 2 seconds
+}
+
 // --------------------- Great Hall ---------------------
 
-function goTempleGrounds() {
+function goGreatHall() {
     clear();
     printLocation('Temple (Great Hall)');
     
@@ -456,8 +498,8 @@ function goTempleGrounds() {
     );
     
     function processInput(input){
-        if (input == 1) { goGreatHall(); }
-        else if (input == 2) { goRiverbank(); }
+        if (input == 1) { goTempleGrounds(); }
+        else if (input == 2) { goTempleGrounds(); }
         else { printComplaint(input); }
     }
     waitForInput(processInput);
