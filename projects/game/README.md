@@ -26,24 +26,24 @@ graph TD;
     Bench -.-|Visible from bench| large(["Large Key"])
     grounds ===== hall["Great Hall"]
 
+    hall ======= door["Big Locked Door"]
+    hall --- Fountain -.- med(["Medium Key"])
 
-    hall ====== door["Big Locked Door"]
-    hall --- fl["Front Left Room"]
-    hall ---- ml["Mid Left Room
-                  (DARK)"]
-    hall ----- bl["Back Left Room 
-                  (DARK)"]
-    hall --- fr["Front Right Room
+    hall ----- fl["Front Left Room 
                  (DARK)"]
-    hall ---- mr["Mid Right Room"]
-    hall ----- br["Back Right Room"]
+    hall ------ bl["Back Left Room 
+                  (DARK)"]
+    hall ----- fr["Front Right Room
+                 (DARK)"]
+    hall ------ br["Back Right Room"]
 
 
     fr -.-|Secret passage!!
            Visible with light| grounds
-    bl -.-|Visible with light| small(["Small Key"])
+    fl -.-|Visible with light| small(["Small Key"])
     mr -.- medium(["Medium Key"])
-    br -.- lant([Lantern])
+    br -.- lant([Flashlight])
+
 
 
     door ====|3 keys required| Sanctum
@@ -55,7 +55,7 @@ See bottom for river map(s)
 
 ### Map Details:
 - You cannot start your journey without the mapping supplies
-- You cannot inspect a DARK room without the LANTERN
+- You cannot inspect a DARK room without the FLASHLIGHT
 - Once you recieve THE ORB!!! and so also the CURSE OF THE ORB!!!, the main temple door will close. You will have to get back out using the secret passage.
 - Whatever the physical manefestation of the CURSE OF THE ORB!!! is will chase you down; you will lose the game if you cannot make it back to the Campsite in a certain number of turns
 
@@ -66,7 +66,7 @@ See bottom for river map(s)
 - `hasMediumKey`
 - `hasLargeKey`
 - `totalKeyCount`
-- `hasLantern`
+- `hasFlashlight`
 - `hasDiscoveredSecretPass`
 - `hasCurseOfTheOrb`
 - `isEscaping` (affects whether or not you're allowed to go backwards on the river + some area descriptions)

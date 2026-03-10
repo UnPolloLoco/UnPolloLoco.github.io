@@ -9,7 +9,7 @@ let hasSmallKey = false;
 let hasMediumKey = false;
 let hasLargeKey = false;
 let totalKeyCount = 0;
-let hasLantern = false;
+let hasFlashlight = false;
 let hasDiscoveredSecretPass = false;
 let hasCurseOfTheOrb = false;
 let isEscaping = false;
@@ -91,7 +91,7 @@ function goCampsite() {
     function processInput(input){
         if (input == 1) { goTent(); } 
         else if (input == 2) { goBoat(); } 
-        else if (input == 3) { goRiverbank(); } 
+        else if (input == 3) { goTempleGrounds(); } 
         else { printComplaint(input); }
     }
     waitForInput(processInput);
@@ -133,10 +133,7 @@ function goBoat() {
         // You already have the map
         print('You jump in and immediately begin paddling away.')
 
-        print(color(
-            "Click " + color("ENTER", 'lime') + " to continue!!",
-            darkGreen
-        ));
+        printEnterToContinue();
     } else {
         // No map yet
         print("You KNOW you don't know where you're going. You should get that map.");
@@ -335,10 +332,7 @@ function goRiver(segment) {
 
     } else if (segment == 'i') {
         // --- MADE IT TO THE TEMPLE!!!!!!!! ---
-        print(color(
-            "Click " + color("ENTER", 'lime') + " to continue!!",
-            darkGreen
-        ));
+        printEnterToContinue();
 
         function processInput(input){
             goRiverbank();
@@ -402,10 +396,7 @@ function goBoatReturn() {
         print("You can't turn back now! The temple is RIGHT THERE! Not to mention, you know, " + color('THE ORB', 'lime') + ' is also RIGHT THERE TOO!?');
     }
 
-    print(color(
-        "Click " + color("ENTER", 'lime') + " to continue!!",
-        darkGreen
-    ));
+    printEnterToContinue();
 
     if (isEscaping) {
         // Can leave
@@ -490,16 +481,29 @@ function goGreatHall() {
     clear();
     printLocation('Temple (Great Hall)');
     
-    print('...')
+    print("A large, arched room stands before you. The only source of light is the entryway behind you, but that's enough to make out the room's main features.")
+    print("You can see a fountain in the center of the hall. Then, in each corner, there's what looks to be entrances to secondary rooms. Finally——and most importantly, you think——at the opposite end of the hall, you can see the outline of a " + color('massive door', darkGreen) + " that nearly extends to the top of the hall's vaulted ceiling. You are certain that " + color('THE ORB','lime') + "'s sacred resting place is on the other side.")
 
     askToMoveWithOptions(
-        locationOption(1, '...') + 
-        locationOption(2, '...')
+        locationOption(1, 'Approach the massive door') + 
+        locationOption(2, 'Approach the fountain') + 
+        '\n'+
+        locationOption(3, 'Enter front left room') + 
+        locationOption(4, 'Enter front right room') + 
+        locationOption(5, 'Enter back left room') + 
+        locationOption(6, 'Enter back right room') + 
+        '\n'+
+        locationOption(7, 'Exit temple')
     );
     
     function processInput(input){
-        if (input == 1) { goTempleGrounds(); }
-        else if (input == 2) { goTempleGrounds(); }
+        if (input == 1) { goMassiveDoor(); }
+        else if (input == 2) { goFountain(); }
+        else if (input == 3) { goRoomFL(); }
+        else if (input == 4) { goRoomFR(); }
+        else if (input == 5) { goRoomBL(); }
+        else if (input == 6) { goRoomBR(); }
+        else if (input == 7) { goTempleGrounds(); }
         else { printComplaint(input); }
     }
     waitForInput(processInput);
@@ -522,10 +526,7 @@ function start() {
     // "banner3" font by Merlin Greywolf merlin@brahms.udel.edu August 9, 1994
 
     print('\n\n\n')
-    print(color(
-        "Click " + color("ENTER", 'lime') + " to continue!!",
-        darkGreen
-    ));
+    printEnterToContinue();
 
     function processInput(input){
         start2();
