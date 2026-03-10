@@ -11,6 +11,7 @@ let hasLargeKey = false;
 let hasLantern = false;
 let hasDiscoveredSecretPass = false;
 let hasCurseOfTheOrb = false;
+let isEscaping = false;
 // let remainingTurnsToEscape = 3149578;
 
 // --------------------- Make the River Map Usable ---------------------
@@ -127,7 +128,7 @@ function goBoat() {
 
     if (hasMap) {
         // You already have the map
-        print('You jump in and immediately begin paddling away. ')
+        print('You jump in and immediately begin paddling away.')
 
         print(color(
             "Click " + color("ENTER", 'lime') + " to continue!!",
@@ -145,7 +146,7 @@ function goBoat() {
     function processInput(input){
         if (hasMap) {
             // Already have map
-            goRiver();
+            goRiver('a');
         } else {
             // No map
             if (input == 1) { goCampsite(); } 
@@ -156,22 +157,173 @@ function goBoat() {
 }
 
 // --------------------- River ---------------------
-function goRiver() {
+
+function goRiver(segment) {
     clear();
     printLocation('River');
 
-    print('...');
+    print('Paddling along...\nYou soon reach a fork in the river. Which way do you turn? Consult your map.')
 
-    askToMoveWithOptions(
-        locationOption(1, 'Enter tent') + 
-        locationOption(2, 'Board boat')
-    );
+    printRiverMap();
     
-    function processInput(input){
-        if (input == 1) { goTent(); } 
-        else if (input == 2) { goBoat(); } 
-        else { printComplaint(input); }
+    // Change location events based on which segment of the river you're on
+    
+    let leftSegment;
+    let rightSegment;
+    let previousSegment;
+
+    let isDeadEnd = false;
+    let isWrongWay = false;
+    let successfullyFinishedRiver = false;
+    
+    if (segment == 'a') {
+        // ---- Segment A ----
+        leftSegment = 'l';
+        rightSegment = 'b';
+        highlightRiverPart('a');
+
+    } else if (segment == 'b') {
+        // ---- Segment B ----
+        isDeadEnd = true;
+        isWrongWay = true;
+        previousSegment = 'a';
+        highlightRiverPart('a');
+        highlightRiverPart('b');
+        
+    } else if (segment == 'd') {
+        // ---- Segment D ----
+        isDeadEnd = true;
+        isWrongWay = true;
+        previousSegment = 'l';
+        highlightRiverPart('a');
+        highlightRiverPart('l');
+        highlightRiverPart('d');
+        
+    } else if (segment == 'e') {
+        // ---- Segment E ----
+        leftSegment = 'g';
+        rightSegment = 'f';
+        highlightRiverPart('a');
+        highlightRiverPart('l');
+        highlightRiverPart('e');
+
+    } else if (segment == 'f') {
+        // ---- Segment F ----
+        leftSegment = 'j';
+        rightSegment = 'k';
+        isWrongWay = true;
+        previousSegment = 'e';
+        highlightRiverPart('a');
+        highlightRiverPart('l');
+        highlightRiverPart('e');
+        highlightRiverPart('f');
+
+    } else if (segment == 'g') {
+        // ---- Segment G ----
+        leftSegment = 'h';
+        rightSegment = 'i';
+        highlightRiverPart('a');
+        highlightRiverPart('l');
+        highlightRiverPart('e');
+        highlightRiverPart('g');
+
+    } else if (segment == 'h') {
+        // ---- Segment H ----
+        isDeadEnd = true;
+        isWrongWay = true;
+        previousSegment = 'g';
+        highlightRiverPart('a');
+        highlightRiverPart('l');
+        highlightRiverPart('e');
+        highlightRiverPart('g');
+        highlightRiverPart('h');
+
+    } else if (segment == 'i') {
+        // ---- Segment I ----
+        successfullyFinishedRiver = true;
+        highlightRiverPart('a');
+        highlightRiverPart('l');
+        highlightRiverPart('e');
+        highlightRiverPart('g');
+        highlightRiverPart('i');
+
+    } else if (segment == 'j') {
+        // ---- Segment J ----
+        isDeadEnd = true;
+        isWrongWay = true;
+        previousSegment = 'f';
+        highlightRiverPart('a');
+        highlightRiverPart('l');
+        highlightRiverPart('e');
+        highlightRiverPart('f');
+        highlightRiverPart('j');
+
+    } else if (segment == 'k') {
+        // ---- Segment K ----
+        isDeadEnd = true;
+        isWrongWay = true;
+        previousSegment = 'f';
+        highlightRiverPart('a');
+        highlightRiverPart('l');
+        highlightRiverPart('e');
+        highlightRiverPart('f');
+        highlightRiverPart('k');
+
+    } else if (segment == 'l') {
+        // ---- Segment L ----
+        leftSegment = 'd';
+        rightSegment = 'e';
+        highlightRiverPart('a');
+        highlightRiverPart('l');
     }
+
+    if (isWrongWay) {
+        // Wrong way
+        print('"Hmmmmm," you ask yourself. "' + color('Did I go the right way?','magenta') + '"');
+    } else {
+        // Not wrong way
+        print("<em>Hint: The yellow line shows where you've travelled so far.</em>");
+    }
+
+    // Options
+
+    if (isDeadEnd) {
+        // --- DEAD END? ---
+        askToMoveWithOptions(
+            locationOption(1, 'Go back') 
+        );
+        function processInput(input){
+            if (input == 1) { goRiver(previousSegment); } 
+            else { printComplaint(input); }
+        }
+
+    } else if (isWrongWay) {
+        // --- WRONG WAY but NOT DEAD END? ---
+        askToMoveWithOptions(
+            locationOption(1, 'Go left') + 
+            locationOption(2, 'Go right') +
+            locationOption(3, 'Go back')
+        );
+        function processInput(input){
+            if (input == 1) { goRiver(leftSegment); } 
+            else if (input == 2) { goRiver(rightSegment); } 
+            else if (input == 3) { goRiver(previousSegment); } 
+            else { printComplaint(input); }
+        }
+
+    } else {
+        // --- ALL WENT WELL ---
+        askToMoveWithOptions(
+            locationOption(1, 'Go left') + 
+            locationOption(2, 'Go right')
+        );
+        function processInput(input){
+            if (input == 1) { goRiver(leftSegment); } 
+            else if (input == 2) { goRiver(rightSegment); } 
+            else { printComplaint(input); }
+        }
+    }
+    
     waitForInput(processInput);
 }
 
@@ -190,11 +342,6 @@ function start() {
     @@     @@     @@  @@@@@@@@         @@@@@@@   @@     @@  @@@@@@@@ 
     `);
     // "banner3" font by Merlin Greywolf merlin@brahms.udel.edu August 9, 1994
-
-    printRiverMap();
-    highlightRiverPart('a');
-    // highlightRiverPart('e');
-    
 
     print('\n\n\n')
     print(color(

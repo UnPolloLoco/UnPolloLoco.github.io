@@ -27,7 +27,7 @@ let complaintElementExists = false;
 
 function printComplaint(input) {
     if (input != '') {
-        let warning = `\nThe gremlins in your computer don't understand what "${input}" means.\nStuck? Try typing "1" for example (without quotes).`;
+        let warning = `\nThe gremlins in your computer don't understand what "${input}" means.\nStuck? Try typing "1", for example (without quotes).`;
 
         if (!complaintElementExists) {
             // Create warning

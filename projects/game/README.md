@@ -67,6 +67,7 @@ All are booleans except for `remainingTurnsToEscape`, a number.
 - `hasLantern`
 - `hasDiscoveredSecretPass`
 - `hasCurseOfTheOrb`
+- `isEscaping` (whether or not you're allowed to go backwards on the river)
 - `remainingTurnsToEscape`
 
 
