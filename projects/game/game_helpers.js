@@ -56,9 +56,16 @@ function locationOption(number, name) {
 }
 
 // Item get announcement
-
 function printItemGet(name) {
     print(color(name + ' acquired!', 'yellow'))
+}
+
+// Enter to continue prompt
+function printEnterToContinue() {
+    print(color(
+        "Click " + color("ENTER", 'lime') + " to continue!!",
+        darkGreen
+    ));
 }
 
 //this formats text inside a pre tag.
