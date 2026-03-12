@@ -31,8 +31,7 @@ graph TD;
 
     hall ----- fl["Front Left Room 
                  (DARK)"]
-    hall ------ bl["Back Left Room 
-                  (DARK)"]
+    hall ------ bl["Back Left Room"]
     hall ----- fr["Front Right Room
                  (DARK)"]
     hall ------ br["Back Right Room"]
@@ -69,6 +68,7 @@ See bottom for river map(s)
 - `hasFlashlight`
 - `hasDiscoveredSecretPass`
 - `hasCurseOfTheOrb`
+- `hasOpenedMassiveDoor`
 - `isEscaping` (affects whether or not you're allowed to go backwards on the river + some area descriptions)
 - `remainingTurnsToEscape`
 

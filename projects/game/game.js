@@ -12,6 +12,7 @@ let totalKeyCount = 0;
 let hasFlashlight = false;
 let hasDiscoveredSecretPass = false;
 let hasCurseOfTheOrb = false;
+let hasOpenedMassiveDoor = false;
 let isEscaping = false;
 // let remainingTurnsToEscape = 3149578;
 
@@ -481,7 +482,14 @@ function goGreatHall() {
     clear();
     printLocation('Temple (Great Hall)');
     
-    print("A large, arched room stands before you. The only source of light is the entryway behind you, but that's enough to make out the room's main features.")
+    if (hasFlashlight) {
+        // Has flashlight
+        print("A large, arched room stands before you. Armed with your flashlight, you can finally see its full splendor.")
+    } else {
+        // No flashlight
+        print("A large, arched room stands before you. The only source of light is the entryway behind you, but the Sun is low enough to illuminate the room's main features.")
+    }
+
     print("You can see a fountain in the center of the hall. Then, in each corner, there's what looks to be entrances to secondary rooms. Finally——and most importantly, you think——at the opposite end of the hall, you can see the outline of a " + color('massive door', darkGreen) + " that nearly extends to the top of the hall's vaulted ceiling. You are certain that " + color('THE ORB','lime') + "'s sacred resting place is on the other side.")
 
     askToMoveWithOptions(
@@ -506,6 +514,189 @@ function goGreatHall() {
         else if (input == 7) { goTempleGrounds(); }
         else { printComplaint(input); }
     }
+    waitForInput(processInput);
+}
+
+// --------------------- Massive Door ---------------------
+function goMassiveDoor() {
+    clear();
+    printLocation('Temple (The Massive Door)');
+
+    print(color('THE ORB','lime') + " is behind this very door——you're sure of it.")
+    print(
+        "Nestled in the contours of the door's ornate design, you see three keyholes: one large, one medium, and one small." 
+        + '\n' + color("You have the keys to " + color(totalKeyCount,'yellow') + "/3 locks.", 'orange')
+    );
+
+    if (totalKeyCount == 3) {
+        // Door UNLOCKED during this turn
+        hasOpenedMassiveDoor = true;
+    } else {
+        // Normal door message
+        print("Since you miss 100% of the shots you don't take, you try to push open the door anyway... but the door doesn't budge. I guess you really do need all those keys.")
+    }
+
+    printEnterToContinue();
+    
+    function processInput(input){
+        if (totalKeyCount == 3) { goMassiveDoor2(); } 
+        else { goGreatHall(); }
+    }
+    waitForInput(processInput);
+}
+
+function goMassiveDoor2() {
+    clear();
+    printLocation('Temple (The Massive Door)');
+
+    print("You insert the keys, push on the door, and sure enough, " + color('it opens','magenta') + ". On the other side is a large skylit room, and at it's center is none other than " + color('THE ORB', 'lime') + '. It seems your hunt for '  + color('THE ORB', 'lime') + " will come to a satisfying end at last.");
+
+    printEnterToContinue();
+    
+    function processInput(input){ goSanctum(); }
+    waitForInput(processInput);
+}
+
+
+// --------------------- Fountain ---------------------
+
+function goFountain() {
+    clear();
+    printLocation('Temple (Fountain)');
+    
+    print("You admire the fountain, and you try to picture what it's like when it actually has water in it.");
+
+    if (hasMediumKey == false) {
+        // No key yet
+        print("Wait... what's that inside? A glint has caught your eye; it turns out to be a key.");
+        printItemGet('Medium Key')
+        hasMediumKey = true;
+        totalKeyCount = totalKeyCount + 1;
+    }
+
+    printEnterToContinue();
+    function processInput(input){ goGreatHall(); }
+    waitForInput(processInput);
+}
+
+// --------------------- Room FL (dark, small key) ---------------------
+
+function goRoomFL() {
+    clear();
+    printLocation('Temple (Front Left Room)');
+
+    if (hasFlashlight == false) {
+        // Room is dark
+        print("It's " + color('too dark', 'magenta') + " to see anything in this room. Try your luck elsewhere.");
+    } else {
+        if (hasSmallKey) {
+            // Already has key
+            print("There's nothing else for you in this room.")
+        } else {
+            // No key yet
+            print("This appears to be a storage room. Empty shelves line the walls——well, almost empty. In one crusty corner, you find a comically small key.");
+            printItemGet('Small Key')
+            hasSmallKey = true;
+            totalKeyCount = totalKeyCount + 1;
+        }
+    }
+
+    printEnterToContinue();
+    function processInput(input){ goGreatHall(); }
+    waitForInput(processInput);
+}
+
+// --------------------- Room FR (dark, secret pass) ---------------------
+
+function goRoomFR() {
+    clear();
+    printLocation('Temple (Front Right Room)');
+
+    if (hasFlashlight == false) {
+        // Room is dark
+        print("It's " + color('too dark', 'magenta') + " to see anything in this room. Try your luck elsewhere.");
+
+        printEnterToContinue();
+        function processInput(input){ goGreatHall(); }
+        waitForInput(processInput);
+
+    } else {
+        // Room visible
+        if (hasDiscoveredSecretPass) {
+            // Already discovered secret pass
+            print("This is the room with the hidden doorway. It really doesn't have any other defining characteristics, though not much else could outshine a real-life secret door anyway.")
+        } else {
+            // Just discovered secret pass
+            print("Just an ordinary room... or is it?");
+            print("One wall has a rectangular person-sized shape in it. You give the area a little push, because why not, and it moves! Sunlight comes streaming in——you just found a " + color('secret exit','cyan') + ".");
+            hasDiscoveredSecretPass = true;
+        }
+        
+        askToMoveWithOptions(
+            locationOption(1, 'Use secret exit') + 
+            locationOption(2, 'Return to great hall')
+        );
+        function processInput(input){
+            if (input == 1) { goTempleGrounds(); }
+            else if (input == 2) { goGreatHall(); }
+            else { printComplaint(input); }
+        }
+        waitForInput(processInput);
+    }
+}
+
+// --------------------- Room BL (empty!) ---------------------
+
+function goRoomBL() {
+    clear();
+    printLocation('Temple (Back Left Room)');
+
+    print("There's just enough light coming into this room for you to be able to decide that there is quite literally nothing of interest here. Except a cobweb, I suppose. Spiders are probably interesting.")
+
+    printEnterToContinue();
+    function processInput(input){ goGreatHall(); }
+    waitForInput(processInput);
+}
+
+// --------------------- Room BR (flashlight, guy) ---------------------
+
+function goRoomBR() {
+    clear();
+    printLocation('Temple (Back Right Room)');
+
+    if (hasFlashlight) {
+        // Already has flashlight
+        print("There's nothing else for you here. You avoid looking at your late fellow explorer, but you cannot forget " + color('THE CURSE OF THE ORB', 'magenta') + ".");
+
+        printEnterToContinue();
+        function processInput(input){ goGreatHall(); }
+        waitForInput(processInput);
+
+    } else {
+        // No flashlight
+        print('Despite the darkness which shrouds this room, something on the floor manages to give of a faint glimmer. Upon closer inspection, it appears that the light you saw was a reflection from the glass of a... ' + color('flashlight', 'cyan') + "!?");
+        printItemGet('Flashlight')
+        print("Someone else was here. You pick up the flashlight and instinctively flick the switch, knowing nothing will happen. Well, it turns out YOU WERE WRONG, because a blazing beam of light just lit up the whole room, nearly giving you a heart attack in the process... but that's not the end of your frights today.");
+        hasFlashlight = true;
+
+        printEnterToContinue();
+        function processInput(input){ goRoomBR2(); }
+        waitForInput(processInput);
+    }
+}
+
+// --------------------- Room BR Part 2 (curse lore) ---------------------
+
+function goRoomBR2() {
+    clear();
+    printLocation('Temple (Back Right Room)');
+
+    print("Once your eyes adjust, you quickly find the 'someone' who was here before you. Let's just say they don't need their flashlight anymore.");
+    print("This interaction reminds you of an important little footnote you've been trying to push to the back of your mind: " + color('THE CURSE OF THE ORB', 'magenta') + ". According to " + color('THE CURSE OF THE ORB', 'magenta') + ", anyone who dares thieve the orb (i.e. YOU) will face complete and total destruction.");
+    print("...But hey, if this guy made it as far as this room, surely you'll have " + color('the chance to escape', 'lime') + " too?");
+
+    printEnterToContinue();
+    function processInput(input){ goGreatHall(); }
     waitForInput(processInput);
 }
 
