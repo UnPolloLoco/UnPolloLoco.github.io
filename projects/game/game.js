@@ -13,7 +13,6 @@ let hasFlashlight = false;
 let hasDiscoveredSecretPass = false;
 let hasCurseOfTheOrb = false;
 let hasOpenedMassiveDoor = false;
-let isEscaping = false;
 // let remainingTurnsToEscape = 3149578;
 
 // --------------------- Make the River Map Usable ---------------------
@@ -362,7 +361,7 @@ function goRiverbank() {
     clear();
     printLocation('Riverbank');
     
-    if (isEscaping) {
+    if (hasCurseOfTheOrb) {
         // Escaping
         print("You dash through the last line of foliage, and arrive at your patiently waiting boat.");
     } else {
@@ -389,7 +388,7 @@ function goBoatReturn() {
     clear();
     printLocation('The Boat');
 
-    if (isEscaping) {
+    if (hasCurseOfTheOrb) {
         // Can leave
         print('...');
     } else {
@@ -399,7 +398,7 @@ function goBoatReturn() {
 
     printEnterToContinue();
 
-    if (isEscaping) {
+    if (hasCurseOfTheOrb) {
         // Can leave
         function processInput(input){ goRiverIntermediate('i'); }
         waitForInput(processInput);
@@ -416,27 +415,68 @@ function goTempleGrounds() {
     clear();
     printLocation('Temple Grounds');
     
-    if (isEscaping) {
+    if (hasCurseOfTheOrb) {
         // Escaping
         print("Suddenly, admiring the temple again doesn't seem so appealing...");
     } else {
         // Arriving
-        print("Temple grounds... bench exists...");
+        print("You find yourself in what was probably once a quaint garden. The area is very overgrown, but you can still see a nice pathway and a bench. Then, of course, just ahead of you lies the towering walls of the temple.");
     }
 
-    askToMoveWithOptions(
-        locationOption(1, 'Enter temple') + 
-        locationOption(2, 'Sit on bench') + 
-        locationOption(3, 'Return to riverbank')
-    );
-    
-    function processInput(input){
-        if (input == 1) { goGreatHall(); }
-        else if (input == 2) { goTempleBench(); }
-        else if (input == 3) { goRiverbank(); }
-        else { printComplaint(input); }
+    if (hasDiscoveredSecretPass) {
+        if (hasCurseOfTheOrb) {
+            // Found secret pass, entry door is blocked
+            
+            askToMoveWithOptions(
+                locationOption(1, 'Enter temple through secret passage') + 
+                locationOption(2, 'Sit on bench') + 
+                locationOption(3, 'Return to riverbank')
+            );
+            
+            function processInput(input){
+                if (input == 1) { goRoomFR(); }
+                else if (input == 2) { goTempleBench(); }
+                else if (input == 3) { goRiverbank(); }
+                else { printComplaint(input); }
+            }
+            waitForInput(processInput);
+
+        } else {
+            // Found secret pass, entry door is open
+
+            askToMoveWithOptions(
+                locationOption(1, 'Enter temple') + 
+                locationOption(2, 'Enter temple through secret passage') + 
+                locationOption(3, 'Sit on bench') + 
+                locationOption(4, 'Return to riverbank')
+            );
+            
+            function processInput(input){
+                if (input == 1) { goGreatHall(); }
+                else if (input == 2) { goRoomFR(); }
+                else if (input == 3) { goTempleBench(); }
+                else if (input == 4) { goRiverbank(); }
+                else { printComplaint(input); }
+            }
+            waitForInput(processInput);
+        }
+    } else {
+        // No secret pass yet (default)
+
+        askToMoveWithOptions(
+            locationOption(1, 'Enter temple') + 
+            locationOption(2, 'Sit on bench') + 
+            locationOption(3, 'Return to riverbank')
+        );
+        
+        function processInput(input){
+            if (input == 1) { goGreatHall(); }
+            else if (input == 2) { goTempleBench(); }
+            else if (input == 3) { goRiverbank(); }
+            else { printComplaint(input); }
+        }
+        waitForInput(processInput);
     }
-    waitForInput(processInput);
 }
 
 // --------------------- Bench outside Temple ---------------------
@@ -445,11 +485,11 @@ function goTempleBench() {
     clear();
     printLocation('Temple Grounds (Bench)');
     
-    print("generic...");
+    print("You head over to the bench (well, you <em>think</em> it's a bench) and take a seat. It's a nice place, out of the sun and with something of a view——in fact, you're pretty sure you can see a bird or two in the trees.");
 
     if (hasLargeKey == false) {
         // No key yet
-        print("key...");
+        print("While you're looking around, your eye is suddenly caught on something shiny hidden within the tall grass. You get up to go investigate and... it's a key? A really, really big one, at that. Fascinating.");
         printItemGet('Large Key')
         hasLargeKey = true;
         totalKeyCount = totalKeyCount + 1;
@@ -492,8 +532,16 @@ function goGreatHall() {
 
     print("You can see a fountain in the center of the hall. Then, in each corner, there's what looks to be entrances to secondary rooms. Finally——and most importantly, you think——at the opposite end of the hall, you can see the outline of a " + color('massive door', darkGreen) + " that nearly extends to the top of the hall's vaulted ceiling. You are certain that " + color('THE ORB','lime') + "'s sacred resting place is on the other side.")
 
+    // Actions
+
+    let sanctumPrompt = 'Approach the massive door';
+    if (hasOpenedMassiveDoor) { sanctumPrompt = "Enter the Orb Sanctum"; }
+
+    let exitPrompt = 'Exit temple';
+    if (hasCurseOfTheOrb) { exitPrompt = "Exit temple (BLOCKED)"; }
+
     askToMoveWithOptions(
-        locationOption(1, 'Approach the massive door') + 
+        locationOption(1, sanctumPrompt) + 
         locationOption(2, 'Approach the fountain') + 
         '\n'+
         locationOption(3, 'Enter front left room') + 
@@ -501,38 +549,61 @@ function goGreatHall() {
         locationOption(5, 'Enter back left room') + 
         locationOption(6, 'Enter back right room') + 
         '\n'+
-        locationOption(7, 'Exit temple')
+        locationOption(7, exitPrompt)
     );
     
     function processInput(input){
-        if (input == 1) { goMassiveDoor(); }
+        if (input == 1) { 
+            if (hasOpenedMassiveDoor) { goSanctum(); } // sanctum door open
+            else { goMassiveDoor(); } // default
+        }
         else if (input == 2) { goFountain(); }
         else if (input == 3) { goRoomFL(); }
         else if (input == 4) { goRoomFR(); }
         else if (input == 5) { goRoomBL(); }
         else if (input == 6) { goRoomBR(); }
-        else if (input == 7) { goTempleGrounds(); }
+        else if (input == 7) { 
+            if (hasOpenedMassiveDoor) { goEntryDoorFail(); } // entry door blocked
+            else { goTempleGrounds(); } // default
+        }
         else { printComplaint(input); }
     }
     waitForInput(processInput);
 }
 
+// --------------------- Entry Door Blocked ---------------------
+
+function goEntryDoorFail() {
+    clear();
+    printLocation('Temple (Great Hall)');
+
+    print("Blocked means blocked! You cannot phase through solid matter! Find another exit!");
+
+    printEnterToContinue();
+    function processInput(input){ goGreatHall(); }
+    waitForInput(processInput);
+}
+
 // --------------------- Massive Door ---------------------
+
 function goMassiveDoor() {
     clear();
     printLocation('Temple (The Massive Door)');
 
     print(color('THE ORB','lime') + " is behind this very door——you're sure of it.")
-    print(
-        "Nestled in the contours of the door's ornate design, you see three keyholes: one large, one medium, and one small." 
-        + '\n' + color("You have the keys to " + color(totalKeyCount,'yellow') + "/3 locks.", 'orange')
-    );
 
     if (totalKeyCount == 3) {
-        // Door UNLOCKED during this turn
-        hasOpenedMassiveDoor = true;
+        // About to unlock door
+        print(
+            "Nestled in the contours of the door's ornate design, you see three keyholes: one large, one medium, and one small." 
+            + '\n' + color("You now have the keys to " + color('all 3','yellow') + " of the locks!!", 'orange')
+        );
     } else {
-        // Normal door message
+        // Normal door message (not unlocked this turn)
+        print(
+            "Nestled in the contours of the door's ornate design, you see three keyholes: one large, one medium, and one small." 
+            + '\n' + color("You have the keys to " + color(totalKeyCount,'yellow') + "/3 locks.", 'orange')
+        );
         print("Since you miss 100% of the shots you don't take, you try to push open the door anyway... but the door doesn't budge. I guess you really do need all those keys.")
     }
 
@@ -549,7 +620,8 @@ function goMassiveDoor2() {
     clear();
     printLocation('Temple (The Massive Door)');
 
-    print("You insert the keys, push on the door, and sure enough, " + color('it opens','magenta') + ". On the other side is a large skylit room, and at it's center is none other than " + color('THE ORB', 'lime') + '. It seems your hunt for '  + color('THE ORB', 'lime') + " will come to a satisfying end at last.");
+    print("You insert the keys, push on the door, and sure enough, " + color('it opens','magenta') + "...");
+    hasOpenedMassiveDoor = true;
 
     printEnterToContinue();
     
@@ -697,6 +769,29 @@ function goRoomBR2() {
 
     printEnterToContinue();
     function processInput(input){ goGreatHall(); }
+    waitForInput(processInput);
+}
+
+// --------------------- Sanctum ---------------------
+
+function goSanctum() {
+    clear();
+    printLocation('Temple (Sanctum)');
+
+    print("On the other side of the door is a large skylit room, and at it's center is none other than " + color('THE ORB', 'lime') + "!!");
+
+    askToMoveWithOptions(
+        locationOption(1, 'Enter tent') + 
+        locationOption(2, 'Board boat') +
+        locationOption(3, 'SKIP AHEAD!!')
+    );
+    
+    function processInput(input){
+        if (input == 1) { goTent(); } 
+        else if (input == 2) { goBoat(); } 
+        else if (input == 3) { goTempleGrounds(); } 
+        else { printComplaint(input); }
+    }
     waitForInput(processInput);
 }
 

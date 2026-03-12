@@ -69,7 +69,6 @@ See bottom for river map(s)
 - `hasDiscoveredSecretPass`
 - `hasCurseOfTheOrb`
 - `hasOpenedMassiveDoor`
-- `isEscaping` (affects whether or not you're allowed to go backwards on the river + some area descriptions)
 - `remainingTurnsToEscape`
 
 
