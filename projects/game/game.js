@@ -13,7 +13,7 @@ let hasFlashlight = false;
 let hasDiscoveredSecretPass = false;
 let hasCurseOfTheOrb = false;
 let hasOpenedMassiveDoor = false;
-// let remainingTurnsToEscape = 3149578;
+let remainingTurnsToEscape = 3149578;
 
 // --------------------- Make the River Map Usable ---------------------
 
@@ -780,21 +780,40 @@ function goSanctum() {
     clear();
     printLocation('Temple (Sanctum)');
 
-    print("You enter " + color('The Sanctum','cyan') + ", a large, skylit room in the temple's heart. Ahead, in the center of this grand chamber, perched upon its altar, is none other than... " + color('THE ORB', 'lime') + " itself!! You can't help but tear up a little.");
-    print("This majestic sphere has been the subject of your focus for so long, and to finally see it in person feels nothing short of surreal. " + color('THE ORB', 'lime') + " is beautifully, perfectly round, possessing an impeccable symmetry. It has a dazzle to it you've never quite seen anywhere before. It's mesmerizing. It's entrancing. It's calling to you. It's calling to you.");
-    print("It's calling to you.")
+    if (hasCurseOfTheOrb) {
+        // CURSED
+        print(color('THE CURSE OF THE ORB', 'magenta') + " is upon you!\nWhichever hostile being you just summoned is in hot pursuit. In order to survive, you must " + color('flee all the way back to your campsite', darkGreen) + " in "  + color("X turns","lime") + " or less."); //todo
 
-    askToMoveWithOptions(
-        locationOption(1, 'Ponder THE ORB') + 
-        locationOption(2, 'Approach THE ORB')
-    );
-    
-    function processInput(input){
-        if (input == 1) { goPonderTheOrb(); } 
-        else if (input == 2) { goOrb(); } 
-        else { printComplaint(input); }
+        askToMoveWithOptions(
+            locationOption(1, 'Escape to Great Hall')
+        );
+        
+        function processInput(input){
+            if (input == 1) { goGreatHall(); } 
+            else { printComplaint(input); }
+        }
+        waitForInput(processInput);
+
+
+    } else {
+        // Normal
+
+        print("You enter " + color('The Sanctum','cyan') + ", a large, skylit room in the temple's heart. Ahead, in the center of this grand chamber, perched upon its altar, is none other than... " + color('THE ORB', 'lime') + " itself!! You can't help but tear up a little.");
+        print("This majestic sphere has been the subject of your focus for so long, and to finally see it in person feels nothing short of surreal. " + color('THE ORB', 'lime') + " is beautifully, perfectly round, possessing an impeccable symmetry. It has a dazzle to it you've never quite seen anywhere before. It's mesmerizing. It's entrancing. It's calling to you. It's calling to you.");
+        print("It's calling to you.")
+
+        askToMoveWithOptions(
+            locationOption(1, 'Ponder THE ORB') + 
+            locationOption(2, 'Approach THE ORB')
+        );
+        
+        function processInput(input){
+            if (input == 1) { goPonderTheOrb(); } 
+            else if (input == 2) { goOrb(); } 
+            else { printComplaint(input); }
+        }
+        waitForInput(processInput);
     }
-    waitForInput(processInput);
 }
 
 // --------------------- Ponder THE ORB ---------------------
@@ -816,7 +835,7 @@ function goOrb() {
     clear();
     printLocation('Temple (THE ORB)');
 
-    print("You approach the altar."); // todo
+    print("You approach the altar.\n" + color('THE ORB', 'lime') + "'s great power is but an arm's length away!"); // todo
 
     askToMoveWithOptions(
         locationOption(1, 'STEAL THE ORB') + 
@@ -849,8 +868,8 @@ function goStealOrb2() {
     clear();
     printLocation('Temple (THE ORB)');
 
-    print("A loud CRACK rings out, and mere inches from your face a " + color('deep blue plume','magenta') + " forcefully errupts from " + color('THE ORB', 'lime') + "'s altar. You jump back, startled, but with " + color('THE ORB', 'lime') + " still clutched tightly in hand.");
-    print("As the " + color('plume','magenta') + " continues its expansion, two small lights appear within it. Not only do these lights have an eerie semblence to eyes, but they also appear to be focused on YOU. Suddenly, the " + color('plume','magenta') + " starts moving in your direction, and <em>fast</em>. Without a moment of hesitation, you spin around and start sprinting out of the Sanctum.")
+    print("A loud CRACK rings out, and mere inches from your face a " + color('deep blue plume','magenta') + " of smoke forcefully errupts from " + color('THE ORB', 'lime') + "'s altar. You jump back, startled, with " + color('THE ORB', 'lime') + " still clutched tightly in hand.");
+    print("As the " + color('plume','magenta') + " continues its expansion, two small lights appear within it. Not only do these lights have an eerie semblence to eyes... they also appear to be staring at YOU. Suddenly, the " + color('plume','magenta') + " starts moving in towards you, and <em>fast</em>. Without a moment of hesitation, you spin around and start sprinting away.")
 
     print(
         color('\n\nNEW OBJECTIVE: ', 'orange') +
@@ -858,6 +877,7 @@ function goStealOrb2() {
         );
         
     hasCurseOfTheOrb = true;
+    remainingTurnsToEscape = 11;
 
     printEnterToContinue();
     function processInput(input){ goSanctum(); }

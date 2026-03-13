@@ -16,10 +16,22 @@ function color(text, colorName) {
 
 // Write out current location
 function printLocation(name) {
-    print(
-        color('Location: ', darkGreen) 
-        + color(name, 'lime')
-    );
+    if (hasCurseOfTheOrb) {
+        // CURSED?
+        remainingTurnsToEscape = remainingTurnsToEscape - 1;
+        print(
+            color('Location: ', darkGreen) 
+            + color(name, 'lime')
+            + '\n'
+            + color('          '+remainingTurnsToEscape+' Turns Remaining', 'magenta') 
+        );
+    } else {
+        // Not cursed (normal)
+        print(
+            color('Location: ', darkGreen) 
+            + color(name, 'lime')
+        );
+    }
 }
 
 // Bad input complaint
