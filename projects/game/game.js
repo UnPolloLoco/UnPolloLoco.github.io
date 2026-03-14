@@ -297,7 +297,7 @@ function goRiver(segment) {
 
     if (isWrongWay) {
         // Wrong way
-        print('"Hmmmmm," you ask yourself. "' + color('Did I go the right way?','magenta') + '"');
+        print('"Wait..." you ask yourself. "' + color('Did I go the right way..?','magenta') + '"');
     } else if (segment == 'i') {
         // End of river
         print(color('THE ORB', 'lime') + " is close. You can feel it.")
@@ -387,6 +387,7 @@ function goBoatReturn() {
     if (hasCurseOfTheOrb) {
         // Escaping
         print("You dash through the last line of foliage, and arrive at your patiently waiting boat.");
+        print("You jump in, and almost immediately begin paddling away.")
     } else {
         // Cannot leave
         print("You can't turn back now! The temple is RIGHT THERE! Not to mention, you know, " + color('THE ORB', 'lime') + ' is also RIGHT THERE TOO!?');
@@ -797,6 +798,7 @@ function goSanctum() {
     if (hasCurseOfTheOrb) {
         // CURSED
         print(color('THE CURSE OF THE ORB', 'magenta') + " is upon you!\nWhichever hostile being you just summoned is in hot pursuit. In order to survive, you must " + color('flee all the way back to your campsite', darkGreen) + " in "  + color("X turns","lime") + " or less."); //todo
+        print('What are you still standing around for?? Get moving!!');
 
         askToMoveWithOptions(
             locationOption(1, 'Escape to Great Hall')
@@ -893,7 +895,7 @@ function goStealOrb2() {
     clear();
     printLocation('Temple (THE ORB)');
 
-    print("A loud CRACK rings out, and mere inches from your face a " + color('deep blue plume','magenta') + " of smoke forcefully errupts from " + color('THE ORB', 'lime') + "'s altar. You jump back, startled, with " + color('THE ORB', 'lime') + " still clutched tightly in hand.");
+    print("A loud CRACK rings out, and mere inches from your face a " + color('dark blue plume','magenta') + " of smoke forcefully errupts from " + color('THE ORB', 'lime') + "'s altar. You jump back, startled, with " + color('THE ORB', 'lime') + " still clutched tightly in hand.");
     print("As the " + color('plume','magenta') + " continues its expansion, two small lights appear within it. Not only do these lights have an eerie semblence to eyes... they also appear to be staring at YOU. Suddenly, the " + color('plume','magenta') + " starts moving in towards you, and <em>fast</em>. Without a moment of hesitation, you spin around and start sprinting away.")
 
     print(
@@ -912,16 +914,15 @@ function goStealOrb2() {
 // --------------------- Start Screens ---------------------
 function start() {
     printAscii(`\
-                       ~~~  The Hunt For  ~~~
+                       ~~~   The Hunt For   ~~~
 
-
- ********  **     **  ********         *******   ********   ******** 
-    **     **     **  **              **     **  **     **  **     **
-    $$     $$     $$  $$              $$     $$  $$     $$  $$     $$
-    $$     $$$$$$$$$  $$$$$$          $$     $$  $$$$$$$$   $$$$$$$$ 
-    $$     $$     $$  $$              $$     $$  $$   $$    $$     $$
-    @@     @@     @@  @@              @@     @@  @@    @@   @@     @@
-    @@     @@     @@  @@@@@@@@         @@@@@@@   @@     @@  @@@@@@@@ 
+ @@@@@@@@. @@.    @@. @@@@@@@@.        @@@@@@@.  @@@@@@@@.  @@@@@@@@.
+    @@.    @@.    @@. @@.             @@.    @@. @@.    @@. @@.    @@.
+    @@.    @@.    @@. @@.             @@.    @@. @@.    @@. @@.    @@.
+    @@.    @@@@@@@@@. @@@@@@.         @@.    @@. @@@@@@@@.  @@@@@@@@.
+    @@.    @@.    @@. @@.             @@.    @@. @@.  @@.   @@.    @@.
+    @@.    @@.    @@. @@.             @@.    @@. @@.   @@.  @@.    @@.
+    @@.    @@.    @@. @@@@@@@@.        @@@@@@@.  @@.    @@. @@@@@@@@.
     `);
     // "banner3" font by Merlin Greywolf merlin@brahms.udel.edu August 9, 1994
 
