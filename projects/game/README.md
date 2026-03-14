@@ -40,7 +40,6 @@ graph TD;
     fr -.-|Secret passage!!
            Visible with light| grounds
     fl -.-|Visible with light| small(["Small Key"])
-    mr -.- medium(["Medium Key"])
     br -.- lant([Flashlight])
 
 
