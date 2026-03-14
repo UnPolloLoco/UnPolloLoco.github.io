@@ -298,9 +298,15 @@ function goRiver(segment) {
     if (isWrongWay) {
         // Wrong way
         print('"Wait..." you ask yourself. "' + color('Did I go the right way..?','magenta') + '"');
-    } else if (segment == 'i') {
-        // End of river
+
+    } else if (segment == 'i' && !hasCurseOfTheOrb) {
+        // End of river (not cursed)
         print(color('THE ORB', 'lime') + " is close. You can feel it.")
+
+    } else if (segment == 'a' && hasCurseOfTheOrb) {
+        // End of river (CURSED)
+        print('You made it back to camp, and all in one piece at that!');
+        
     } else {
         // Everything else
         print("<em>Hint: The yellow line shows where you've travelled so far.</em>");

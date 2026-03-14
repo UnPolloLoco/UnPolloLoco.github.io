@@ -67,7 +67,7 @@ p { margin: 20px 0; }
 
 .prompt {
     color: lime;
-    margin-right: 10px;
+    white-space: pre;
     font-weight: bold;
 }
 
@@ -76,8 +76,10 @@ p { margin: 20px 0; }
     background: transparent;
     border: none;
     color: lime;
-    font-family: 'Courier New', monospace;
+    font-family: var(--font);
     outline: none;
+    margin: 0;
+    padding: 0;
 }
 
 #user-input::placeholder {
