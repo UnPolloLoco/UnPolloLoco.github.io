@@ -93,7 +93,7 @@ function goCampsite() {
         if (input == 1) { goTent(); } 
         else if (input == 2) { goBoat(); } 
         else if (input == 3) { goTempleGrounds(); } 
-        else if (input == 4) { goSanctum(); } 
+        else if (input == 4) { goSanctum(); hasFlashlight=true;hasSmallKey=true;hasMediumKey=true;hasLargeKey=true;totalKeyCount=3;hasDiscoveredSecretPass=true;hasMap=true;hasOpenedMassiveDoor=true; } 
         else { printComplaint(input); }
     }
     waitForInput(processInput);
@@ -363,14 +363,8 @@ function goRiverbank() {
     clear();
     printLocation('Riverbank');
     
-    if (hasCurseOfTheOrb) {
-        // Escaping
-        print("You dash through the last line of foliage, and arrive at your patiently waiting boat.");
-    } else {
-        // Arriving
-        print("Through the trees, you can see it——this is the first time you've seen the temple in daylight, and it's even more impressive than you remember.");
-    }
-
+    print("Through the trees, you can see it——this is the first time you've seen the temple in daylight, and it's even more impressive than you remember.");
+    
     askToMoveWithOptions(
         locationOption(1, 'Continue to temple grounds') + 
         locationOption(2, 'Board boat')
@@ -391,8 +385,8 @@ function goBoatReturn() {
     printLocation('The Boat');
 
     if (hasCurseOfTheOrb) {
-        // Can leave
-        print('...');
+        // Escaping
+        print("You dash through the last line of foliage, and arrive at your patiently waiting boat.");
     } else {
         // Cannot leave
         print("You can't turn back now! The temple is RIGHT THERE! Not to mention, you know, " + color('THE ORB', 'lime') + ' is also RIGHT THERE TOO!?');
@@ -419,7 +413,7 @@ function goTempleGrounds() {
     
     if (hasCurseOfTheOrb) {
         // Escaping
-        print("Suddenly, admiring the temple again doesn't seem so appealing...");
+        print("You breathe a sigh of relief——you made it out of the temple!! Your troubles don't end here though, as the " + color('plume','magenta') + " is still hunting you down.\nAdmiring the ancient structure doesn't seem so appealing anymore...");
     } else {
         // Arriving
         print("You find yourself in what was probably once a quaint garden. The area is very overgrown, but you can still see a nice pathway and a bench. Then, of course, just ahead of you lies the towering walls of the temple.");
@@ -427,18 +421,18 @@ function goTempleGrounds() {
 
     if (hasDiscoveredSecretPass) {
         if (hasCurseOfTheOrb) {
-            // Found secret pass, entry door is blocked
+            // Found secret pass, entry door is blocked (ESCAPING)
             
             askToMoveWithOptions(
                 locationOption(1, 'Enter temple through secret passage') + 
                 locationOption(2, 'Sit on bench') + 
-                locationOption(3, 'Return to riverbank')
+                locationOption(3, 'Escape to boat')
             );
             
             function processInput(input){
                 if (input == 1) { goRoomFR(); }
                 else if (input == 2) { goTempleBench(); }
-                else if (input == 3) { goRiverbank(); }
+                else if (input == 3) { goBoatReturn(); }
                 else { printComplaint(input); }
             }
             waitForInput(processInput);
@@ -497,6 +491,10 @@ function goTempleBench() {
         totalKeyCount = totalKeyCount + 1;
     }
 
+    if (hasCurseOfTheOrb) {
+        print("...you REALLY shouldn't be lingering around, though.")
+    }
+
     askToMoveWithOptions(
         locationOption(1, 'Leave bench') +
         locationOption(2, 'Sit for a little while longer')
@@ -523,16 +521,25 @@ function goTempleBenchIntermediate() {
 function goGreatHall() {
     clear();
     printLocation('Temple (Great Hall)');
-    
-    if (hasFlashlight) {
-        // Has flashlight
-        print("A large, arched room stands before you. Armed with your flashlight, you can finally see its full splendor.")
-    } else {
-        // No flashlight
-        print("A large, arched room stands before you. The only source of light is the entryway behind you, but the Sun is low enough to illuminate the room's main features.")
-    }
 
-    print("You can see a fountain in the center of the hall. Then, in each corner, there's what looks to be entrances to secondary rooms. Finally——and most importantly, you think——at the opposite end of the hall, you can see the outline of a " + color('massive door', darkGreen) + " that nearly extends to the top of the hall's vaulted ceiling. You are certain that " + color('THE ORB','lime') + "'s sacred resting place is on the other side.")
+    if (hasCurseOfTheOrb) {
+        // CURSED
+        print('A deafening rumble fills the hall as a huge slab of rock descends from the ceiling and ' + color('blocks the main entryway', 'cyan') + ", right before your eyes. " + color('THE CURSE OF THE ORB', 'magenta') + " is responsible for this, you conclude. You're going to need another way out as soon as possible.");
+    } else {
+
+
+        // Not cursed
+        if (hasFlashlight) {
+            // Has flashlight
+            print("A large, arched room stands before you. Armed with your flashlight, you can finally see its full splendor.")
+        } else {
+            // No flashlight
+            print("A large, arched room stands before you. The only source of light is the entryway behind you, but the Sun is low enough to illuminate the room's main features.")
+        }
+    
+        print("You can see a fountain in the center of the hall. Then, in each corner, there's what looks to be entrances to secondary rooms. Finally——and most importantly, you think——at the opposite end of the hall, you can see the outline of a " + color('massive door', darkGreen) + " that nearly extends to the top of the hall's vaulted ceiling. You are certain that " + color('THE ORB','lime') + "'s sacred resting place is on the other side.")
+    }
+    
 
     // Actions
 
@@ -556,7 +563,8 @@ function goGreatHall() {
     
     function processInput(input){
         if (input == 1) { 
-            if (hasOpenedMassiveDoor) { goSanctum(); } // sanctum door open
+            if (hasCurseOfTheOrb) { goSanctumFail(); } // cursed
+            else if (hasOpenedMassiveDoor) { goSanctum(); } // sanctum door open, not cursed
             else { goMassiveDoor(); } // default
         }
         else if (input == 2) { goFountain(); }
@@ -565,7 +573,7 @@ function goGreatHall() {
         else if (input == 5) { goRoomBL(); }
         else if (input == 6) { goRoomBR(); }
         else if (input == 7) { 
-            if (hasOpenedMassiveDoor) { goEntryDoorFail(); } // entry door blocked
+            if (hasCurseOfTheOrb) { goEntryDoorFail(); } // entry door blocked
             else { goTempleGrounds(); } // default
         }
         else { printComplaint(input); }
@@ -698,7 +706,13 @@ function goRoomFR() {
         // Room visible
         if (hasDiscoveredSecretPass) {
             // Already discovered secret pass
-            print("This is the room with the hidden doorway. It really doesn't have any other defining characteristics, though not much else could outshine a real-life secret door anyway.")
+            if (hasCurseOfTheOrb) {
+                // CURSED
+                print("This is the room with the " + color('secret exit','cyan') + "! Now that you think about it, you're really lucky this exists.");
+            } else {
+                // Not cursed
+                print("This is the room with the hidden doorway. It really doesn't have any other defining characteristics, though not much else could outshine a real-life secret door anyway.")
+            }
         } else {
             // Just discovered secret pass
             print("Just an ordinary room... or is it?");
@@ -816,6 +830,17 @@ function goSanctum() {
     }
 }
 
+function goSanctumFail() {
+    clear();
+    printLocation('Temple (Sanctum)');
+
+    print("You fool! You foolish fool! Why would you turn back into the " + color('plume','magenta') + "!? RUN AWAY!!");
+
+    printEnterToContinue();
+    function processInput(input){ goGreatHall(); }
+    waitForInput(processInput);
+}
+
 // --------------------- Ponder THE ORB ---------------------
 
 function goPonderTheOrb() {
@@ -857,7 +882,7 @@ function goStealOrb() {
     printLocation('Temple (THE ORB)');
 
     print("You've made your choice. In a feverish haze, " + color("you swipe " + color('THE ORB', 'lime') + " right off its pedestal.", darkGreen)); 
-    print(color('THE CURSE OF THE ORB', 'magenta') + " flashes through your mind once again.\nWhat will happen to you, now that you've preformed so terrible a deed? " + color("Well, you won't have to wait long too find out...", 'magenta'));
+    print(color('THE CURSE OF THE ORB', 'magenta') + " flashes through your mind once again.\nWhat will happen to you, now that you've preformed so terrible a deed? " + color("Well, you won't have to wait long to find out...", 'magenta'));
 
     printEnterToContinue();
     function processInput(input){ goStealOrb2(); }
