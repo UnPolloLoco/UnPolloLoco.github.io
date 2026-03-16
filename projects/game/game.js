@@ -11,9 +11,12 @@ let hasLargeKey = false;
 let totalKeyCount = 0;
 let hasFlashlight = false;
 let hasDiscoveredSecretPass = false;
-let hasCurseOfTheOrb = false;
 let hasOpenedMassiveDoor = false;
+
+let hasCurseOfTheOrb = false;
 let remainingTurnsToEscape = 3149578;
+let escapeFailed = false;
+let escapeSuccess = false;
 
 // --------------------- Make the River Map Usable ---------------------
 
@@ -73,30 +76,40 @@ function goCampsite() {
     clear();
     printLocation('Campsite');
 
-    print('Today is the day!');
-    if (hasMap) {
-        // Has map
-        print("You should depart for the temple. It's not like there's anything else to do in this sad little clearing.");
-    } else {
-        // No map
-        print("You should collect the map that you left in your tent, then depart for the temple. It's not like there's anything else to do in this sad little clearing.");
-    }
+    if (!escapeSuccess) {
+        // ----- NORMAL CAMPSITE TEXT -----
 
-    askToMoveWithOptions(
-        locationOption(1, 'Enter tent') + 
-        locationOption(2, 'Board boat') +
-        locationOption(3, 'SKIP AHEAD!!') +
-        locationOption(4, 'SKIP VERY AHEAD!!')
-    );
+        print('Today is the day!');
+        if (hasMap) {
+            // Has map
+            print("You should depart for the temple. It's not like there's anything else to do in this sad little clearing.");
+        } else {
+            // No map
+            print("You should collect the map that you left in your tent, then depart for the temple. It's not like there's anything else to do in this sad little clearing.");
+        }
     
-    function processInput(input){
-        if (input == 1) { goTent(); } 
-        else if (input == 2) { goBoat(); } 
-        else if (input == 3) { goTempleGrounds(); } 
-        else if (input == 4) { goSanctum(); hasFlashlight=true;hasSmallKey=true;hasMediumKey=true;hasLargeKey=true;totalKeyCount=3;hasDiscoveredSecretPass=true;hasMap=true;hasOpenedMassiveDoor=true; } 
-        else { printComplaint(input); }
+        askToMoveWithOptions(
+            locationOption(1, 'Enter tent') + 
+            locationOption(2, 'Board boat') +
+            locationOption(3, 'SKIP AHEAD!!') +
+            locationOption(4, 'SKIP VERY AHEAD!!')
+        );
+        
+        function processInput(input){
+            if (input == 1) { goTent(); } 
+            else if (input == 2) { goBoat(); } 
+            else if (input == 3) { goTempleGrounds(); } 
+            else if (input == 4) { goSanctum(); hasFlashlight=true;hasSmallKey=true;hasMediumKey=true;hasLargeKey=true;totalKeyCount=3;hasDiscoveredSecretPass=true;hasMap=true;hasOpenedMassiveDoor=true; } 
+            else { printComplaint(input); }
+        }
+        waitForInput(processInput);
+
+
+    } else {
+        // ----- YOU WON THE GAME!!!!!! -----
+
+        print('win'); // todo
     }
-    waitForInput(processInput);
 }
 
 // --------------------- Tent ---------------------
@@ -1025,7 +1038,7 @@ function goStealOrb2() {
         );
         
     hasCurseOfTheOrb = true;
-    remainingTurnsToEscape = 11;
+    remainingTurnsToEscape = 16 + 1;
 
     printEnterToContinue();
     function processInput(input){ goSanctum(); }
@@ -1081,4 +1094,9 @@ function start2() {
         goCampsite();
     }
     waitForInput(processInput);
+}
+
+// --------------------- FAIL Screen ---------------------
+function goFailScreen() {
+    print('fail'); // todo
 }
