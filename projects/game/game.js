@@ -191,107 +191,213 @@ function goRiver(segment) {
     let isDeadEnd = false;
     let isWrongWay = false;
     let successfullyFinishedRiver = false;
+
+    if (!hasCurseOfTheOrb) {
+        // ----- ORIGINAL ROUTE -----
+        if (segment == 'a') {
+            // ---- Segment A ----
+            leftSegment = 'l';
+            rightSegment = 'b';
+            highlightRiverPart('a');
     
-    if (segment == 'a') {
-        // ---- Segment A ----
-        leftSegment = 'l';
-        rightSegment = 'b';
-        highlightRiverPart('a');
+        } else if (segment == 'b') {
+            // ---- Segment B ----
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'a';
+            highlightRiverPart('a');
+            highlightRiverPart('b');
+            
+        } else if (segment == 'd') {
+            // ---- Segment D ----
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'l';
+            highlightRiverPart('a');
+            highlightRiverPart('l');
+            highlightRiverPart('d');
+            
+        } else if (segment == 'e') {
+            // ---- Segment E ----
+            leftSegment = 'g';
+            rightSegment = 'f';
+            highlightRiverPart('a');
+            highlightRiverPart('l');
+            highlightRiverPart('e');
+    
+        } else if (segment == 'f') {
+            // ---- Segment F ----
+            leftSegment = 'j';
+            rightSegment = 'k';
+            isWrongWay = true;
+            previousSegment = 'e';
+            highlightRiverPart('a');
+            highlightRiverPart('l');
+            highlightRiverPart('e');
+            highlightRiverPart('f');
+    
+        } else if (segment == 'g') {
+            // ---- Segment G ----
+            leftSegment = 'h';
+            rightSegment = 'i';
+            highlightRiverPart('a');
+            highlightRiverPart('l');
+            highlightRiverPart('e');
+            highlightRiverPart('g');
+    
+        } else if (segment == 'h') {
+            // ---- Segment H ----
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'g';
+            highlightRiverPart('a');
+            highlightRiverPart('l');
+            highlightRiverPart('e');
+            highlightRiverPart('g');
+            highlightRiverPart('h');
+    
+        } else if (segment == 'i') {
+            // ---- Segment I ----
+            successfullyFinishedRiver = true;
+            highlightRiverPart('a');
+            highlightRiverPart('l');
+            highlightRiverPart('e');
+            highlightRiverPart('g');
+            highlightRiverPart('i');
+    
+        } else if (segment == 'j') {
+            // ---- Segment J ----
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'f';
+            highlightRiverPart('a');
+            highlightRiverPart('l');
+            highlightRiverPart('e');
+            highlightRiverPart('f');
+            highlightRiverPart('j');
+    
+        } else if (segment == 'k') {
+            // ---- Segment K ----
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'f';
+            highlightRiverPart('a');
+            highlightRiverPart('l');
+            highlightRiverPart('e');
+            highlightRiverPart('f');
+            highlightRiverPart('k');
+    
+        } else if (segment == 'l') {
+            // ---- Segment L ----
+            leftSegment = 'd';
+            rightSegment = 'e';
+            highlightRiverPart('a');
+            highlightRiverPart('l');
+        }
 
-    } else if (segment == 'b') {
-        // ---- Segment B ----
-        isDeadEnd = true;
-        isWrongWay = true;
-        previousSegment = 'a';
-        highlightRiverPart('a');
-        highlightRiverPart('b');
-        
-    } else if (segment == 'd') {
-        // ---- Segment D ----
-        isDeadEnd = true;
-        isWrongWay = true;
-        previousSegment = 'l';
-        highlightRiverPart('a');
-        highlightRiverPart('l');
-        highlightRiverPart('d');
-        
-    } else if (segment == 'e') {
-        // ---- Segment E ----
-        leftSegment = 'g';
-        rightSegment = 'f';
-        highlightRiverPart('a');
-        highlightRiverPart('l');
-        highlightRiverPart('e');
+    } else {
+        // ----- CURSED RETURN ROUTE -----
+        if (segment == 'a') {
+            // ---- Segment A ---- 
+            successfullyFinishedRiver = true;
+            highlightRiverPart('i');
+            highlightRiverPart('g');
+            highlightRiverPart('e');
+            highlightRiverPart('l');
+            highlightRiverPart('a');
+    
+        } else if (segment == 'b') {
+            // ---- Segment B ---- 
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'l';
+            highlightRiverPart('i');
+            highlightRiverPart('g');
+            highlightRiverPart('e');
+            highlightRiverPart('l');
+            highlightRiverPart('b');
+            
+        } else if (segment == 'd') {
+            // ---- Segment D ---- 
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'e';
+            highlightRiverPart('i');
+            highlightRiverPart('g');
+            highlightRiverPart('e');
+            highlightRiverPart('d');
+            
+        } else if (segment == 'e') {
+            // ---- Segment E ---- 
+            leftSegment = 'l';
+            rightSegment = 'd';
+            highlightRiverPart('i');
+            highlightRiverPart('g');
+            highlightRiverPart('e');
+    
+        } else if (segment == 'f') {
+            // ---- Segment F ---- 
+            leftSegment = 'j';
+            rightSegment = 'k';
+            isWrongWay = true;
+            previousSegment = 'g';
+            highlightRiverPart('i');
+            highlightRiverPart('g');
+            highlightRiverPart('f');
+    
+        } else if (segment == 'g') {
+            // ---- Segment G ---- 
+            leftSegment = 'f';
+            rightSegment = 'e';
+            highlightRiverPart('i');
+            highlightRiverPart('g');
+    
+        } else if (segment == 'h') {
+            // ---- Segment H ---- 
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'i';
+            highlightRiverPart('i');
+            highlightRiverPart('h');
+    
+        } else if (segment == 'i') {
+            // ---- Segment I ---- 
+            leftSegment = 'g';
+            rightSegment = 'h';
+            highlightRiverPart('i');
+    
+        } else if (segment == 'j') {
+            // ---- Segment J ----
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'f';
+            highlightRiverPart('i');
+            highlightRiverPart('g');
+            highlightRiverPart('f');
+            highlightRiverPart('j');
+    
+        } else if (segment == 'k') {
+            // ---- Segment K ----
+            isDeadEnd = true;
+            isWrongWay = true;
+            previousSegment = 'f';
+            highlightRiverPart('i');
+            highlightRiverPart('g');
+            highlightRiverPart('f');
+            highlightRiverPart('k');
+    
+        } else if (segment == 'l') {
+            // ---- Segment L ---- 
+            leftSegment = 'b';
+            rightSegment = 'a';
+            highlightRiverPart('i');
+            highlightRiverPart('g');
+            highlightRiverPart('e');
+            highlightRiverPart('l');
+        }
 
-    } else if (segment == 'f') {
-        // ---- Segment F ----
-        leftSegment = 'j';
-        rightSegment = 'k';
-        isWrongWay = true;
-        previousSegment = 'e';
-        highlightRiverPart('a');
-        highlightRiverPart('l');
-        highlightRiverPart('e');
-        highlightRiverPart('f');
-
-    } else if (segment == 'g') {
-        // ---- Segment G ----
-        leftSegment = 'h';
-        rightSegment = 'i';
-        highlightRiverPart('a');
-        highlightRiverPart('l');
-        highlightRiverPart('e');
-        highlightRiverPart('g');
-
-    } else if (segment == 'h') {
-        // ---- Segment H ----
-        isDeadEnd = true;
-        isWrongWay = true;
-        previousSegment = 'g';
-        highlightRiverPart('a');
-        highlightRiverPart('l');
-        highlightRiverPart('e');
-        highlightRiverPart('g');
-        highlightRiverPart('h');
-
-    } else if (segment == 'i') {
-        // ---- Segment I ----
-        successfullyFinishedRiver = true;
-        highlightRiverPart('a');
-        highlightRiverPart('l');
-        highlightRiverPart('e');
-        highlightRiverPart('g');
-        highlightRiverPart('i');
-
-    } else if (segment == 'j') {
-        // ---- Segment J ----
-        isDeadEnd = true;
-        isWrongWay = true;
-        previousSegment = 'f';
-        highlightRiverPart('a');
-        highlightRiverPart('l');
-        highlightRiverPart('e');
-        highlightRiverPart('f');
-        highlightRiverPart('j');
-
-    } else if (segment == 'k') {
-        // ---- Segment K ----
-        isDeadEnd = true;
-        isWrongWay = true;
-        previousSegment = 'f';
-        highlightRiverPart('a');
-        highlightRiverPart('l');
-        highlightRiverPart('e');
-        highlightRiverPart('f');
-        highlightRiverPart('k');
-
-    } else if (segment == 'l') {
-        // ---- Segment L ----
-        leftSegment = 'd';
-        rightSegment = 'e';
-        highlightRiverPart('a');
-        highlightRiverPart('l');
     }
+
 
     // Final message
 
@@ -305,7 +411,7 @@ function goRiver(segment) {
 
     } else if (segment == 'a' && hasCurseOfTheOrb) {
         // End of river (CURSED)
-        print('You made it back to camp, and all in one piece at that!');
+        print('You ' + color("made it back to camp","cyan") + ', and all in one piece at that!!!');
         
     } else {
         // Everything else
@@ -338,12 +444,21 @@ function goRiver(segment) {
             else { printComplaint(input); }
         }
 
-    } else if (segment == 'i') {
+    } else if (!hasCurseOfTheOrb && segment == 'i') {
         // --- MADE IT TO THE TEMPLE!!!!!!!! ---
         printEnterToContinue();
 
         function processInput(input){
             goRiverbank();
+        }
+        waitForInput(processInput);
+
+    } else if (hasCurseOfTheOrb && segment == 'a') {
+        // --- ESCAPED FROM THE TEMPLE!!!!!!!! ---
+        printEnterToContinue();
+
+        function processInput(input){
+            goCampsite();
         }
         waitForInput(processInput);
 
