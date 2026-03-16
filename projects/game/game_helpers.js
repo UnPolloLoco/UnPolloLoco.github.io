@@ -17,22 +17,21 @@ function color(text, colorName) {
 // Write out current location
 function printLocation(name) {
     console.log(hasCurseOfTheOrb, escapeFailed, escapeSuccess, name)
-    // Check if overcome by the CURSE
+
     if (hasCurseOfTheOrb && !escapeFailed && !escapeSuccess) {
-        // Normal checking
+        remainingTurnsToEscape = remainingTurnsToEscape - 1;
+
+        // Check if overcome by the CURSE
         if (name == 'Campsite') {
             escapeSuccess = true;
             hasCurseOfTheOrb = false;
         } else if (remainingTurnsToEscape <= 0) {
             escapeFailed = true;
-            goFailScreen(); // todo
         }
     }
 
-    if (hasCurseOfTheOrb) {
-        // --- CURSED? ---
-        remainingTurnsToEscape = remainingTurnsToEscape - 1;
-
+    if (hasCurseOfTheOrb && !escapeFailed && !escapeSuccess) {
+        // --- CURSED? but still playing ---
         print(
             color('Location: ', darkGreen) 
             + color(name, 'lime')
@@ -138,6 +137,12 @@ function handleInput(input) {
 //input is a function that takes a string and decides what to do with it
 function waitForInput(handlerFunction){
     handleInput = handlerFunction;
+
+    // Change screen after current function finished doing its thing
+    if (escapeFailed && !hasSeenFailScreen) {
+        hasSeenFailScreen = true;
+        goFailScreenInitial();
+    }
 }
 
 function waitThenCall(target){

@@ -14,9 +14,11 @@ let hasDiscoveredSecretPass = false;
 let hasOpenedMassiveDoor = false;
 
 let hasCurseOfTheOrb = false;
-let remainingTurnsToEscape = 3149578;
+let remainingTurnsToEscape = 9999999;
+let maxTurnsToEscape = 15;
 let escapeFailed = false;
 let escapeSuccess = false;
+let hasSeenFailScreen = false;
 
 // --------------------- Make the River Map Usable ---------------------
 
@@ -109,6 +111,10 @@ function goCampsite() {
         // ----- YOU WON THE GAME!!!!!! -----
 
         print('win'); // todo
+
+        printEnterToContinue();
+        function processInput(input){ goWinScreen(); }
+        waitForInput(processInput);
     }
 }
 
@@ -175,6 +181,7 @@ function goBoat() {
 
 function goRiverIntermediate(segment) {
     clear();
+    remainingTurnsToEscape = remainingTurnsToEscape + 1; // offset double loss
     printLocation('River');
     print('Paddling along...');
 
@@ -185,9 +192,12 @@ function goRiver(segment) {
     clear();
     printLocation('River');
 
-    if (segment == 'i') {
-        // TRIP FINISHED
+    if (segment == 'i' && !hasCurseOfTheOrb) {
+        // TRIP FINISHED - INCOMING
         print("You've made it to the end of your map! You stop your boat and hop off onto the small beach.")
+    } else if (segment == 'a' && hasCurseOfTheOrb) {
+        // TRIP FINISHED - OUTGOING
+        print("Soon enough, your small tent comes into view.")
     } else {
         // Normal message
         print('You soon reach a fork in the river. Which way do you turn? Consult your map.')
@@ -931,7 +941,7 @@ function goSanctum() {
 
     if (hasCurseOfTheOrb) {
         // CURSED
-        print(color('THE CURSE OF THE ORB', 'magenta') + " is upon you!\nWhichever hostile being you just summoned is in hot pursuit. In order to survive, you must " + color('flee all the way back to your campsite', darkGreen) + " in "  + color("X turns","lime") + " or less."); //todo
+        print(color('THE CURSE OF THE ORB', 'magenta') + " is upon you!\nWhichever hostile being you just summoned is in hot pursuit. In order to survive, you must " + color('flee all the way back to your campsite', darkGreen) + " in "  + color(maxTurnsToEscape + " turns","lime") + " or less."); //todo
         print('What are you still standing around for?? Get moving!!');
 
         askToMoveWithOptions(
@@ -1038,7 +1048,7 @@ function goStealOrb2() {
         );
         
     hasCurseOfTheOrb = true;
-    remainingTurnsToEscape = 16 + 1;
+    remainingTurnsToEscape = maxTurnsToEscape + 1;
 
     printEnterToContinue();
     function processInput(input){ goSanctum(); }
@@ -1096,7 +1106,28 @@ function start2() {
     waitForInput(processInput);
 }
 
+// --------------------- WIN Screen ---------------------
+function goWinScreen() {
+    clear();
+    print('win2'); // todo
+
+    gameActive = false;
+}
+
 // --------------------- FAIL Screen ---------------------
-function goFailScreen() {
+function goFailScreenInitial() {
+    clear();
+    printLocation('???');
     print('fail'); // todo
+
+    printEnterToContinue();
+    function processInput(input){ goFailScreen(); }
+    waitForInput(processInput);
+}
+
+function goFailScreen() {
+    clear();
+    print('fail2'); // todo
+
+    gameActive = false;
 }

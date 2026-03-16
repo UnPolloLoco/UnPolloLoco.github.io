@@ -8,8 +8,6 @@ This story is set in a foresty area (jungle, perhaps? or is that too on-the-nose
 
 ## Map
 
-This miiight have to be cut down depending on how hard it is to make this 😳😔 Just maybe
-
 ```mermaid
 graph TD;
     s(((Start))) -.- Campsite
