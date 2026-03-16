@@ -23,7 +23,7 @@ function printLocation(name) {
             color('Location: ', darkGreen) 
             + color(name, 'lime')
             + '\n'
-            + color('          '+remainingTurnsToEscape+' Turns Remaining', 'magenta') 
+            + color('          '+remainingTurnsToEscape+' Moves Remaining', 'magenta') 
         );
     } else {
         // Not cursed (normal)
