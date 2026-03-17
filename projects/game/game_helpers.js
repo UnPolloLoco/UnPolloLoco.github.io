@@ -106,6 +106,16 @@ function printAscii(art) {
     output.scrollTop = output.scrollHeight;
 }
 
+function printAsciiColor(art, color) {
+    const output = document.getElementById('output');
+    const pre = document.createElement('pre');
+    pre.className = 'ascii-art';
+    pre.textContent = art;
+    output.appendChild(pre);
+    output.scrollTop = output.scrollHeight;
+    pre.outerHTML = '<span style="color:'+color+';">' + pre.outerHTML + '</span>'
+}
+
 //clears the output screen.
 //this isn't really necessary, but I found that the output
 //looked cluttered if I didn't clear it every time the user
