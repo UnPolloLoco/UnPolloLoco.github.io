@@ -1030,7 +1030,7 @@ function goOrb() {
     `, 'cyan')
     // Orb based off of "Georgia11" font's letter O
 
-    print("You approach the altar.\n" + color('THE ORB', 'lime') + "'s great power is but an arm's length away!"); // todo
+    print("You approach the altar.\n" + color('THE ORB', 'lime') + "'s great power is but an arm's length away!");
 
     askToMoveWithOptions(
         locationOption(1, 'STEAL THE ORB!') + 
