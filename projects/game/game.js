@@ -111,7 +111,7 @@ function goCampsite() {
         // ----- YOU WON THE GAME!!!!!! -----
 
         print('You stumble ashore, ready to keep running.');
-        print('HOWEVER, when you turn around to see how close the ' + color('plume','magenta') + " is... it's not there! You peer back down the river, and——some 200 feet away——you see the " + color('plume','magenta') + "'s remnants dissolving into the wind. Its eye-like lights flicker, shudder, and extinquish. Perhaps it stretched out so far that it couldn't hold itself together anymore? Perhaps it simply gave up, and let you go? All you know is that, somehow, you're officially free from " + color('THE CURSE OF THE ORB','magenta') + '!');
+        print('HOWEVER, when you turn around to see how close the ' + color('plume','magenta') + " is... it's not there! You peer back down the river, and——some 200 feet away——you see the " + color('plume','magenta') + "'s remnants dissolving into the wind. Its eye-like lights flicker, shudder, and extinguish. Perhaps it stretched out so far that it couldn't hold itself together anymore? Perhaps it simply gave up, and let you go? All you know is that, somehow, you're officially free from " + color('THE CURSE OF THE ORB','magenta') + '!!!');
         print('You look down at ' + color('THE ORB','lime') + " with a relieved sigh. All that power? It's yours now. Without even realizing, you break into a huge, silly grin... you know you're going to have fun with this.")
 
         print(color(
@@ -632,7 +632,7 @@ function goTempleBench() {
     clear();
     printLocation('Temple Grounds (Bench)');
     
-    print("You head over to the bench (well, you <em>think</em> it's a bench) and take a seat. It's a nice place, out of the sun and with something of a view——in fact, you're pretty sure you can see a bird or two in the trees.");
+    print("You head over to the bench (well, you <em>think</em> it's a bench) and take a seat. It's a nice place, out of the sun and with something of a view——in fact, you're pretty sure you can spot a bird or two in the canopies.");
 
     if (hasLargeKey == false) {
         // No key yet
@@ -675,7 +675,7 @@ function goGreatHall() {
 
     if (hasCurseOfTheOrb) {
         // CURSED
-        print('A deafening rumble fills the hall as a huge slab of rock descends from the ceiling and ' + color('blocks the main entryway', 'cyan') + ", right before your eyes. " + color('THE CURSE OF THE ORB', 'magenta') + " is responsible for this, you conclude. You're going to need another way out as soon as possible.");
+        print('A deafening rumble fills the hall as a ' + color('huge slab of rock','cyan') + ' descends from the ceiling and ' + color('blocks the main entryway', 'cyan') + ", right before your eyes. " + color('THE CURSE OF THE ORB', 'magenta') + " is responsible for this, you conclude. You're going to need another way out as soon as possible.");
     } else {
 
 
@@ -695,7 +695,7 @@ function goGreatHall() {
     // Actions
 
     let sanctumPrompt = 'Approach the massive door';
-    if (hasOpenedMassiveDoor) { sanctumPrompt = "Enter the Orb Sanctum"; }
+    if (hasOpenedMassiveDoor) { sanctumPrompt = "Enter Sanctum"; }
 
     let exitPrompt = 'Exit temple';
     if (hasCurseOfTheOrb) { exitPrompt = "Exit temple (BLOCKED)"; }
@@ -932,7 +932,7 @@ function goRoomBR2() {
 
     print("Once your eyes adjust, you quickly find the 'someone' who was here before you. Let's just say they don't need their flashlight anymore.");
     print("This interaction reminds you of an important little footnote you've been trying to push to the back of your mind: " + color('THE CURSE OF THE ORB', 'magenta') + ". According to " + color('THE CURSE OF THE ORB', 'magenta') + ", anyone who dares thieve the orb (i.e. YOU) will face complete and total destruction.");
-    print("...But hey, if this guy made it as far as this room, surely you'll have " + color('the chance to escape', 'lime') + " too?");
+    print("...But hey, if that guy made it as far as this room, surely you'll have " + color('the chance to escape', 'lime') + " too, right?");
 
     printEnterToContinue();
     function processInput(input){ goGreatHall(); }
@@ -970,12 +970,14 @@ function goSanctum() {
 
         askToMoveWithOptions(
             locationOption(1, 'Ponder THE ORB') + 
-            locationOption(2, 'Approach THE ORB')
+            locationOption(2, 'Approach THE ORB') +
+            locationOption(3, 'Exit Sanctum')
         );
         
         function processInput(input){
             if (input == 1) { goPonderTheOrb(); } 
             else if (input == 2) { goOrb(); } 
+            else if (input == 3) { goGreatHall(); } 
             else { printComplaint(input); }
         }
         waitForInput(processInput);
