@@ -1057,7 +1057,7 @@ function goStealOrb2() {
 
 // --------------------- Start Screens ---------------------
 function start() {
-    printAscii(`\
+    printAsciiColor(`\
                        ~~~   The Hunt For   ~~~
 
  @@@@@@@@. @@.    @@. @@@@@@@@.        @@@@@@@.  @@@@@@@@.  @@@@@@@@.
@@ -1067,7 +1067,7 @@ function start() {
     @@.    @@.    @@. @@.             @@.    @@. @@.  @@.   @@.    @@.
     @@.    @@.    @@. @@.             @@.    @@. @@.   @@.  @@.    @@.
     @@.    @@.    @@. @@@@@@@@.        @@@@@@@.  @@.    @@. @@@@@@@@.
-    `);
+    `, 'white');
     // "banner3" font by Merlin Greywolf merlin@brahms.udel.edu August 9, 1994
 
     print('\n\n\n')
@@ -1109,7 +1109,27 @@ function start2() {
 // --------------------- WIN Screen ---------------------
 function goWinScreen() {
     clear();
-    print('win2'); // todo
+
+    printAsciiColor(`\
+                                                          .
+__      __                                                |    
+\\ \\    / /  _____                                       -< >- 
+ \\ \\  / /  |_   _|   _____                                |    
+  \\ \\/ /     | |    / ____|  _______                      .
+   \\  /      | |   | |      |__   __|   ____              
+    \\/      _| |_  | |         | |     / __ \\   _____           
+           |_____| | |____     | |    | |  | | |  __ \\  __     __  
+                    \\_____|    | |    | |  | | | |__) | \\ \\   / /
+      .                        |_|    | |__| | |  _  /   \\ \\_/ /
+      |                                \\____/  | | \\ \\    \\   /
+    -< >-                                      |_|  \\_\\    | |
+      |                                                    |_|   
+      .
+    `, 'yellow');
+    // "Big" font, unknown creator
+
+    print('After years of your hard work and dedication, the quest for ' + color('THE ORB','lime') + " has come to a satisfying close.");
+    print('THE END :))')
 
     gameActive = false;
 }
@@ -1127,7 +1147,31 @@ function goFailScreenInitial() {
 
 function goFailScreen() {
     clear();
-    print('fail2'); // todo
+
+    printAsciiColor(`\
+ ______  _______ _______ _______ _______ _______  
+|      \\|    ___|    ___|    ___|   _   |_     _| 
+|   --  |    ___|    ___|    ___|       | |   |__ 
+|______/|_______|___|   |_______|___|___| |___|__|
+                                      ^|   ^^|V^
+                                       ^     ^|
+                                              .      `,'red')
+    // "Chunky" font, unknown creator
+
+    print(color('<em>"Perhaps the real orb was the\nfriends we made along the way...?"</em>', '#F77'));
+    print(color("\t— <em>Lament of Cope</em>", '#F77'))
 
     gameActive = false;
 }
+
+
+/*
+Stick Letters
+Varsity
+Bell
+Big
+Chunky
+Cricket
+Cybermedium
+Small
+*/
