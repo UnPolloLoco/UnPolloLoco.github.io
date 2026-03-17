@@ -110,9 +110,15 @@ function goCampsite() {
     } else {
         // ----- YOU WON THE GAME!!!!!! -----
 
-        print('win'); // todo
+        print('You stumble ashore, ready to keep running.');
+        print('HOWEVER, when you turn around to see how close the ' + color('plume','magenta') + " is... it's not there! You peer back down the river, and——some 200 feet away——you see the " + color('plume','magenta') + "'s remnants dissolving into the wind. Its eye-like lights flicker, shudder, and extinquish. Perhaps it stretched out so far that it couldn't hold itself together anymore? Perhaps it simply gave up, and let you go? All you know is that, somehow, you're officially free from " + color('THE CURSE OF THE ORB','magenta') + '!');
+        print('You look down at ' + color('THE ORB','lime') + " with a relieved sigh. All that power? It's yours now. Without even realizing, you break into a huge, silly grin... you know you're going to have fun with this.")
 
-        printEnterToContinue();
+        print(color(
+            "Click " + color("ENTER", 'lime') + " to finish!!",
+            darkGreen
+        ));
+
         function processInput(input){ goWinScreen(); }
         waitForInput(processInput);
     }
@@ -679,7 +685,7 @@ function goGreatHall() {
             print("A large, arched room stands before you. Armed with your flashlight, you can finally see its full splendor.")
         } else {
             // No flashlight
-            print("A large, arched room stands before you. The only source of light is the entryway behind you, but the Sun is low enough to illuminate the room's main features.")
+            print("You're now inside the temple. A large, arched room stands before you. The only source of light is the entryway behind you, but the Sun is low enough to illuminate the room's main features.")
         }
     
         print("You can see a fountain in the center of the hall. Then, in each corner, there's what looks to be entrances to secondary rooms. Finally——and most importantly, you think——at the opposite end of the hall, you can see the outline of a " + color('massive door', darkGreen) + " that nearly extends to the top of the hall's vaulted ceiling. You are certain that " + color('THE ORB','lime') + "'s sacred resting place is on the other side.")
@@ -1153,8 +1159,20 @@ __      __                                                |
 // --------------------- FAIL Screen ---------------------
 function goFailScreenInitial() {
     clear();
-    printLocation('???');
-    print('fail'); // todo
+    printLocation('?????');
+    
+    print('FWWOOOOOOOOOOOOOOOOOSSSSSHHHHHH...')
+
+    printEnterToContinue();
+    function processInput(input){ goFailScreenInitial2(); }
+    waitForInput(processInput);
+}
+
+function goFailScreenInitial2() {
+    clear();
+    printLocation('?????');
+    print("A coarse, icy wind blasts through you... the blue fog accompanying this gale betrays your torment's source: the " + color('plume','magenta') + ". It grows thicker, blotting out the faint glow of " + color('THE ORB','lime') + ' in your hands... blotting out the sunlight...');
+    print(color('THE CURSE OF THE ORB','magenta') + ' has overcome you.')
 
     printEnterToContinue();
     function processInput(input){ goFailScreen(); }
@@ -1175,7 +1193,7 @@ function goFailScreen() {
     // "Chunky" font, unknown creator
 
     print(color('<em>"Perhaps the real orb was the\nfriends we made along the way...?"</em>', '#F77'));
-    print(color("\t— <em>Chorus of Cope</em>", '#F77'))
+    print(color('\t— <em>"To Cope," page 488</em>', '#F77'))
 
     gameActive = false;
 }

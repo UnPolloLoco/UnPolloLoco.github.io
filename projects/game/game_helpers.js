@@ -16,8 +16,6 @@ function color(text, colorName) {
 
 // Write out current location
 function printLocation(name) {
-    console.log(hasCurseOfTheOrb, escapeFailed, escapeSuccess, name)
-
     if (hasCurseOfTheOrb && !escapeFailed && !escapeSuccess) {
         remainingTurnsToEscape = remainingTurnsToEscape - 1;
 
