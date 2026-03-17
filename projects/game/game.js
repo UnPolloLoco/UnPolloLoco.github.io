@@ -941,7 +941,7 @@ function goSanctum() {
 
     if (hasCurseOfTheOrb) {
         // CURSED
-        print(color('THE CURSE OF THE ORB', 'magenta') + " is upon you!\nWhichever hostile being you just summoned is in hot pursuit. In order to survive, you must " + color('flee all the way back to your campsite', darkGreen) + " in "  + color(maxTurnsToEscape + " turns","lime") + " or less."); //todo
+        print(color('THE CURSE OF THE ORB', 'magenta') + " is upon you!\nWhichever hostile being you just summoned is in hot pursuit. In order to survive, you must " + color('flee all the way back to your campsite', darkGreen) + " in "  + color(maxTurnsToEscape + " turns","lime") + " or less.");
         print('What are you still standing around for?? Get moving!!');
 
         askToMoveWithOptions(
@@ -1006,10 +1006,26 @@ function goOrb() {
     clear();
     printLocation('Temple (THE ORB)');
 
+    printAsciiColor(`                 
+            |    
+           .|o8""""8oq.
+        -—=< >=—-    \`YM. 
+         d' Y         :MM 
+         M. |       ..dMM 
+         M:.      ...MNMP 
+   .—————\`Mb._...;gjjNjP'—————. 
+  /        \`"MN#$%#MP"'        \\
+ |.____________________________.|
+  ;____________________________;
+   |                          |      
+   |                          |      
+    `, 'cyan')
+    // Orb based off of "Georgia11" font's letter O
+
     print("You approach the altar.\n" + color('THE ORB', 'lime') + "'s great power is but an arm's length away!"); // todo
 
     askToMoveWithOptions(
-        locationOption(1, 'STEAL THE ORB') + 
+        locationOption(1, 'STEAL THE ORB!') + 
         locationOption(2, 'Abstain')
     );
     
@@ -1159,19 +1175,7 @@ function goFailScreen() {
     // "Chunky" font, unknown creator
 
     print(color('<em>"Perhaps the real orb was the\nfriends we made along the way...?"</em>', '#F77'));
-    print(color("\t— <em>Lament of Cope</em>", '#F77'))
+    print(color("\t— <em>Chorus of Cope</em>", '#F77'))
 
     gameActive = false;
 }
-
-
-/*
-Stick Letters
-Varsity
-Bell
-Big
-Chunky
-Cricket
-Cybermedium
-Small
-*/
