@@ -8,7 +8,7 @@
 body {
     margin: 0;
     padding: 20px;
-    background-color: #1e1e1e;
+    background-color: #191c19;
     font-family: var(--font);
     color: #bbb;
     height: 100vh;
@@ -18,6 +18,8 @@ body {
 
 h1{
     text-align: center;
+    color: #0a0;
+    margin-top: 0;
 }
 
 .location{
@@ -45,9 +47,11 @@ p { margin: 20px 0; }
     max-width: 80%;
     margin: 0 auto;
     border: 2px solid lime;
+    border-radius: 20px;
     padding: 20px;
     background-color: #000;
     overflow: hidden;
+    box-shadow: 0 0 40px black;
 }
 
 #output {
