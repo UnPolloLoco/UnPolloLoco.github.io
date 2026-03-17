@@ -92,16 +92,16 @@ function goCampsite() {
     
         askToMoveWithOptions(
             locationOption(1, 'Enter tent') + 
-            locationOption(2, 'Board boat') +
-            locationOption(3, 'SKIP AHEAD!!') +
-            locationOption(4, 'SKIP VERY AHEAD!!')
+            locationOption(2, 'Board boat') //+
+            // locationOption(3, 'SKIP AHEAD!!') +
+            // locationOption(4, 'SKIP VERY AHEAD!!')
         );
         
         function processInput(input){
             if (input == 1) { goTent(); } 
             else if (input == 2) { goBoat(); } 
-            else if (input == 3) { goTempleGrounds(); } 
-            else if (input == 4) { goSanctum(); hasFlashlight=true;hasSmallKey=true;hasMediumKey=true;hasLargeKey=true;totalKeyCount=3;hasDiscoveredSecretPass=true;hasMap=true;hasOpenedMassiveDoor=true; } 
+            // else if (input == 3) { goTempleGrounds(); } 
+            // else if (input == 4) { goSanctum(); hasFlashlight=true;hasSmallKey=true;hasMediumKey=true;hasLargeKey=true;totalKeyCount=3;hasDiscoveredSecretPass=true;hasMap=true;hasOpenedMassiveDoor=true; } 
             else { printComplaint(input); }
         }
         waitForInput(processInput);
