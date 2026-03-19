@@ -1,14 +1,33 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-ctx.fillStyle = 'blue';
+// CANVAS: 480 x 320
+
+let x = 240;
+let dx = 2;
+let y = 300;
+let dy = -2;
+
+function drawBall() {
+    ctx.fillStyle = "blue";
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, Math.PI * 2);
+    ctx.fill();
+}
 
 function animate() {
     ctx.clearRect(0,0,480,320);
 
-    ctx.fillRect(10, 10, 100, 100);
+    drawBall();
+
+    x = x + dx;
+    y = y + dy;
 
     requestAnimationFrame(animate);
 }
 
-animate();
+const runButton = document.getElementById("runButton");
+runButton.addEventListener("click", () => {
+    animate();
+    runButton.disabled = true;
+});
