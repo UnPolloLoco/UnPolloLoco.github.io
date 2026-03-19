@@ -5,17 +5,21 @@ const ctx = canvas.getContext('2d');
 
 const ballRadius = 10;
 let x = 240;
-let dx = 3;
 let y = 300;
-let dy = -3;
+let dx = 5;
+let dy = -5;
+let ballSpeedIncreasePerHit = 1.05;
 
 const paddleHeight = 10;
 const paddleWidth = 75;
 let paddleX = (canvas.width - paddleWidth) / 2;
-let paddleSpeed = 5;
+let paddleSpeed = 8;
+let paddleCollisionGenerosity = 7;
 
 let rightPressed = false;
 let leftPressed = false;
+
+let animateInterval = 0;
 
 function drawPaddle() {
     ctx.fillStyle = "blue";
@@ -38,6 +42,24 @@ function animate() {
     drawBall();
     drawPaddle();
 
+    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) { dx = -dx; }
+
+    if (y + dy < ballRadius) {
+        dy = -dy;
+    } else if (y + dy > canvas.height - ballRadius) {
+        let paddleLeftX = paddleX - paddleCollisionGenerosity;
+        let paddleRightX = paddleX + paddleWidth + paddleCollisionGenerosity;
+
+        if (paddleLeftX < x && x < paddleRightX) {
+            dy = -dy * ballSpeedIncreasePerHit;
+            dx = dx * ballSpeedIncreasePerHit;
+        } else {
+            alert("GAME OVER");
+            document.location.reload();
+            clearInterval(interval);
+        }
+    }
+      
     x = x + dx;
     y = y + dy;
 
@@ -52,16 +74,11 @@ function animate() {
             0
         );
     }
-
-    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) { dx = -dx; }
-    if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) { dy = -dy; }
-
-    requestAnimationFrame(animate);
 }
 
 const runButton = document.getElementById("runButton");
 runButton.addEventListener("click", () => {
-    animate();
+    animateInterval = setInterval(animate, 1000/60);
     runButton.disabled = true;
 });
 
