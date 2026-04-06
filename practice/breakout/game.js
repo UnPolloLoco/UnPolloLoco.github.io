@@ -4,8 +4,10 @@ const ctx = canvas.getContext('2d');
 // CANVAS: canvas.width x canvas.height
 
 const ballRadius = 10;
-let x = 240;
-let y = 300;
+
+let x = Math.random()*480;
+let y = Math.random()*320;
+
 let dx = 5;
 let dy = -5;
 let ballSpeedIncreasePerHit = 1.05;
@@ -19,7 +21,30 @@ let paddleCollisionGenerosity = 7;
 let rightPressed = false;
 let leftPressed = false;
 
-let animateInterval = 0;
+// let animateInterval = 0;
+
+const brickRowCount = 3;
+const brickColumnCount = 5;
+const brickWidth = 75;
+const brickHeight = 20;
+const brickPadding = 10;
+const brickOffsetTop = 30;
+const brickOffsetLeft = 30;
+
+
+function drawBricks(){
+    for (let c = 0; c < brickColumnCount; c++) {
+        for (let r = 0; r < brickRowCount; r++) {
+            console.log(brickOffsetLeft + (brickWidth + brickPadding) * c)
+            ctx.fillRect(
+                brickOffsetLeft + (brickWidth + brickPadding) * c,
+                brickOffsetTop + (brickHeight + brickPadding) * r,
+                brickWidth,
+                brickHeight,
+            );
+        }
+    }
+}
 
 function drawPaddle() {
     ctx.fillStyle = "blue";
@@ -41,6 +66,7 @@ function animate() {
 
     drawBall();
     drawPaddle();
+    drawBricks();
 
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) { dx = -dx; }
 
@@ -50,13 +76,13 @@ function animate() {
         let paddleLeftX = paddleX - paddleCollisionGenerosity;
         let paddleRightX = paddleX + paddleWidth + paddleCollisionGenerosity;
 
-        if (paddleLeftX < x && x < paddleRightX) {
+        if (true/*paddleLeftX < x && x < paddleRightX*/) {
             dy = -dy * ballSpeedIncreasePerHit;
             dx = dx * ballSpeedIncreasePerHit;
         } else {
             alert("GAME OVER");
             document.location.reload();
-            clearInterval(interval);
+            // clearInterval(interval);
         }
     }
       
@@ -74,11 +100,14 @@ function animate() {
             0
         );
     }
+
+    requestAnimationFrame(animate);
 }
 
 const runButton = document.getElementById("runButton");
 runButton.addEventListener("click", () => {
-    animateInterval = setInterval(animate, 1000/60);
+    // animateInterval = setInterval(animate, 1000/60);
+    animate();
     runButton.disabled = true;
 });
 
