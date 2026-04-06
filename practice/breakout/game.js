@@ -4,13 +4,19 @@ const ctx = canvas.getContext('2d');
 // CANVAS: canvas.width x canvas.height
 
 const ballRadius = 10;
+const ballSpeedIncreasePerHit = 1.05;
 
-let x = Math.random()*480;
-let y = Math.random()*320;
+const balls = [];
 
-let dx = 5;
-let dy = -5;
-let ballSpeedIncreasePerHit = 1.05;
+for (let i = 0; i < 100; i++) {
+    const ball = {
+        x:  Math.random() * canvas.width,
+        y:  Math.random() * canvas.height,
+        dx: 5,
+        dy: -5,
+    }
+    balls.push(ball);
+}
 
 const paddleHeight = 10;
 const paddleWidth = 75;
@@ -33,6 +39,7 @@ const brickOffsetLeft = 30;
 
 
 function drawBricks(){
+    ctx.fillStyle = 'blue';
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
             console.log(brickOffsetLeft + (brickWidth + brickPadding) * c)
@@ -56,9 +63,13 @@ function drawPaddle() {
 
 function drawBall() {
     ctx.fillStyle = "blue";
-    ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-    ctx.fill();
+
+    for (const ball of balls) {
+        ctx.fillStyle = "blue";
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
+        ctx.fill();
+    }
 }
 
 function animate() {
@@ -68,26 +79,34 @@ function animate() {
     drawPaddle();
     drawBricks();
 
-    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) { dx = -dx; }
+    // BALLS
 
-    if (y + dy < ballRadius) {
-        dy = -dy;
-    } else if (y + dy > canvas.height - ballRadius) {
-        let paddleLeftX = paddleX - paddleCollisionGenerosity;
-        let paddleRightX = paddleX + paddleWidth + paddleCollisionGenerosity;
-
-        if (true/*paddleLeftX < x && x < paddleRightX*/) {
-            dy = -dy * ballSpeedIncreasePerHit;
-            dx = dx * ballSpeedIncreasePerHit;
-        } else {
-            alert("GAME OVER");
-            document.location.reload();
-            // clearInterval(interval);
+    for (const ball of balls) {
+        if (ball.x + ball.dx > canvas.width - ballRadius || ball.x + ball.dx < ballRadius) { 
+            ball.dx = -ball.dx; 
         }
-    }
-      
-    x = x + dx;
-    y = y + dy;
+
+        if (ball.y + ball.dy < ballRadius) {
+            ball.dy = -ball.dy;
+        } else if (ball.y + ball.dy > canvas.height - ballRadius) {
+            let paddleLeftX = paddleX - paddleCollisionGenerosity;
+            let paddleRightX = paddleX + paddleWidth + paddleCollisionGenerosity;
+
+            if (true/*paddleLeftX < x && x < paddleRightX*/) {
+                ball.dy = -ball.dy * ballSpeedIncreasePerHit;
+                ball.dx = ball.dx * ballSpeedIncreasePerHit;
+            } else {
+                alert("GAME OVER");
+                document.location.reload();
+                // clearInterval(interval);
+            }
+        }
+        
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+    }  
+
+    // PADDLE MOVEMENT
 
     if (rightPressed) {
         paddleX = Math.min(
